@@ -1,18 +1,54 @@
-!DOCTYPE html>
-<html>
+!<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Noman's Azure App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noman Zulfiqar | MLSA</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f4f4f4; padding: 50px; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: inline-block; }
-        h1 { color: #0078d4; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0078D4, #00188F);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 { margin: 0; font-size: 2.5em; }
+        p { font-size: 1.1em; opacity: 0.9; }
+        .badge {
+            background: #f2f2f2;
+            color: #0078D4;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .footer { margin-top: 20px; font-size: 0.8em; opacity: 0.7; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h1>Hello from Azure! ☁️</h1>
-        <p>Hi, I'm <b>Noman</b>, a Microsoft Learn Student Ambassador.</p>
-        <p>This site is hosted on <b>Azure Static Web Apps</b>.</p>
+    <div class="container">
+        <div class="badge">Microsoft Learn Student Ambassador</div>
+        <h1>Noman Zulfiqar</h1>
+        <p>Future Cloud Engineer & Developer</p>
+        <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 20px 0;">
+        <p>My first website successfully deployed via <b>GitHub Pages</b>!</p>
+        <div class="footer">Built with ❤️ and AI Support</div>
     </div>
 </body>
 </html>
