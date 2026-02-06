@@ -13,55 +13,58 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0078D4, #00188F);
-            color: white;
+            /* ✨ Luxury Golden Gradient */
+            background: linear-gradient(135deg, #B38728, #FBF5B7, #BF953F);
+            color: #1a1a1a;
             text-align: center;
         }
         .container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.75); /* Dark semi-transparent box */
             padding: 30px;
             border-radius: 20px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 2px solid #D4AF37; /* Gold border */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             max-width: 400px;
             width: 90%;
+            color: white;
         }
-        h1 { margin: 0; font-size: 2.5em; }
-        #greeting { font-size: 1.2em; font-weight: bold; color: #FFD700; margin-bottom: 5px; }
-        #typewriter { font-size: 1.1em; opacity: 0.9; min-height: 1.2em; }
+        h1 { margin: 0; font-size: 2.5em; color: #D4AF37; } /* Gold Title */
+        #greeting { font-size: 1.2em; font-weight: bold; color: #FBF5B7; margin-bottom: 5px; }
+        #typewriter { font-size: 1.1em; opacity: 0.9; min-height: 1.2em; color: #f2f2f2; }
         
         .badge {
-            background: #f2f2f2;
-            color: #0078D4;
+            background: #D4AF37; /* Gold Badge */
+            color: #000;
             padding: 5px 15px;
             border-radius: 50px;
             font-weight: bold;
             display: inline-block;
             margin-top: 10px;
+            font-size: 0.8em;
         }
 
-        /* ✨ Buttons with Hover Effects */
         .btn {
-            color: white;
+            color: #D4AF37;
             margin: 10px 10px;
             text-decoration: none;
-            border: 1px solid white;
+            border: 2px solid #D4AF37;
             padding: 8px 20px;
             border-radius: 5px;
             font-size: 0.9em;
             display: inline-block;
-            transition: all 0.3s ease; /* Smooth transition */
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
-            background: white;
-            color: #0078D4;
-            transform: translateY(-5px); /* Button moves up */
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4); /* Glow effect */
+            background: #D4AF37;
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
-        .footer { margin-top: 20px; font-size: 0.8em; opacity: 0.7; }
+        .footer { margin-top: 20px; font-size: 0.8em; opacity: 0.6; color: #D4AF37; }
     </style>
 </head>
 <body>
@@ -70,7 +73,7 @@
         <div class="badge">Microsoft Learn Student Ambassador</div>
         <h1>Noman Zulfiqar</h1>
         <p id="typewriter"></p>
-        <hr style="border: 0.5px solid rgba(255,255,255,0.2); margin: 20px 0;">
+        <hr style="border: 0.5px solid rgba(212,175,55,0.3); margin: 20px 0;">
         <p>My first website successfully deployed via <b>GitHub Pages</b>!</p>
 
         <div style="margin-top: 20px;">
@@ -82,14 +85,12 @@
     </div>
 
     <script>
-        // 1. Dynamic Greeting
         const hour = new Date().getHours();
         const greetingElement = document.getElementById('greeting');
         if (hour < 12) greetingElement.innerText = "Good Morning! ☀️";
         else if (hour < 18) greetingElement.innerText = "Good Afternoon! ☁️";
         else greetingElement.innerText = "Good Evening! 🌙";
 
-        // 2. Typewriter Effect
         const text = "Future Cloud Engineer & Developer";
         let index = 0;
         function typeEffect() {
