@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday!</title>
+  <title>Happy Birthday My Love ❤️</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
     }
 
     body {
-      background: #0f0c20;
+      background: #0d0814;
       color: #fff;
       text-align: center;
       min-height: 100vh;
@@ -22,65 +22,150 @@
       justify-content: center;
       align-items: center;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 💖 Floating Heart Background Animation */
+    .bg-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-particle {
+      position: absolute;
+      bottom: -100px;
+      color: rgba(255, 77, 109, 0.6);
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      20% { opacity: 0.8; }
+      100% {
+        transform: translateY(-110vh) scale(1.3) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .section {
       display: none;
       width: 90%;
       max-width: 600px;
-      padding: 20px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 105, 180, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      z-index: 10;
       animation: fadeIn 0.8s ease-in-out;
     }
 
-    .active {
-      display: block;
-    }
+    .active { display: block; }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
-    h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ff69b4; }
-    p { font-size: 1.1rem; margin-bottom: 20px; color: #ddd; }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      background: linear-gradient(45deg, #ff4d6d, #ffb3c1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p { font-size: 1.1rem; line-height: 1.6; color: #e0e0e0; }
 
     button {
-      background: linear-gradient(45deg, #ff4081, #ff79b0);
+      background: linear-gradient(45deg, #ff4d6d, #ff758f);
       color: white;
       border: none;
-      padding: 12px 25px;
+      padding: 12px 28px;
       font-size: 1rem;
-      border-radius: 25px;
+      font-weight: 600;
+      border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
-      transition: transform 0.2s, background 0.3s;
-      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+      transition: all 0.3s ease;
+      margin-top: 20px;
     }
 
     button:hover {
-      transform: scale(1.05);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
     }
 
-    /* Cake Styling */
-    .cake {
-      font-size: 80px;
-      margin: 20px 0;
+    /* 🕯️ 4 Real Candles Setup */
+    .candle-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
+    }
+
+    .candle {
+      width: 18px;
+      height: 70px;
+      background: linear-gradient(to right, #ffccd5, #fff);
+      border-radius: 5px 5px 0 0;
+      position: relative;
+    }
+
+    .flame {
+      width: 14px;
+      height: 22px;
+      background: orange;
+      border-radius: 50% 50% 20% 20%;
+      position: absolute;
+      top: -20px;
+      left: 2px;
+      box-shadow: 0 0 12px #ff4d6d, 0 0 20px orange;
+      animation: flicker 0.2s infinite alternate;
       cursor: pointer;
     }
 
-    /* Message Card Modal */
-    .card {
-      background: #1f1b3a;
-      border-radius: 15px;
-      padding: 25px;
-      border: 1px solid #ff4081;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-      text-align: left;
-      line-height: 1.6;
+    .flame.off {
+      display: none;
     }
 
-    /* Balloons Container */
-    .balloon-container {
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-2deg); }
+      100% { transform: scale(1.1) rotate(2deg); }
+    }
+
+    /* ✍️ Typewriter Effect Styling */
+    .typewriter-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 3px solid #ff4d6d;
+      text-align: left;
+      min-height: 140px;
+    }
+
+    #typed-text {
+      font-size: 1.05rem;
+      white-space: pre-wrap;
+      border-right: 2px solid #ff4d6d;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink { 50% { border-color: transparent; } }
+
+    /* 🎈 Popping Balloons */
+    .balloon-grid {
       display: flex;
       justify-content: center;
       gap: 15px;
@@ -89,119 +174,159 @@
     }
 
     .balloon {
-      width: 50px;
-      height: 65px;
-      background-color: #ff4081;
+      width: 55px;
+      height: 70px;
       border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
       cursor: pointer;
-      font-weight: bold;
-      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3);
-      transition: transform 0.2s, opacity 0.3s;
+      transition: transform 0.2s;
     }
 
-    .balloon:nth-child(2) { background-color: #7c4dff; }
-    .balloon:nth-child(3) { background-color: #00e676; }
-    .balloon:nth-child(4) { background-color: #ffab00; }
-    .balloon:nth-child(5) { background-color: #00b0ff; }
+    .b1 { background: #ff4d6d; }
+    .b2 { background: #7209b7; }
+    .b3 { background: #4cc9f0; }
+    .b4 { background: #ffb703; }
 
     .balloon.popped {
-      transform: scale(0);
-      opacity: 0;
-      pointer-events: none;
+      animation: pop 0.3s forwards;
     }
 
-    #balloon-msg {
-      min-height: 50px;
-      font-style: italic;
-      color: #ff80ab;
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(0); opacity: 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Section 1: Intro -->
+  <div class="bg-hearts" id="hearts-bg"></div>
+
   <div id="sec-1" class="section active">
-    <h1>It's Your Special Day! 🎂</h1>
-    <p>A little digital surprise made just for you...</p>
+    <h1>It's Your Special Day! 💖</h1>
+    <p>A cinematic magical surprise created just for you...</p>
     <button onclick="nextSection(2)">Let's Begin ✨</button>
   </div>
 
-  <!-- Section 2: Age Showcase -->
   <div id="sec-2" class="section">
-    <p>YOU ARE NOW</p>
-    <h1 style="font-size: 4rem; color: #00e676;">17</h1>
-    <h1>Years Young! 🌸</h1>
-    <p>Seventeen looks absolutely gorgeous on you!</p>
-    <button onclick="nextSection(3)">Continue to Cake 🎂</button>
+    <h1>Blow the 4 Candles! 🕯️</h1>
+    <p>Tap on the candles to blow them out & make a wish!</p>
+    
+    <div class="candle-container">
+      <div class="candle"><div class="flame" onclick="blowCandle(this)"></div></div>
+      <div class="candle"><div class="flame" onclick="blowCandle(this)"></div></div>
+      <div class="candle"><div class="flame" onclick="blowCandle(this)"></div></div>
+      <div class="candle"><div class="flame" onclick="blowCandle(this)"></div></div>
+    </div>
+
+    <p id="candle-status" style="color:#ff85a1;">4 Candles are glowing...</p>
+    <button id="after-candles-btn" style="display:none;" onclick="nextSection(3)">Read Your Note 💌</button>
   </div>
 
-  <!-- Section 3: Cake Cutting -->
   <div id="sec-3" class="section">
-    <h1>Let's Celebrate! 🎉</h1>
-    <div class="cake" id="cake-emoji">🎂</div>
-    <p id="cake-status">Click below to cut the cake!</p>
-    <button id="cake-btn" onclick="cutCake()">Cut the Cake 🍰</button>
+    <h1>A Note From My Heart 📝</h1>
+    <div class="typewriter-box">
+      <span id="typed-text"></span>
+    </div>
+    <button id="note-next-btn" style="display:none;" onclick="nextSection(4)">Pop Birthday Balloons 🎈</button>
   </div>
 
-  <!-- Section 4: Personal Message Pop-up -->
   <div id="sec-4" class="section">
-    <h1>💌 A Message From My Heart</h1>
-    <div class="card">
-      <p><strong>Dear [Name],</strong></p><br>
-      <p>Happy Birthday! On your special day, I just wanted to remind you how truly amazing you are.</p><br>
-      <p>May this year bring you endless smiles, success, and all the happiness in the world. Always stay as wonderful as you are!</p><br>
-      <p><strong>— With all my heart ❤️</strong></p>
+    <h1>Pop The Balloons! 🎆</h1>
+    <p>Tap each balloon to reveal hidden love notes!</p>
+    
+    <div class="balloon-grid">
+      <div class="balloon b1" onclick="pop(this, 'You make my world so bright! 🌟')">🎈</div>
+      <div class="balloon b2" onclick="pop(this, 'Forever grateful to have you! 💕')">🎈</div>
+      <div class="balloon b3" onclick="pop(this, 'May all your dreams come true! ✨')">🎈</div>
+      <div class="balloon b4" onclick="pop(this, 'Happy Birthday My Love! 🎉')">🎈</div>
     </div>
-    <button onclick="nextSection(5)">Pop the Balloons 🎈</button>
+
+    <p id="balloon-wish" style="min-height: 40px; color: #4cc9f0; font-weight: 500;"></p>
+    <button id="final-btn" style="display:none;" onclick="nextSection(5)">Final Surprise ❤️</button>
   </div>
 
-  <!-- Section 5: Balloon Pop Interactive -->
   <div id="sec-5" class="section">
-    <h1>Pop the Balloons! 🎈</h1>
-    <p>Click on each balloon to reveal hidden wishes:</p>
-    <div class="balloon-container">
-      <div class="balloon" onclick="popBalloon(this, 'You make every day brighter! 🌟')">1</div>
-      <div class="balloon" onclick="popBalloon(this, 'Keep smiling always! 😊')">2</div>
-      <div class="balloon" onclick="popBalloon(this, 'May all your dreams come true! ✨')">3</div>
-      <div class="balloon" onclick="popBalloon(this, 'You are truly one of a kind! ❤️')">4</div>
-      <div class="balloon" onclick="popBalloon(this, 'Best wishes for the year ahead! 🚀')">5</div>
-    </div>
-    <p id="balloon-msg">Pop a balloon...</p>
-    <button id="ending-btn" style="display:none;" onclick="nextSection(6)">See the Ending ✨</button>
-  </div>
-
-  <!-- Section 6: Final Wish -->
-  <div id="sec-6" class="section">
-    <h1>Happy Birthday! 💕</h1>
-    <p>You walked into this little world I made just for you.</p>
-    <p style="color: #ff80ab;">Every click, every wish, was made with love.</p>
+    <h1>Happy Birthday! 👑💖</h1>
+    <p>Every single detail of this page was created with pure love, just to see you smile today!</p>
+    <br>
+    <p style="font-size: 1.3rem; color: #ff4d6d;">Have an amazing year ahead! ✨</p>
   </div>
 
   <script>
-    let poppedCount = 0;
+    // 1. Generate Floating Background Hearts
+    const bg = document.getElementById('hearts-bg');
+    const heartIcons = ['💖', '❤️', '💕', '🌸', '✨'];
+    
+    for(let i = 0; i < 25; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart-particle';
+      heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+      bg.appendChild(heart);
+    }
 
+    // 2. Navigation
     function nextSection(secNumber) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
+
+      if(secNumber === 3) {
+        startTypewriter();
+      }
     }
 
-    function cutCake() {
-      document.getElementById('cake-emoji').innerText = '🍰';
-      document.getElementById('cake-status').innerText = 'Yay! Cake is cut! 🎉';
-      document.getElementById('cake-btn').innerText = 'Read My Message 💌';
-      document.getElementById('cake-btn').setAttribute('onclick', 'nextSection(4)');
+    // 3. Candle Blow Out Feature
+    let candlesBlown = 0;
+    function blowCandle(flameEl) {
+      if(!flameEl.classList.contains('off')) {
+        flameEl.classList.add('off');
+        candlesBlown++;
+        document.getElementById('candle-status').innerText = `${4 - candlesBlown} candles remaining...`;
+        
+        if(candlesBlown === 4) {
+          document.getElementById('candle-status').innerText = "All candles blown out! Make a wish! 🎉✨";
+          document.getElementById('after-candles-btn').style.display = 'inline-block';
+        }
+      }
     }
 
-    function popBalloon(element, message) {
-      if (!element.classList.contains('popped')) {
+    // 4. Automatic Typewriter Note
+    const message = "Happy Birthday my love! 🎂\n\nI just wanted to take a moment to tell you how extremely special you are to me. You bring so much light, love, and happiness into my life every single day. I hope your day is filled with endless joy and warm memories!\n\nForever & always ❤️";
+    
+    let typeIndex = 0;
+    function startTypewriter() {
+      if(typeIndex === 0) {
+        let typedEl = document.getElementById('typed-text');
+        typedEl.innerText = "";
+        
+        let timer = setInterval(() => {
+          if(typeIndex < message.length) {
+            typedEl.innerText += message.charAt(typeIndex);
+            typeIndex++;
+          } else {
+            clearInterval(timer);
+            document.getElementById('note-next-btn').style.display = 'inline-block';
+          }
+        }, 45); // Typing speed
+      }
+    }
+
+    // 5. Balloons Pop
+    let poppedCount = 0;
+    function pop(element, wishText) {
+      if(!element.classList.contains('popped')) {
         element.classList.add('popped');
-        document.getElementById('balloon-msg').innerText = message;
+        document.getElementById('balloon-wish').innerText = wishText;
         poppedCount++;
-        if (poppedCount === 5) {
-          document.getElementById('ending-btn').style.display = 'inline-block';
+        
+        if(poppedCount === 4) {
+          document.getElementById('final-btn').style.display = 'inline-block';
         }
       }
     }
