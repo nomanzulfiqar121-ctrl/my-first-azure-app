@@ -1,1063 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>The Unwritten Love Story ❤️</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #050208;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-}
-
-/* =========================
-   GLOBAL
-========================= */
-
-section {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.content {
-    position: relative;
-    z-index: 5;
-    text-align: center;
-    padding: 30px;
-}
-
-h1, h2, h3 {
-    font-family: 'Cormorant Garamond', serif;
-}
-
-.gold {
-    color: #f5d58a;
-}
-
-.pink {
-    color: #ff72b6;
-}
-
-.small-label {
-    font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #e7b8d0;
-    margin-bottom: 25px;
-}
-
-/* =========================
-   PARTICLES
-========================= */
-
-#particles {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.particle {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: #ff8cc8;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #ff4fa3;
-    animation: floatParticle linear infinite;
-}
-
-@keyframes floatParticle {
-    from {
-        transform: translateY(110vh);
-        opacity: 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    20% {
-        opacity: 1;
+    body {
+      background: #0f0c20;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
     }
 
-    80% {
-        opacity: 1;
+    .section {
+      display: none;
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      animation: fadeIn 0.8s ease-in-out;
     }
 
-    to {
-        transform: translateY(-10vh);
-        opacity: 0;
-    }
-}
-
-/* =========================
-   SECTION 1
-========================= */
-
-#opening {
-    background:
-        radial-gradient(circle at center, #260b2c 0%, #08030c 45%, #020104 100%);
-}
-
-.opening-title {
-    font-size: clamp(45px, 8vw, 100px);
-    font-weight: 500;
-    letter-spacing: 3px;
-    color: #f5d58a;
-    text-shadow: 0 0 25px rgba(255, 105, 190, .4);
-}
-
-.opening-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3vw, 32px);
-    margin-top: 15px;
-    color: #f7d9e8;
-}
-
-.enter-btn {
-    margin-top: 45px;
-    padding: 17px 38px;
-    border: 1px solid #ff73b7;
-    border-radius: 50px;
-    background: linear-gradient(90deg, #ff3f9f, #9d3cff);
-    color: white;
-    font-size: 15px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    box-shadow: 0 0 25px rgba(255, 53, 159, .6);
-    transition: .4s;
-}
-
-.enter-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 50px rgba(255, 53, 159, .9);
-}
-
-/* =========================
-   UNIVERSE
-========================= */
-
-#universe {
-    background:
-        linear-gradient(rgba(2, 4, 15, .25), rgba(3, 2, 15, .8)),
-        radial-gradient(circle at 80% 20%, #382359, transparent 30%),
-        #050714;
-}
-
-.moon {
-    position: absolute;
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #fff, #ddd 45%, #999);
-    right: 12%;
-    top: 12%;
-    box-shadow: 0 0 60px rgba(255,255,255,.5);
-}
-
-.universe-text {
-    max-width: 700px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(35px, 6vw, 70px);
-    line-height: 1.15;
-}
-
-/* =========================
-   BIRTHDAY REVEAL
-========================= */
-
-#birthday {
-    background:
-        radial-gradient(circle at center, #46152d, #12050e 55%, #030105);
-}
-
-.balloons {
-    position: absolute;
-    inset: 0;
-}
-
-.balloon {
-    position: absolute;
-    width: 65px;
-    height: 82px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 25%, #fff8, transparent 15%), #e84b91;
-    animation: balloonFloat 5s ease-in-out infinite;
-    box-shadow: 0 0 25px rgba(255, 65, 150, .4);
-}
-
-.balloon::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 150px;
-    background: #aaa;
-    left: 50%;
-    top: 80px;
-}
-
-.balloon:nth-child(1) { left: 8%; top: 20%; }
-.balloon:nth-child(2) { left: 20%; top: 10%; background: #b96cff; }
-.balloon:nth-child(3) { right: 20%; top: 12%; background: #d8a14a; }
-.balloon:nth-child(4) { right: 8%; top: 22%; background: #ff5caa; }
-
-@keyframes balloonFloat {
-    50% {
-        transform: translateY(-25px) rotate(4deg);
-    }
-}
-
-.birthday-title {
-    font-size: clamp(65px, 12vw, 150px);
-    line-height: .8;
-    color: #f8d38a;
-    text-shadow: 0 0 30px rgba(255, 174, 75, .5);
-}
-
-.birthday-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 30px;
-    font-style: italic;
-    margin-top: 35px;
-}
-
-/* =========================
-   LOVE LETTER
-========================= */
-
-#letter {
-    background: radial-gradient(circle, #321526, #080308);
-}
-
-.envelope {
-    width: min(500px, 85vw);
-    height: 300px;
-    background: linear-gradient(135deg, #d8a8b8, #8c4b68);
-    position: relative;
-    cursor: pointer;
-    transition: .7s;
-    box-shadow: 0 30px 80px rgba(0,0,0,.7);
-    border-radius: 5px;
-}
-
-.envelope:hover {
-    transform: scale(1.04);
-}
-
-.envelope::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent 50%, #b77891 50%);
-    clip-path: polygon(0 0, 100% 0, 50% 55%);
-}
-
-.envelope-text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 35px;
-    color: #301222;
-    z-index: 2;
-}
-
-.letter-card {
-    display: none;
-    max-width: 650px;
-    background: rgba(255,255,255,.08);
-    border: 1px solid rgba(255,150,200,.4);
-    backdrop-filter: blur(20px);
-    padding: 50px;
-    border-radius: 20px;
-    line-height: 1.9;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 25px;
-    box-shadow: 0 0 60px rgba(255,50,150,.15);
-}
-
-.letter-card.show {
-    display: block;
-    animation: reveal .8s ease;
-}
-
-@keyframes reveal {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(.9);
+    .active {
+      display: block;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* =========================
-   MEMORIES
-========================= */
-
-#memories {
-    background: linear-gradient(#08030e, #180817);
-}
-
-.memory-container {
-    width: min(1100px, 90%);
-}
-
-.memory-title {
-    font-size: 65px;
-    color: #f4d28d;
-    margin-bottom: 50px;
-}
-
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.memory-card {
-    height: 400px;
-    border: 1px solid rgba(255, 110, 190, .5);
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(145deg, #32112d, #100511);
-    transition: .5s;
-}
-
-.memory-card:hover {
-    transform: translateY(-15px) rotateY(5deg);
-    box-shadow: 0 20px 50px rgba(255, 50, 160, .3);
-}
-
-.memory-image {
-    height: 75%;
-    background:
-        linear-gradient(transparent, #08030e),
-        url('photo1.jpg') center/cover;
-}
-
-.memory-card:nth-child(2) .memory-image {
-    background-image:
-        linear-gradient(transparent, #08030e),
-        url('photo2.jpg');
-}
-
-.memory-card:nth-child(3) .memory-image {
-    background-image:
-        linear-gradient(transparent, #08030e),
-        url('photo3.jpg');
-}
-
-.memory-card:nth-child(4) .memory-image {
-    background-image:
-        linear-gradient(transparent, #08030e),
-        url('photo4.jpg');
-}
-
-.memory-caption {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 23px;
-}
-
-/* =========================
-   WISHES
-========================= */
-
-#wishes {
-    background:
-        radial-gradient(circle at center, #27123a, #050207);
-}
-
-.wishes-title {
-    font-size: 70px;
-    color: #f6d58d;
-    margin-bottom: 50px;
-}
-
-.wishes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 900px;
-}
-
-.wish {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 25px;
-    background: radial-gradient(circle, #e879b5, #651a5c);
-    box-shadow: 0 0 35px rgba(255, 90, 180, .5);
-    animation: wishFloat 4s infinite ease-in-out;
-}
-
-.wish:nth-child(2) {
-    background: radial-gradient(circle, #b66eff, #3a1761);
-    animation-delay: .5s;
-}
-
-.wish:nth-child(3) {
-    background: radial-gradient(circle, #e8b65b, #633b12);
-    animation-delay: 1s;
-}
-
-.wish:nth-child(4) {
-    background: radial-gradient(circle, #73a9ff, #153d75);
-    animation-delay: 1.5s;
-}
-
-.wish:nth-child(5) {
-    background: radial-gradient(circle, #ff648d, #64142c);
-    animation-delay: 2s;
-}
-
-@keyframes wishFloat {
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-#countdown {
-    background: linear-gradient(#12051d, #34112c);
-}
-
-.countdown-title {
-    font-size: 90px;
-    color: #f2c8dc;
-}
-
-.timer {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.time-box {
-    min-width: 120px;
-    padding: 25px 15px;
-    background: rgba(0,0,0,.35);
-    border: 1px solid rgba(255,120,190,.5);
-    border-radius: 12px;
-}
-
-.time-box strong {
-    font-size: 35px;
-    color: #f3d28c;
-    display: block;
-}
-
-.time-box span {
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-/* =========================
-   FINAL
-========================= */
-
-#final {
-    background:
-        radial-gradient(circle at center, #42122f, #050106 70%);
-}
-
-.star {
-    font-size: 90px;
-    color: #ffe4a0;
-    text-shadow: 0 0 40px #fff;
-    animation: starPulse 2s infinite;
-}
-
-@keyframes starPulse {
-    50% {
-        transform: scale(1.2);
-        text-shadow: 0 0 80px #fff;
-    }
-}
-
-.final-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(35px, 5vw, 65px);
-    max-width: 900px;
-    margin: 30px auto;
-    line-height: 1.3;
-}
-
-.final-birthday {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(60px, 10vw, 130px);
-    color: #f6d38b;
-    text-shadow: 0 0 40px rgba(255,180,80,.5);
-}
-
-.signature {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 35px;
-    font-style: italic;
-    color: #ff83bd;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width: 700px) {
-
-    .moon {
-        width: 100px;
-        height: 100px;
-        right: 8%;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .memory-grid {
-        grid-template-columns: repeat(2, 1fr);
+    h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ff69b4; }
+    p { font-size: 1.1rem; margin-bottom: 20px; color: #ddd; }
+
+    button {
+      background: linear-gradient(45deg, #ff4081, #ff79b0);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
+      transition: transform 0.2s, background 0.3s;
+      margin-top: 15px;
     }
 
-    .memory-card {
-        height: 300px;
+    button:hover {
+      transform: scale(1.05);
     }
 
-    .timer {
-        flex-wrap: wrap;
+    /* Cake Styling */
+    .cake {
+      font-size: 80px;
+      margin: 20px 0;
+      cursor: pointer;
     }
 
-    .time-box {
-        min-width: 80px;
+    /* Message Card Modal */
+    .card {
+      background: #1f1b3a;
+      border-radius: 15px;
+      padding: 25px;
+      border: 1px solid #ff4081;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      text-align: left;
+      line-height: 1.6;
     }
 
-    .time-box strong {
-        font-size: 25px;
+    /* Balloons Container */
+    .balloon-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 20px 0;
     }
 
-    .letter-card {
-        padding: 30px;
-        font-size: 21px;
+    .balloon {
+      width: 50px;
+      height: 65px;
+      background-color: #ff4081;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s, opacity 0.3s;
     }
 
-    .wishes-title,
-    .memory-title {
-        font-size: 50px;
+    .balloon:nth-child(2) { background-color: #7c4dff; }
+    .balloon:nth-child(3) { background-color: #00e676; }
+    .balloon:nth-child(4) { background-color: #ffab00; }
+    .balloon:nth-child(5) { background-color: #00b0ff; }
+
+    .balloon.popped {
+      transform: scale(0);
+      opacity: 0;
+      pointer-events: none;
     }
-}
-</style>
+
+    #balloon-msg {
+      min-height: 50px;
+      font-style: italic;
+      color: #ff80ab;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- PARTICLES -->
-<div id="particles"></div>
+  <!-- Section 1: Intro -->
+  <div id="sec-1" class="section active">
+    <h1>It's Your Special Day! 🎂</h1>
+    <p>A little digital surprise made just for you...</p>
+    <button onclick="nextSection(2)">Let's Begin ✨</button>
+  </div>
 
-<!-- =========================
-     OPENING
-========================= -->
+  <!-- Section 2: Age Showcase -->
+  <div id="sec-2" class="section">
+    <p>YOU ARE NOW</p>
+    <h1 style="font-size: 4rem; color: #00e676;">17</h1>
+    <h1>Years Young! 🌸</h1>
+    <p>Seventeen looks absolutely gorgeous on you!</p>
+    <button onclick="nextSection(3)">Continue to Cake 🎂</button>
+  </div>
 
-<section id="opening">
+  <!-- Section 3: Cake Cutting -->
+  <div id="sec-3" class="section">
+    <h1>Let's Celebrate! 🎉</h1>
+    <div class="cake" id="cake-emoji">🎂</div>
+    <p id="cake-status">Click below to cut the cake!</p>
+    <button id="cake-btn" onclick="cutCake()">Cut the Cake 🍰</button>
+  </div>
 
-    <div class="content">
-
-        <div class="small-label">
-            A cinematic birthday experience
-        </div>
-
-        <h1 class="opening-title">
-            THE UNWRITTEN<br>
-            LOVE STORY ❤️
-        </h1>
-
-        <p class="opening-subtitle">
-            I made something special for you...
-        </p>
-
-        <button class="enter-btn"
-        onclick="document.getElementById('universe').scrollIntoView()">
-            ✨ ENTER MY WORLD ✨
-        </button>
-
+  <!-- Section 4: Personal Message Pop-up -->
+  <div id="sec-4" class="section">
+    <h1>💌 A Message From My Heart</h1>
+    <div class="card">
+      <p><strong>Dear [Name],</strong></p><br>
+      <p>Happy Birthday! On your special day, I just wanted to remind you how truly amazing you are.</p><br>
+      <p>May this year bring you endless smiles, success, and all the happiness in the world. Always stay as wonderful as you are!</p><br>
+      <p><strong>— With all my heart ❤️</strong></p>
     </div>
+    <button onclick="nextSection(5)">Pop the Balloons 🎈</button>
+  </div>
 
-</section>
-
-
-<!-- =========================
-     UNIVERSE
-========================= -->
-
-<section id="universe">
-
-    <div class="moon"></div>
-
-    <div class="content">
-
-        <div class="small-label">
-            Chapter 01
-        </div>
-
-        <div class="universe-text">
-
-            In a universe of billions of people...
-
-            <br><br>
-
-            Somehow,
-
-            <span class="pink">
-                I found you.
-            </span>
-
-            <br><br>
-
-            And today isn't just your birthday...
-
-        </div>
-
+  <!-- Section 5: Balloon Pop Interactive -->
+  <div id="sec-5" class="section">
+    <h1>Pop the Balloons! 🎈</h1>
+    <p>Click on each balloon to reveal hidden wishes:</p>
+    <div class="balloon-container">
+      <div class="balloon" onclick="popBalloon(this, 'You make every day brighter! 🌟')">1</div>
+      <div class="balloon" onclick="popBalloon(this, 'Keep smiling always! 😊')">2</div>
+      <div class="balloon" onclick="popBalloon(this, 'May all your dreams come true! ✨')">3</div>
+      <div class="balloon" onclick="popBalloon(this, 'You are truly one of a kind! ❤️')">4</div>
+      <div class="balloon" onclick="popBalloon(this, 'Best wishes for the year ahead! 🚀')">5</div>
     </div>
-
-</section>
-
-
-<!-- =========================
-     BIRTHDAY
-========================= -->
-
-<section id="birthday">
-
-    <div class="balloons">
-
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-
-    </div>
-
-    <div class="content">
-
-        <div class="small-label">
-            Chapter 02 — The Birthday Reveal
-        </div>
-
-        <h2 class="birthday-title">
-            HAPPY<br>
-            BIRTHDAY ❤️
-        </h2>
-
-        <p class="birthday-subtitle">
-            To the most beautiful chapter of my life.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     LOVE LETTER
-========================= -->
-
-<section id="letter">
-
-    <div class="content">
-
-        <div class="small-label">
-            Chapter 03 — A Letter For You
-        </div>
-
-        <div class="envelope"
-        onclick="openLetter()">
-
-            <div class="envelope-text">
-                You have<br>a letter. ❤️
-            </div>
-
-        </div>
-
-        <div class="letter-card" id="letterCard">
-
-            My Dearest <span class="pink">HER NAME</span>,
-
-            <br><br>
-
-            Today is your special day, but somehow
-            I feel like I am the lucky one.
-
-            <br><br>
-
-            Thank you for being a beautiful part
-            of my story.
-
-            <br><br>
-
-            I hope every dream in your heart
-            finds its way to you.
-
-            <br><br>
-
-            Happy Birthday, my love. ❤️
-
-            <br><br>
-
-            Always yours,<br>
-            <span class="pink">YOUR NAME</span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     MEMORIES
-========================= -->
-
-<section id="memories">
-
-    <div class="memory-container">
-
-        <div class="small-label">
-            Chapter 04 — Our Little Universe
-        </div>
-
-        <h2 class="memory-title">
-            Little Moments
-        </h2>
-
-        <div class="memory-grid">
-
-            <div class="memory-card">
-                <div class="memory-image"></div>
-                <div class="memory-caption">
-                    The day we met
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <div class="memory-image"></div>
-                <div class="memory-caption">
-                    The moment we talked
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <div class="memory-image"></div>
-                <div class="memory-caption">
-                    The time we laughed
-                </div>
-            </div>
-
-            <div class="memory-card">
-                <div class="memory-image"></div>
-                <div class="memory-caption">
-                    The night we dreamed
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     WISHES
-========================= -->
-
-<section id="wishes">
-
-    <div class="content">
-
-        <div class="small-label">
-            Chapter 05 — The Garden Of Wishes
-        </div>
-
-        <h2 class="wishes-title">
-            My Wishes For You
-        </h2>
-
-        <div class="wishes">
-
-            <div class="wish">
-                Happiness
-            </div>
-
-            <div class="wish">
-                Dreams
-            </div>
-
-            <div class="wish">
-                Success
-            </div>
-
-            <div class="wish">
-                Peace
-            </div>
-
-            <div class="wish">
-                Love ❤️
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     COUNTDOWN
-========================= -->
-
-<section id="countdown">
-
-    <div class="content">
-
-        <div class="small-label">
-            Chapter 06
-        </div>
-
-        <h2 class="countdown-title">
-            365 days...
-        </h2>
-
-        <div class="timer">
-
-            <div class="time-box">
-                <strong id="days">365</strong>
-                <span>DAYS</span>
-            </div>
-
-            <div class="time-box">
-                <strong id="hours">00</strong>
-                <span>HOURS</span>
-            </div>
-
-            <div class="time-box">
-                <strong id="minutes">00</strong>
-                <span>MINUTES</span>
-            </div>
-
-            <div class="time-box">
-                <strong id="seconds">00</strong>
-                <span>SECONDS</span>
-            </div>
-
-        </div>
-
-        <p class="birthday-subtitle">
-            365 new reasons to smile.<br>
-            And countless moments yet to come.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     FINAL
-========================= -->
-
-<section id="final">
-
-    <div class="content">
-
-        <div class="star">
-            ★
-        </div>
-
-        <div class="small-label">
-            The Ultimate Surprise
-        </div>
-
-        <p class="final-text">
-
-            If I could give you one thing today...
-
-            <br>
-
-            I'd give you the ability to see yourself
-            through my eyes.
-
-            <br><br>
-
-            Because then you'd know...
-
-        </p>
-
-        <h2 class="final-birthday">
-            Just how special<br>
-            you really are.
-        </h2>
-
-        <br><br>
-
-        <h2 class="final-birthday">
-            HAPPY BIRTHDAY ❤️
-        </h2>
-
-        <p class="signature">
-            My Love — With all my heart,<br>
-            YOUR NAME
-        </p>
-
-    </div>
-
-</section>
-
-
-<script>
-
-/* =========================
-   CREATE PARTICLES
-========================= */
-
-const particleContainer =
-document.getElementById("particles");
-
-for(let i = 0; i < 120; i++){
-
-    const particle =
-    document.createElement("div");
-
-    particle.className = "particle";
-
-    particle.style.left =
-    Math.random() * 100 + "%";
-
-    particle.style.animationDuration =
-    (5 + Math.random() * 10) + "s";
-
-    particle.style.animationDelay =
-    Math.random() * 10 + "s";
-
-    particleContainer.appendChild(particle);
-
-}
-
-
-/* =========================
-   LOVE LETTER
-========================= */
-
-function openLetter(){
-
-    const envelope =
-    document.querySelector(".envelope");
-
-    const letter =
-    document.getElementById("letterCard");
-
-    envelope.style.display = "none";
-
-    letter.classList.add("show");
-
-}
-
-
-/* =========================
-   COUNTDOWN
-========================= */
-
-let totalSeconds = 365 * 24 * 60 * 60;
-
-function updateCountdown(){
-
-    const days =
-    Math.floor(totalSeconds / 86400);
-
-    const hours =
-    Math.floor((totalSeconds % 86400) / 3600);
-
-    const minutes =
-    Math.floor((totalSeconds % 3600) / 60);
-
-    const seconds =
-    totalSeconds % 60;
-
-    document.getElementById("days")
-    .textContent = days;
-
-    document.getElementById("hours")
-    .textContent =
-    String(hours).padStart(2, "0");
-
-    document.getElementById("minutes")
-    .textContent =
-    String(minutes).padStart(2, "0");
-
-    document.getElementById("seconds")
-    .textContent =
-    String(seconds).padStart(2, "0");
-
-    if(totalSeconds > 0){
-        totalSeconds--;
+    <p id="balloon-msg">Pop a balloon...</p>
+    <button id="ending-btn" style="display:none;" onclick="nextSection(6)">See the Ending ✨</button>
+  </div>
+
+  <!-- Section 6: Final Wish -->
+  <div id="sec-6" class="section">
+    <h1>Happy Birthday! 💕</h1>
+    <p>You walked into this little world I made just for you.</p>
+    <p style="color: #ff80ab;">Every click, every wish, was made with love.</p>
+  </div>
+
+  <script>
+    let poppedCount = 0;
+
+    function nextSection(secNumber) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('sec-' + secNumber).classList.add('active');
     }
 
-}
+    function cutCake() {
+      document.getElementById('cake-emoji').innerText = '🍰';
+      document.getElementById('cake-status').innerText = 'Yay! Cake is cut! 🎉';
+      document.getElementById('cake-btn').innerText = 'Read My Message 💌';
+      document.getElementById('cake-btn').setAttribute('onclick', 'nextSection(4)');
+    }
 
-setInterval(updateCountdown, 1000);
-
-updateCountdown();
-
-
-/* =========================
-   MOUSE PARALLAX
-========================= */
-
-document.addEventListener("mousemove", (e) => {
-
-    const x =
-    (e.clientX / window.innerWidth - .5) * 20;
-
-    const y =
-    (e.clientY / window.innerHeight - .5) * 20;
-
-    document.querySelector(".moon")
-    ?.style.setProperty(
-        "transform",
-        `translate(${x}px, ${y}px)`
-    );
-
-});
-
-</script>
-
+    function popBalloon(element, message) {
+      if (!element.classList.contains('popped')) {
+        element.classList.add('popped');
+        document.getElementById('balloon-msg').innerText = message;
+        poppedCount++;
+        if (poppedCount === 5) {
+          document.getElementById('ending-btn').style.display = 'inline-block';
+        }
+      }
+    }
+  </script>
 </body>
 </html>
