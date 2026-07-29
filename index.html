@@ -18,7 +18,6 @@
     }
 
     body {
-      /* Romantic Pinkish Dark Purple Gradient */
       background: radial-gradient(circle at center, #3d0c27 0%, #1a0313 100%);
       color: #fff;
       text-align: center;
@@ -31,7 +30,6 @@
       position: relative;
     }
 
-    /* Falling Flowers & Hearts Particles */
     .bg-particles {
       position: fixed;
       top: 0;
@@ -131,6 +129,12 @@
       align-items: center;
       box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
       font-size: 40px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .envelope-box:hover {
+      transform: scale(1.08) rotate(-3deg);
     }
 
     .note-card {
@@ -183,7 +187,7 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* Cake Styling */
+    /* Cake Animation Elements */
     .cake-wrapper {
       margin: 30px auto 20px auto;
       display: flex;
@@ -301,7 +305,7 @@
       transform: translateX(18px) rotate(4deg);
     }
 
-    /* 3D Flip Card System for Hearts */
+    /* 3D Flip Card System */
     .flip-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -372,16 +376,14 @@
 </head>
 <body>
 
-  <!-- Background Music Tag -->
   <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Falling Roses & Hearts Layer -->
   <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
-  <!-- Stage 1: Intro Envelope -->
+  <!-- Stage 1: Intro -->
   <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
     <div class="envelope-box">💌</div>
@@ -390,7 +392,7 @@
     <button class="btn-primary" onclick="startApp()">Open 🎁</button>
   </div>
 
-  <!-- Stage 2: Question Gate -->
+  <!-- Stage 2: Question -->
   <div id="sec-2" class="section">
     <div class="sub-title">BEFORE WE BEGIN</div>
     <h1 style="font-size: 1.8rem; margin: 10px 0;">Are you ready for this? 😉</h1>
@@ -401,44 +403,24 @@
     </div>
   </div>
 
-  <!-- Stage 3: Special Day Showcase -->
+  <!-- Stage 3: Special Day -->
   <div id="sec-3" class="section">
     <div class="sub-title">SEPTEMBER 2ND</div>
     <h1 style="font-size: 2.2rem;">It's Your Special Day, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
     <p>Nineteen looks so good on you. Let's make today one to remember. 💕</p>
-    <button class="btn-primary" onclick="nextSection(4)">Continue →</button>
+    <button class="btn-primary" onclick="nextSection(4)">Start Countdown ⏳</button>
   </div>
 
-  <!-- Stage 4: Pop Balloons -->
+  <!-- Stage 4: Countdown -->
   <div id="sec-4" class="section">
-    <div class="sub-title">POP THE BALLOONS</div>
-    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff758f;">Pop the Balloons! 🎈</h1>
-    
-    <div class="balloon-grid">
-      <div class="balloon b1" onclick="pop(this, 'More laughs, more love this year. ❤️')"></div>
-      <div class="balloon b2" onclick="pop(this, 'Here\'s to more memories together. ✨')"></div>
-      <div class="balloon b3" onclick="pop(this, 'My favorite person, always. 💕')"></div>
-      <div class="balloon b4" onclick="pop(this, 'You deserve the whole world, Jana. 🌸')"></div>
-      <div class="balloon b5" onclick="pop(this, 'You make my heart smile. 😊')"></div>
-      <div class="balloon b6" onclick="pop(this, 'Happy Birthday My Love! 🎉')"></div>
-    </div>
-
-    <p style="font-size: 0.85rem; color: #ff758f;" id="pop-counter">0 / 6 popped</p>
-    <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
-
-    <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(5)">Start Countdown ⏳</button>
-  </div>
-
-  <!-- Stage 5: Countdown Timer -->
-  <div id="sec-5" class="section">
     <div class="sub-title">GET READY FOR THE CAKE</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown! 🎂</h1>
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
     <p>Get ready to blow candles and make a wish!</p>
   </div>
 
-  <!-- Stage 6: Cake & Candles -->
-  <div id="sec-6" class="section">
+  <!-- Stage 5: Cake Cutting (With Fireworks On Cut) -->
+  <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2rem; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
     <p id="cake-status-text">Make a wish and blow the candles</p>
@@ -464,19 +446,47 @@
     <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
       <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
-      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(7)">Read Birthday Wish 💌</button>
+      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
     </div>
   </div>
 
-  <!-- Stage 7: Typewriter Wish Message -->
-  <div id="sec-7" class="section">
-    <div class="sub-title">A LITTLE NOTE, JUST FOR YOU</div>
-    <div class="note-card">
-      <div id="typed-text"></div>
+  <!-- Stage 6: Pop Balloons (Moved After Cake) -->
+  <div id="sec-6" class="section">
+    <div class="sub-title">POP THE BALLOONS</div>
+    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff758f;">Pop the Balloons! 🎈</h1>
+    
+    <div class="balloon-grid">
+      <div class="balloon b1" onclick="pop(this, 'More laughs, more love this year. ❤️')"></div>
+      <div class="balloon b2" onclick="pop(this, 'Here\'s to more memories together. ✨')"></div>
+      <div class="balloon b3" onclick="pop(this, 'My favorite person, always. 💕')"></div>
+      <div class="balloon b4" onclick="pop(this, 'You deserve the whole world, Jana. 🌸')"></div>
+      <div class="balloon b5" onclick="pop(this, 'You make my heart smile. 😊')"></div>
+      <div class="balloon b6" onclick="pop(this, 'Happy Birthday My Love! 🎉')"></div>
     </div>
-    <div style="display:flex; justify-content:center; gap:15px; margin-top:10px;">
-      <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
-      <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
+
+    <p style="font-size: 0.85rem; color: #ff758f;" id="pop-counter">0 / 6 popped</p>
+    <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
+
+    <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope 💌</button>
+  </div>
+
+  <!-- Stage 7: Message Note Envelope Prompt (New Interactive envelope step) -->
+  <div id="sec-7" class="section">
+    <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
+    
+    <div id="envelope-prompt" style="display: block;">
+      <div class="envelope-box" onclick="openLetterEnvelope()">✉️</div>
+      <p style="margin-top: 15px; color: #ff758f; font-weight: 600;">Tap the Envelope to Open My Letter 💌</p>
+    </div>
+
+    <div id="letter-content" style="display: none;">
+      <div class="note-card">
+        <div id="typed-text"></div>
+      </div>
+      <div style="display:flex; justify-content:center; gap:15px; margin-top:15px;">
+        <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
+        <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
+      </div>
     </div>
   </div>
 
@@ -487,7 +497,6 @@
     <p style="font-size: 0.8rem; color: #ff758f;">Tap to reveal the sweet message behind it</p>
     
     <div class="flip-grid">
-      <!-- Heart 1 -->
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">💖</div>
@@ -495,7 +504,6 @@
         </div>
       </div>
 
-      <!-- Heart 2 -->
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">💓</div>
@@ -503,7 +511,6 @@
         </div>
       </div>
 
-      <!-- Heart 3 -->
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">💗</div>
@@ -511,7 +518,6 @@
         </div>
       </div>
 
-      <!-- Heart 4 -->
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">❣️</div>
@@ -546,7 +552,7 @@
   </div>
 
   <script>
-    // 1. Generate Falling Roses & Hearts Particles
+    // 1. Background Particles (Roses & Hearts)
     const bg = document.getElementById('bg-particles');
     const items = ['🌹', '💓', '❣️', '💗', '💖', '🌸', '✨'];
     
@@ -560,27 +566,23 @@
       bg.appendChild(particle);
     }
 
-    // Start App & Audio
     function startApp() {
       const music = document.getElementById('bg-music');
       music.volume = 0.5;
-      music.play().catch(e => console.log("Audio waiting for user click"));
+      music.play().catch(e => console.log("Audio waiting for interaction"));
       nextSection(2);
     }
 
-    // 2. Section Navigation
     function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
 
-      if(secNumber === 5) {
+      if(secNumber === 4) {
         startCountdown();
-      } else if(secNumber === 7) {
-        startTypewriter();
       }
     }
 
-    // 3. Balloon Popping Logic
+    // 2. Balloon Popping Logic
     let poppedCount = 0;
     function pop(element, msg) {
       if(!element.classList.contains('popped')) {
@@ -595,7 +597,7 @@
       }
     }
 
-    // 4. Countdown Timer
+    // 3. Countdown Timer
     function startCountdown() {
       let count = 10;
       let el = document.getElementById('countdown-num');
@@ -607,12 +609,12 @@
           el.innerText = count;
         } else {
           clearInterval(timer);
-          nextSection(6);
+          nextSection(5);
         }
       }, 1000);
     }
 
-    // 5. Blow Candles
+    // 4. Blow Candles
     function blowCandles() {
       document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
       document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
@@ -620,7 +622,7 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 6. Knife Cut Animation
+    // 5. Knife Slice with Fireworks Trigger
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
@@ -629,12 +631,22 @@
         document.getElementById('main-cake').classList.add('cut');
         document.getElementById('right-cake').classList.add('show-cut');
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
+        
+        // Trigger slice fireworks!
+        triggerFireworks();
+        
         document.getElementById('cut-btn').style.display = 'none';
         document.getElementById('after-cake-btn').style.display = 'inline-block';
       }, 500);
     }
 
-    // 7. Typewriter Effect
+    // 6. Envelope click & Typewriter Note
+    function openLetterEnvelope() {
+      document.getElementById('envelope-prompt').style.display = 'none';
+      document.getElementById('letter-content').style.display = 'block';
+      startTypewriter();
+    }
+
     const noteText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
     let typeIdx = 0;
     let typeTimer = null;
@@ -660,7 +672,7 @@
       startTypewriter();
     }
 
-    // 8. 3D Heart Card Flip Logic
+    // 7. 3D Heart Cards
     let flippedCount = 0;
     function flipHeart(card) {
       if(!card.classList.contains('flipped')) {
@@ -672,7 +684,7 @@
       }
     }
 
-    // 9. Fireworks
+    // 8. Fireworks Engine
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -680,7 +692,7 @@
 
     let particles = [];
     function triggerFireworks() {
-      for(let i = 0; i < 70; i++) {
+      for(let i = 0; i < 75; i++) {
         particles.push({
           x: canvas.width / 2,
           y: canvas.height / 2,
