@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -118,34 +118,109 @@
       margin-top: 15px;
     }
 
-    .envelope-box {
-      width: 140px;
-      height: 100px;
-      background: #ff4d6d;
-      margin: 20px auto;
+    /* --- Floral Envelope Custom Styles --- */
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      margin: 30px auto;
+      perspective: 1000px;
+    }
+
+    .envelope {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fdf5f2;
       border-radius: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
-      font-size: 40px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      border: 1px solid #f2cfcd;
+      overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s;
     }
 
-    .envelope-box:hover {
-      transform: scale(1.08) rotate(-3deg);
+    .envelope:hover {
+      transform: scale(1.02);
     }
 
+    /* Floral Corner Accents */
+    .envelope::before {
+      content: '🌸';
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 26px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .envelope::after {
+      content: '🌹';
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-size: 28px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .envelope-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      color: #6b2d3e;
+      position: absolute;
+      width: 100%;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .heart-seal {
+      width: 44px;
+      height: 44px;
+      background: radial-gradient(circle at 30% 30%, #ff4d6d, #b7094c);
+      border: 3px solid #ffb703;
+      border-radius: 50%;
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 100px solid #f6dedc;
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 5;
+    }
+
+    .envelope.open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    /* Letter Card Inside Envelope */
     .note-card {
-      background: rgba(45, 12, 30, 0.85);
+      background: rgba(45, 12, 30, 0.9);
       border: 1px solid rgba(255, 117, 143, 0.4);
       border-radius: 18px;
       padding: 22px;
       text-align: left;
-      min-height: 220px;
+      min-height: 240px;
       box-shadow: 0 15px 30px rgba(0,0,0,0.5);
       backdrop-filter: blur(10px);
+      margin-top: 15px;
     }
 
     #typed-text {
@@ -155,6 +230,7 @@
       white-space: pre-wrap;
     }
 
+    /* Balloon Grid Styles */
     .balloon-grid {
       display: flex;
       justify-content: center;
@@ -386,7 +462,7 @@
   <!-- Stage 1: Intro -->
   <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
-    <div class="envelope-box">💌</div>
+    <div style="font-size: 45px; margin: 10px 0;">💌</div>
     <div class="fancy-name">Jana</div>
     <p>There's a whole little world waiting inside this envelope.<br>Ready? ❤️</p>
     <button class="btn-primary" onclick="startApp()">Open 🎁</button>
@@ -419,7 +495,7 @@
     <p>Get ready to blow candles and make a wish!</p>
   </div>
 
-  <!-- Stage 5: Cake Cutting (With Fireworks On Cut) -->
+  <!-- Stage 5: Cake Cutting -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2rem; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
@@ -450,7 +526,7 @@
     </div>
   </div>
 
-  <!-- Stage 6: Pop Balloons (Moved After Cake) -->
+  <!-- Stage 6: Pop Balloons -->
   <div id="sec-6" class="section">
     <div class="sub-title">POP THE BALLOONS</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff758f;">Pop the Balloons! 🎈</h1>
@@ -470,13 +546,19 @@
     <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope 💌</button>
   </div>
 
-  <!-- Stage 7: Message Note Envelope Prompt (New Interactive envelope step) -->
+  <!-- Stage 7: Realistic Envelope View -->
   <div id="sec-7" class="section">
     <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
     
-    <div id="envelope-prompt" style="display: block;">
-      <div class="envelope-box" onclick="openLetterEnvelope()">✉️</div>
-      <p style="margin-top: 15px; color: #ff758f; font-weight: 600;">Tap the Envelope to Open My Letter 💌</p>
+    <div id="envelope-prompt">
+      <div class="envelope-wrapper">
+        <div class="envelope" id="envelope-el" onclick="openFloralEnvelope()">
+          <div class="envelope-flap"></div>
+          <div class="heart-seal">❤️</div>
+          <div class="envelope-text">A Special Message For You ❤️</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="openFloralEnvelope()">Open Envelope 💌</button>
     </div>
 
     <div id="letter-content" style="display: none;">
@@ -490,7 +572,7 @@
     </div>
   </div>
 
-  <!-- Stage 8: 3D Flipping Hearts Cards -->
+  <!-- Stage 8: 3D Heart Cards -->
   <div id="sec-8" class="section">
     <div class="sub-title">SPECIAL WISHES FOR YOU</div>
     <h1 style="font-size: 1.5rem; margin-bottom: 5px;">Flip Each Heart! 💖</h1>
@@ -552,7 +634,7 @@
   </div>
 
   <script>
-    // 1. Background Particles (Roses & Hearts)
+    // 1. Falling Particles
     const bg = document.getElementById('bg-particles');
     const items = ['🌹', '💓', '❣️', '💗', '💖', '🌸', '✨'];
     
@@ -573,7 +655,7 @@
       nextSection(2);
     }
 
-    function nextSection(secNumber) {
+   function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
 
@@ -582,7 +664,7 @@
       }
     }
 
-    // 2. Balloon Popping Logic
+    // 2. Balloon Popping
     let poppedCount = 0;
     function pop(element, msg) {
       if(!element.classList.contains('popped')) {
@@ -622,7 +704,7 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 5. Knife Slice with Fireworks Trigger
+    // 5. Knife Slice with Fireworks
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
@@ -631,20 +713,22 @@
         document.getElementById('main-cake').classList.add('cut');
         document.getElementById('right-cake').classList.add('show-cut');
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
-        
-        // Trigger slice fireworks!
         triggerFireworks();
-        
         document.getElementById('cut-btn').style.display = 'none';
         document.getElementById('after-cake-btn').style.display = 'inline-block';
       }, 500);
     }
 
-    // 6. Envelope click & Typewriter Note
-    function openLetterEnvelope() {
-      document.getElementById('envelope-prompt').style.display = 'none';
-      document.getElementById('letter-content').style.display = 'block';
-      startTypewriter();
+    // 6. Envelope Animation & Typewriter Letter
+    function openFloralEnvelope() {
+      const env = document.getElementById('envelope-el');
+      env.classList.add('open');
+      
+      setTimeout(() => {
+        document.getElementById('envelope-prompt').style.display = 'none';
+        document.getElementById('letter-content').style.display = 'block';
+        startTypewriter();
+      }, 700);
     }
 
     const noteText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
