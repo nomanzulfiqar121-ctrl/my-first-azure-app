@@ -173,11 +173,11 @@
       margin-top: 10px;
     }
 
-    /* --- Cake Section GIF Display Box --- */
+    /* --- Cake Section Video Display Box --- */
     .cake-gif-card {
       margin-top: 25px;
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.35);
       border-radius: 20px;
@@ -189,7 +189,7 @@
       backdrop-filter: blur(6px);
     }
 
-    .cake-gif-card img {
+    .cake-gif-card video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -589,9 +589,12 @@
       <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
     </div>
 
-    <!-- Cake Section Dynamic GIF Box -->
+    <!-- Cake Section Dynamic Video Box -->
     <div class="cake-gif-card">
-      <img id="cake-gif-img" src="cake-before.gif" alt="Bubu Dudu Cake GIF">
+      <video id="cake-video-el" autoplay loop muted playsinline>
+        <source id="cake-video-source" src="VID-20260729-WA0011.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
     </div>
   </div>
 
@@ -787,7 +790,7 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 5. Knife Slice with Dynamic GIF change
+    // 5. Knife Slice with Dynamic Video Change
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
@@ -797,8 +800,12 @@
         document.getElementById('right-cake').classList.add('show-cut');
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
         
-        // Cake cut hone par celebration GIF set karein:
-        document.getElementById('cake-gif-img').src = "cake-after.gif"; // Aap yahan apni celebration GIF ka naam rakhein
+        // Cake cut hone par celebration video (VID-20260729-WA0013.mp4) load karein:
+        const cakeVideo = document.getElementById('cake-video-el');
+        const cakeSource = document.getElementById('cake-video-source');
+        cakeSource.src = "VID-20260729-WA0013.mp4";
+        cakeVideo.load();
+        cakeVideo.play();
 
         triggerFireworks();
         document.getElementById('cut-btn').style.display = 'none';
@@ -855,26 +862,26 @@
       }
     }
 
-    // 8. Mood Carousel Logic (Angry Mood added before Laughing mood)
+    // 8. Mood Carousel Logic
     const moodData = [
       {
-        src: "VID-20260729-WA0002.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you're being effortlessly cute 🥰"
       },
       {
-        src: "VID-20260729-WA0006.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you get angry but still look super cute 😡❤️"
       },
       {
-        src: "VID-20260729-WA0008.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you laugh out loud and make everything brighter ✨"
       },
       {
-        src: "VID-20260729-WA0004.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you get sleepy and grumpy 😴"
       },
       {
-        src: "VID-20260729-WA0005.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you give the warmest hugs 💕"
       },
       {
