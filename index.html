@@ -18,7 +18,8 @@
     }
 
     body {
-      background: radial-gradient(circle at center, #23122b 0%, #0d0612 100%);
+      /* Romantic Pinkish Dark Purple Gradient */
+      background: radial-gradient(circle at center, #3d0c27 0%, #1a0313 100%);
       color: #fff;
       text-align: center;
       min-height: 100vh;
@@ -30,7 +31,8 @@
       position: relative;
     }
 
-    .bg-hearts {
+    /* Falling Flowers & Hearts Particles */
+    .bg-particles {
       position: fixed;
       top: 0;
       left: 0;
@@ -40,18 +42,17 @@
       z-index: 0;
     }
 
-    .heart-particle {
+    .falling-particle {
       position: absolute;
-      bottom: -40px;
-      color: rgba(255, 105, 180, 0.45);
-      font-size: 16px;
-      animation: floatUp 7s linear infinite;
+      top: -40px;
+      font-size: 20px;
+      animation: fallDown 6s linear infinite;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
-      20% { opacity: 0.8; }
-      100% { transform: translateY(-110vh) scale(1.3) rotate(360deg); opacity: 0; }
+    @keyframes fallDown {
+      0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+      15% { opacity: 0.9; }
+      100% { transform: translateY(105vh) rotate(360deg) scale(1.2); opacity: 0; }
     }
 
     .section {
@@ -74,7 +75,7 @@
       font-size: 0.75rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #ff85a1;
+      color: #ff758f;
       margin-bottom: 8px;
     }
 
@@ -82,14 +83,14 @@
       font-family: 'Dancing Script', cursive;
       font-size: 3.2rem;
       color: #fff;
-      text-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+      text-shadow: 0 0 15px rgba(255, 117, 143, 0.7);
       margin: 5px 0 15px 0;
     }
 
-    p { font-size: 0.95rem; color: #e0d0e6; line-height: 1.6; }
+    p { font-size: 0.95rem; color: #f2d6e4; line-height: 1.6; }
 
     .btn-primary {
-      background: linear-gradient(45deg, #ff4081, #ff79b0);
+      background: linear-gradient(45deg, #ff4d6d, #ff758f);
       color: white;
       border: none;
       padding: 12px 32px;
@@ -97,7 +98,7 @@
       font-weight: 600;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 20px rgba(255, 64, 129, 0.5);
+      box-shadow: 0 4px 20px rgba(255, 77, 109, 0.5);
       transition: all 0.3s ease;
       margin-top: 20px;
       display: inline-block;
@@ -105,7 +106,7 @@
 
     .btn-primary:hover {
       transform: scale(1.04);
-      box-shadow: 0 6px 25px rgba(255, 64, 129, 0.7);
+      box-shadow: 0 6px 25px rgba(255, 77, 109, 0.8);
     }
 
     .btn-secondary {
@@ -128,13 +129,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
       font-size: 40px;
     }
 
     .note-card {
-      background: rgba(35, 20, 45, 0.85);
-      border: 1px solid rgba(255, 105, 180, 0.3);
+      background: rgba(45, 12, 30, 0.85);
+      border: 1px solid rgba(255, 117, 143, 0.4);
       border-radius: 18px;
       padding: 22px;
       text-align: left;
@@ -146,7 +147,7 @@
     #typed-text {
       font-size: 0.95rem;
       line-height: 1.7;
-      color: #f1e6f5;
+      color: #fce8f3;
       white-space: pre-wrap;
     }
 
@@ -167,12 +168,12 @@
       transition: transform 0.2s;
     }
 
-    .b1 { background: #ff4081; }
-    .b2 { background: #7c4dff; }
-    .b3 { background: #00e676; }
-    .b4 { background: #ffab00; }
-    .b5 { background: #00b0ff; }
-    .b6 { background: #ff4081; }
+    .b1 { background: #ff4d6d; }
+    .b2 { background: #c77dff; }
+    .b3 { background: #ff758f; }
+    .b4 { background: #ffb703; }
+    .b5 { background: #e0aaff; }
+    .b6 { background: #ff4d6d; }
 
     .balloon.popped { animation: pop 0.25s forwards; }
 
@@ -182,7 +183,7 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* Cake & Realistic Knife Styling */
+    /* Cake Styling */
     .cake-wrapper {
       margin: 30px auto 20px auto;
       display: flex;
@@ -202,7 +203,7 @@
     .candle {
       width: 10px;
       height: 38px;
-      background: repeating-linear-gradient(45deg, #ffb3c1, #ffb3c1 4px, #fff 4px, #fff 8px);
+      background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 4px, #fff 4px, #fff 8px);
       border-radius: 3px 3px 0 0;
       position: relative;
     }
@@ -210,12 +211,12 @@
     .flame {
       width: 10px;
       height: 15px;
-      background: #ffab00;
+      background: #ffb703;
       border-radius: 50% 50% 20% 20%;
       position: absolute;
       top: -13px;
       left: 0;
-      box-shadow: 0 0 8px #ff4081, 0 0 15px #ffab00;
+      box-shadow: 0 0 8px #ff4d6d, 0 0 15px #ffb703;
       animation: flicker 0.2s infinite alternate;
     }
 
@@ -229,7 +230,7 @@
     .cake-layer {
       width: 200px;
       height: 105px;
-      background: linear-gradient(to bottom, #ff79b0, #7c4dff);
+      background: linear-gradient(to bottom, #ff758f, #c77dff);
       border-radius: 12px;
       border-top: 10px solid #fff;
       display: flex;
@@ -251,7 +252,6 @@
       border: 1px solid rgba(255,255,255,0.2);
     }
 
-    /* Animated Knife Overlay */
     .knife {
       position: absolute;
       top: -60px;
@@ -274,7 +274,6 @@
       100% { opacity: 0; top: 110px; transform: rotate(30deg) scale(0.8); }
     }
 
-    /* Cake Split Visual */
     .cake-layer.cut {
       clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
       transform: translateX(-18px) rotate(-4deg);
@@ -285,7 +284,7 @@
       top: 34px;
       width: 200px;
       height: 105px;
-      background: linear-gradient(to bottom, #ff79b0, #7c4dff);
+      background: linear-gradient(to bottom, #ff758f, #c77dff);
       border-radius: 12px;
       border-top: 10px solid #fff;
       display: flex;
@@ -302,36 +301,62 @@
       transform: translateX(18px) rotate(4deg);
     }
 
-    /* Interactive Hearts Grid */
-    .love-hearts-grid {
+    /* 3D Flip Card System for Hearts */
+    .flip-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
       margin: 20px 0;
+      perspective: 1000px;
     }
 
-    .love-heart-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 105, 180, 0.3);
-      padding: 15px;
-      border-radius: 15px;
+    .flip-card {
+      background-color: transparent;
+      height: 110px;
       cursor: pointer;
-      font-size: 2rem;
-      transition: all 0.3s ease;
     }
 
-    .love-heart-card:hover {
-      transform: scale(1.05);
-      background: rgba(255, 105, 180, 0.2);
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
     }
 
-    #heart-pop-msg {
-      font-size: 1.1rem;
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .flip-card-front {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      font-size: 2.5rem;
+    }
+
+    .flip-card-back {
+      background: linear-gradient(135deg, #ff4d6d, #c77dff);
+      color: white;
+      transform: rotateY(180deg);
+      font-size: 0.88rem;
       font-weight: 600;
-      color: #ff85a1;
-      min-height: 50px;
-      margin-top: 10px;
-      animation: fadeIn 0.4s ease-in-out;
+      border: 1px solid #ffb703;
+      line-height: 1.3;
     }
 
     #fireworks-canvas {
@@ -347,12 +372,13 @@
 </head>
 <body>
 
-  <!-- Audio Element for Background Music -->
+  <!-- Background Music Tag -->
   <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="bg-hearts" id="bg-hearts"></div>
+  <!-- Falling Roses & Hearts Layer -->
+  <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
   <!-- Stage 1: Intro Envelope -->
@@ -386,7 +412,7 @@
   <!-- Stage 4: Pop Balloons -->
   <div id="sec-4" class="section">
     <div class="sub-title">POP THE BALLOONS</div>
-    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff85a1;">Pop the Balloons! 🎈</h1>
+    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff758f;">Pop the Balloons! 🎈</h1>
     
     <div class="balloon-grid">
       <div class="balloon b1" onclick="pop(this, 'More laughs, more love this year. ❤️')"></div>
@@ -397,7 +423,7 @@
       <div class="balloon b6" onclick="pop(this, 'Happy Birthday My Love! 🎉')"></div>
     </div>
 
-    <p style="font-size: 0.85rem; color: #ff85a1;" id="pop-counter">0 / 6 popped</p>
+    <p style="font-size: 0.85rem; color: #ff758f;" id="pop-counter">0 / 6 popped</p>
     <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
 
     <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(5)">Start Countdown ⏳</button>
@@ -407,11 +433,11 @@
   <div id="sec-5" class="section">
     <div class="sub-title">GET READY FOR THE CAKE</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown! 🎂</h1>
-    <h1 id="countdown-num" style="font-size: 5rem; color: #ff4081; margin: 20px 0;">10</h1>
+    <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
     <p>Get ready to blow candles and make a wish!</p>
   </div>
 
-  <!-- Stage 6: Cake & Candles (With Knife Cut) -->
+  <!-- Stage 6: Cake & Candles -->
   <div id="sec-6" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2rem; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
@@ -454,29 +480,55 @@
     </div>
   </div>
 
-  <!-- Stage 8: Custom Interactive Hearts -->
+  <!-- Stage 8: 3D Flipping Hearts Cards -->
   <div id="sec-8" class="section">
     <div class="sub-title">SPECIAL WISHES FOR YOU</div>
-    <h1 style="font-size: 1.6rem; margin-bottom: 10px;">Tap on Each Heart! 💖</h1>
+    <h1 style="font-size: 1.5rem; margin-bottom: 5px;">Flip Each Heart! 💖</h1>
+    <p style="font-size: 0.8rem; color: #ff758f;">Tap to reveal the sweet message behind it</p>
     
-    <div class="love-hearts-grid">
-      <div class="love-heart-card" onclick="showLoveMsg('Happy Birthday My Love! ❤️')">💖</div>
-      <div class="love-heart-card" onclick="showLoveMsg('Happy Birthday My Darling! 💕')">💝</div>
-      <div class="love-heart-card" onclick="showLoveMsg('Happy Birthday My Beautiful Girl! 🌸')">💗</div>
-      <div class="love-heart-card" onclick="showLoveMsg('Happy Birthday My Sweet Bacha! 🧸')">💓</div>
-    </div>
+    <div class="flip-grid">
+      <!-- Heart 1 -->
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💖</div>
+          <div class="flip-card-back">Happy Birthday My Love! ❤️</div>
+        </div>
+      </div>
 
-    <div id="heart-pop-msg">Tap a heart to reveal a message...</div>
+      <!-- Heart 2 -->
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💓</div>
+          <div class="flip-card-back">Happy Birthday My Darling! 💕</div>
+        </div>
+      </div>
+
+      <!-- Heart 3 -->
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💗</div>
+          <div class="flip-card-back">Happy Birthday My Beautiful Girl! 🌸</div>
+        </div>
+      </div>
+
+      <!-- Heart 4 -->
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">❣️</div>
+          <div class="flip-card-back">Happy Birthday My Sweet Bacha! 🧸</div>
+        </div>
+      </div>
+    </div>
 
     <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">Continue →</button>
   </div>
 
-  <!-- Stage 9: Photo Container / Bear Card -->
+  <!-- Stage 9: Bear Card -->
   <div id="sec-9" class="section">
     <div class="sub-title">SEALED WITH LOVE</div>
     <div style="width: 100%; height: 200px; background: rgba(255,255,255,0.08); border-radius: 18px; margin: 20px 0; border: 1px dashed #ff758f; display:flex; flex-direction:column; justify-content:center; align-items:center;">
       <span style="font-size: 40px;">🧸</span>
-      <p style="margin-top: 10px; color: #ffb3c1;">Two silly bears, one very big heart. That's us. 🐻❤️</p>
+      <p style="margin-top: 10px; color: #ffb703;">Two silly bears, one very big heart. That's us. 🐻❤️</p>
     </div>
     <button class="btn-primary" onclick="nextSection(10)">Grand Finale ✨</button>
   </div>
@@ -494,23 +546,25 @@
   </div>
 
   <script>
-    // 1. Generate Floating Background Hearts
-    const bg = document.getElementById('bg-hearts');
-    for(let i = 0; i < 22; i++) {
-      let heart = document.createElement('div');
-      heart.className = 'heart-particle';
-      heart.innerText = ['💖', '❤️', '💕', '✨'][Math.floor(Math.random() * 4)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDelay = Math.random() * 5 + 's';
-      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
-      bg.appendChild(heart);
+    // 1. Generate Falling Roses & Hearts Particles
+    const bg = document.getElementById('bg-particles');
+    const items = ['🌹', '💓', '❣️', '💗', '💖', '🌸', '✨'];
+    
+    for(let i = 0; i < 26; i++) {
+      let particle = document.createElement('div');
+      particle.className = 'falling-particle';
+      particle.innerText = items[Math.floor(Math.random() * items.length)];
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDelay = Math.random() * 6 + 's';
+      particle.style.animationDuration = (5 + Math.random() * 4) + 's';
+      bg.appendChild(particle);
     }
 
-    // Start App & Play Music
+    // Start App & Audio
     function startApp() {
       const music = document.getElementById('bg-music');
-      music.volume = 0.5; // Adjust volume
-      music.play().catch(e => console.log("Audio play blocked by browser"));
+      music.volume = 0.5;
+      music.play().catch(e => console.log("Audio waiting for user click"));
       nextSection(2);
     }
 
@@ -566,7 +620,7 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 6. Realistic Knife Cut Animation
+    // 6. Knife Cut Animation
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
@@ -580,7 +634,7 @@
       }, 500);
     }
 
-    // 7. Live Typewriter Effect
+    // 7. Typewriter Effect
     const noteText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
     let typeIdx = 0;
     let typeTimer = null;
@@ -606,17 +660,19 @@
       startTypewriter();
     }
 
-    // 8. Love Heart Pop-up Messages Logic
-    let clickedHearts =0;
-    function showLoveMsg(text) {
-      document.getElementById('heart-pop-msg').innerText = text;
-      clickedHearts++;
-      if(clickedHearts >= 2) {
-        document.getElementById('hearts-next-btn').style.display = 'inline-block';
+    // 8. 3D Heart Card Flip Logic
+    let flippedCount = 0;
+    function flipHeart(card) {
+      if(!card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+        flippedCount++;
+        if(flippedCount >= 2) {
+          document.getElementById('hearts-next-btn').style.display = 'inline-block';
+        }
       }
     }
 
-    // 9. Live Fireworks System
+    // 9. Fireworks
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
