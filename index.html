@@ -131,7 +131,7 @@
 
     .mood-gif-box {
       width: 100%;
-      height: 200px;
+      height: 220px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -141,10 +141,11 @@
       background: rgba(0, 0, 0, 0.2);
     }
 
-    .mood-gif-box img {
+    .mood-gif-box video {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
+      border-radius: 12px;
     }
 
     .mood-counter {
@@ -651,7 +652,7 @@
     <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
   </div>
 
-  <!-- Stage 9: "You, In Every Mood" Bubu & Dudu Section -->
+  <!-- Stage 9: "You, In Every Mood" MP4 Video Carousel -->
   <div id="sec-9" class="section">
     <div class="sub-title">SEALED WITH LOVE</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
@@ -659,8 +660,10 @@
     <div class="mood-card">
       <div class="mood-counter" id="mood-counter-text">01 / 05</div>
       <div class="mood-gif-box">
-        <!-- Replace src URLs with your GitHub repo GIF paths e.g., src="gifs/mood1.gif" -->
-        <img id="mood-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFlMnI4cG11NndhYms2eTlzNW15ZnlrbDR4cncwYWRrcm85dWFjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1prAOWI9k0u94Pai/giphy.gif" alt="Bubu Dudu Mood">
+        <video id="mood-video" autoplay loop muted playsinline>
+          <source id="video-source" src="VID-20260729-WA0001.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <div class="mood-note" id="mood-note-text">When you're being effortlessly cute 🥰</div>
     </div>
@@ -820,26 +823,26 @@
       }
     }
 
-    // 8. You, In Every Mood Carousel Logic
+    // 8. Mood Carousel Logic (Using uploaded MP4 video)
     const moodData = [
       {
-        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFlMnI4cG11NndhYms2eTlzNW15ZnlrbDR4cncwYWRrcm85dWFjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1prAOWI9k0u94Pai/giphy.gif",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you're being effortlessly cute 🥰"
       },
       {
-        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGhqaWhndDlvbzJjODJmbmZtZmh4MGZ1bzF0ejMyaHFpdWllcnp1YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L13NsH0Aij4AVE2M03/giphy.gif",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you laugh out loud and make everything brighter ✨"
       },
       {
-        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHBkYzA1Nmk0N25xZWUwd28yZDN0ZHBsdXlqdG4xbzlydHRvdml3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c6X4N9uS2rM8Fk3fA1/giphy.gif",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you get sleepy and grumpy 😴"
       },
       {
-        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmsyZjA2MnR1Mmd1YXJvMDgyYWF4ZmtxeGlrM24xazQxcDk5NWU5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you give the warmest hugs 💕"
       },
       {
-        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm0wdzRkeHlxdmVhNmdrYjFmOG95cjUwdWR1dmdmcmNrcXpydHR1ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EFXGvbD4808RMEOE28/giphy.gif",
+        src: "VID-20260729-WA0001.mp4",
         note: "Just you being you — my favorite person always ❤️"
       }
     ];
@@ -848,7 +851,13 @@
 
     function updateMoodCard() {
       const mood = moodData[currentMoodIdx];
-      document.getElementById('mood-gif').src = mood.gif;
+      const videoEl = document.getElementById('mood-video');
+      const sourceEl = document.getElementById('video-source');
+      
+      sourceEl.src = mood.src;
+      videoEl.load();
+      videoEl.play();
+
       document.getElementById('mood-note-text').innerText = mood.note;
       document.getElementById('mood-counter-text').innerText = `0${currentMoodIdx + 1} / 0${moodData.length}`;
 
