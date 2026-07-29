@@ -3,45 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Jana!</title>
+  <title>Happy Birthday Nae Sarang ❤️</title>
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-color: #120309;
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(255, 182, 193, 0.2);
-      --primary-pink: #ff4d6d;
-      --accent-pink: #ff758f;
-      --text-white: #fff0f5;
-      --text-muted: #ffccd5;
-    }
-
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      user-select: none;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-white);
-      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #3d0c27 0%, #1a0313 100%);
+      color: #fff;
+      text-align: center;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Background Floating Hearts Animation */
-    .bg-hearts {
+    .bg-particles {
       position: fixed;
       top: 0;
       left: 0;
@@ -49,194 +38,338 @@
       height: 100%;
       pointer-events: none;
       z-index: 0;
-      overflow: hidden;
     }
 
-    .heart-bg {
+    .falling-particle {
       position: absolute;
-      color: rgba(255, 77, 109, 0.3);
-      animation: floatUp 8s linear infinite;
+      top: -40px;
+      font-size: 20px;
+      animation: fallDown 6s linear infinite;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
-    }
-
-    /* Main Container */
-    .app-container {
-      max-width: 480px;
-      margin: 0 auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      position: relative;
-      z-index: 1;
+    @keyframes fallDown {
+      0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 0; }
+      15% { opacity: 0.9; }
+      100% { transform: translateY(105vh) rotate(360deg) scale(1.2); opacity: 0; }
     }
 
     .section {
       display: none;
-      width: 100%;
-      text-align: center;
-      animation: fadeIn 0.8s ease-in-out forwards;
+      width: 90%;
+      max-width: 450px;
+      padding: 25px 20px;
+      z-index: 10;
+      animation: fadeIn 0.7s ease-in-out;
     }
 
-    .section.active {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .active { display: block; }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Subtitles and Titles */
     .sub-title {
       font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: var(--accent-pink);
+      letter-spacing: 3px;
       text-transform: uppercase;
+      color: #ff758f;
       margin-bottom: 8px;
     }
 
-    h1.title {
+    .fancy-name {
       font-family: 'Dancing Script', cursive;
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: #fff;
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+      text-shadow: 0 0 15px rgba(255, 117, 143, 0.7);
+      margin: 5px 0 15px 0;
     }
 
-    p.desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
+    p { font-size: 0.95rem; color: #f2d6e4; line-height: 1.6; }
 
-    /* Buttons */
     .btn-primary {
       background: linear-gradient(45deg, #ff4d6d, #ff758f);
       color: white;
       border: none;
-      padding: 12px 28px;
-      border-radius: 25px;
+      padding: 12px 32px;
       font-size: 1rem;
       font-weight: 600;
+      border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+      box-shadow: 0 4px 20px rgba(255, 77, 109, 0.5);
       transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      margin-top: 20px;
+      display: inline-block;
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+      transform: scale(1.04);
+      box-shadow: 0 6px 25px rgba(255, 77, 109, 0.8);
     }
 
     .btn-secondary {
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text-white);
-      border: 1px solid var(--card-border);
-      padding: 10px 20px;
-      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 10px 24px;
       font-size: 0.9rem;
+      border-radius: 30px;
       cursor: pointer;
-      transition: all 0.3s;
+      margin-top: 15px;
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Card Styling */
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border);
+    /* --- Mood Carousel Styling --- */
+    .mood-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 117, 143, 0.3);
       border-radius: 20px;
-      padding: 25px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .mood-gif-box {
       width: 100%;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    }
-
-    /* Video GIF Cards */
-    .gif-card, .cake-gif-card {
-      width: 180px;
-      height: 180px;
-      border-radius: 20px;
+      height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
       overflow: hidden;
-      margin: 15px auto;
-      border: 2px solid var(--card-border);
-      background: #000;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      margin-bottom: 15px;
+      background: rgba(0, 0, 0, 0.2);
     }
 
-    .gif-card video, .cake-gif-card video {
+    .mood-gif-box img, .mood-gif-box video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .mood-counter {
+      font-size: 0.8rem;
+      color: #ffb703;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .mood-note {
+      font-size: 1rem;
+      color: #fce8f3;
+      font-weight: 500;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* --- Cake Section Video Display Box --- */
+    .cake-gif-card {
+      margin-top: 25px;
+      width: 150px;
+      height: 150px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.35);
+      border-radius: 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    .cake-gif-card video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 18px;
     }
 
-    /* Countdown Display */
-    .countdown-num {
-      font-size: 5rem;
-      font-weight: 700;
-      color: var(--primary-pink);
-      text-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
-      margin: 10px 0;
-    }
-
-    /* Cake Styling */
-    .cake-wrapper {
+    /* --- Floral Envelope Custom Styles --- */
+    .envelope-wrapper {
       position: relative;
-      width: 200px;
-      height: 140px;
-      margin: 20px auto;
+      width: 320px;
+      height: 200px;
+      margin: 30px auto;
+      perspective: 1000px;
+    }
+
+    .envelope {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #fdf5f2;
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      border: 1px solid #f2cfcd;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .envelope:hover { transform: scale(1.02); }
+
+    .envelope::before {
+      content: '🌸';
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 26px;
+    }
+
+    .envelope::after {
+      content: '🌹';
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-size: 28px;
+    }
+
+    .envelope-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      color: #6b2d3e;
+      position: absolute;
+      width: 100%;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .heart-seal {
+      width: 44px;
+      height: 44px;
+      background: radial-gradient(circle at 30% 30%, #ff4d6d, #b7094c);
+      border: 3px solid #ffb703;
+      border-radius: 50%;
+      position: absolute;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-top: 100px solid #f6dedc;
+      transform-origin: top;
+      transition: transform 0.6s ease;
+      z-index: 5;
+    }
+
+    .envelope.open .envelope-flap { transform: rotateX(180deg); }
+
+    .note-card {
+      background: rgba(45, 12, 30, 0.9);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: left;
+      min-height: 240px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      margin-top: 15px;
+    }
+
+    #typed-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #fce8f3;
+      white-space: pre-wrap;
+    }
+
+    /* Balloon Grid Styles */
+    .balloon-grid {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 25px 0 15px 0;
+    }
+
+    .balloon {
+      width: 48px;
+      height: 62px;
+      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+      cursor: pointer;
+      box-shadow: inset -4px -4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .b1 { background: #ff4d6d; }
+    .b2 { background: #c77dff; }
+    .b3 { background: #ff758f; }
+    .b4 { background: #ffb703; }
+    .b5 { background: #e0aaff; }
+    .b6 { background: #ff4d6d; }
+
+    .balloon.popped { animation: pop 0.25s forwards; }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(0); opacity: 0; }
+    }
+
+    /* Cake Animation Elements */
+    .cake-wrapper {
+      margin: 30px auto 20px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      position: relative;
+      width: 220px;
     }
 
     .candles-row {
       display: flex;
-      gap: 15px;
-      margin-bottom: 5px;
-      z-index: 2;
+      gap: 12px;
+      margin-bottom: -4px;
+      z-index: 5;
     }
 
     .candle {
-      width: 8px;
-      height: 30px;
-      background: linear-gradient(to bottom, #fff, #ffb6c1);
-      border-radius: 3px;
+      width: 10px;
+      height: 38px;
+      background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 4px, #fff 4px, #fff 8px);
+      border-radius: 3px 3px 0 0;
       position: relative;
     }
 
     .flame {
       width: 10px;
-      height: 14px;
-      background: #ff9d00;
+      height: 15px;
+      background: #ffb703;
       border-radius: 50% 50% 20% 20%;
       position: absolute;
-      top: -12px;
-      left: -1px;
-      box-shadow: 0 0 10px #ff9d00;
-      animation: flicker 0.6s infinite alternate;
+      top: -13px;
+      left: 0;
+      box-shadow: 0 0 8px #ff4d6d, 0 0 15px #ffb703;
+      animation: flicker 0.2s infinite alternate;
     }
 
-    .flame.off {
-      display: none;
-    }
+    .flame.off { display: none; }
 
     @keyframes flicker {
       0% { transform: scale(1); }
@@ -244,454 +377,145 @@
     }
 
     .cake-layer {
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(to right, #ff758f, #ff4d6d);
+      width: 200px;
+      height: 105px;
+      background: linear-gradient(to bottom, #ff758f, #c77dff);
       border-radius: 12px;
+      border-top: 10px solid #fff;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       position: relative;
-      transition: all 0.5s ease;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .cake-badge {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 6px 12px;
-      border-radius: 10px;
-      font-size: 0.8rem;
+      background: rgba(0,0,0,0.35);
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
       font-weight: 600;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .knife {
       position: absolute;
-      top: -30px;
-      right: -20px;
-      font-size: 2.5rem;
+      top: -60px;
+      right: 20px;
+      font-size: 50px;
       opacity: 0;
-      transition: all 0.5s ease;
-      z-index: 10;
+      z-index: 20;
+      pointer-events: none;
+      transform: rotate(-45deg);
     }
 
-    .knife.slice-anim {
-      opacity: 1;
-      animation: slice 0.6s ease forwards;
-    }
+    .knife.slice-anim { animation: realisticSlice 1.2s ease-in-out forwards; }
 
-    @keyframes slice {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      50% { transform: translate(-80px, 50px) rotate(-45deg); }
-      100% { transform: translate(-100px, 80px) rotate(-45deg); }
+    @keyframes realisticSlice {
+      0% { opacity: 0; top: -60px; transform: rotate(-45deg) scale(0.8); }
+      30% { opacity: 1; top: 10px; transform: rotate(-10deg) scale(1.1); }
+      60% { top: 60px; transform: rotate(15deg) scale(1); }
+      100% { opacity: 0; top: 110px; transform: rotate(30deg) scale(0.8); }
     }
 
     .cake-layer.cut {
-      transform: translateX(-20px);
-      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+      clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
+      transform: translateX(-18px) rotate(-4deg);
     }
 
     .cake-cut-right {
       position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(to right, #ff758f, #ff4d6d);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-      opacity: 0;
-      transition: all 0.5s ease;
-    }
-
-    .cake-cut-right.show-cut {
-      opacity: 1;
-      transform: translateX(20px);
-    }
-
-    /* Balloons Section */
-    .balloon-grid {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-
-    .balloon {
-      width: 50px;
-      height: 65px;
-      border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.2s;
-      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
-    }
-
-    .balloon:hover {
-      transform: scale(1.1);
-    }
-
-    .balloon::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-bottom: 8px solid currentColor;
-    }
-
-    .balloon.popped {
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    /* Letter Section */
-    .letter-box {
-      text-align: left;
-      max-height: 250px;
-      overflow-y: auto;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #fff;
-      padding-right: 5px;
-    }
-
-    .letter-box::-webkit-scrollbar {
-      width: 4px;
-    }
-
-    .letter-box::-webkit-scrollbar-thumb {
-      background: var(--primary-pink);
-      border-radius: 4px;
-    }
-
-    /* Flip Cards Section */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 100%;
-      margin: 20px 0;
-    }
-
-    .flip-card {
-      background-color: transparent;
-      height: 100px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      border-radius: 12px;
-    }
-
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .flip-card-front {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--card-border);
-      font-size: 1.5rem;
-    }
-
-    .flip-card-back {
-      background: linear-gradient(45deg, #ff4d6d, #ff758f);
-      color: white;
-      transform: rotateY(180deg);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* Mood Slider Section */
-    .mood-card-container {
-      width: 100%;
-      min-height: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .mood-gif-box {
+      top: 34px;
       width: 200px;
-      height: 200px;
-      border-radius: 15px;
-      overflow: hidden;
-      margin-bottom: 15px;
-      border: 2px solid var(--card-border);
-      background: #000;
-    }
-
-    .mood-gif-box video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Floating Hearts Background -->
-  <div class="bg-hearts" id="bg-hearts-container"></div>
-
-  <div class="app-container">
-
-    <!-- Stage 1: Envelope Welcome -->
-    <div id="sec-1" class="section active">
-      <div class="sub-title">A LITTLE SOMETHING FOR</div>
-      <div style="font-size: 2.5rem; margin-bottom: 10px;">✉️</div>
-      <h1 class="title">Jana🌸</h1>
-      <p class="desc">There's a whole little world waiting inside this envelope.<br>Ready? ❤️</p>
-      <button class="btn-primary" onclick="nextSection(2)">Open 🎁</button>
-    </div>
-
-    <!-- Stage 2: Are You Ready? -->
-    <div id="sec-2" class="section">
-      <div class="sub-title">BEFORE WE BEGIN</div>
-      <h1 style="font-size: 1.8rem; margin-bottom: 15px;">Are you ready for this? 😏</h1>
-      <p class="desc">Because there's no going back once you say yes.</p>
-      <div style="display: flex; gap: 10px;">
-        <button class="btn-primary" onclick="nextSection(3)">Yes, obviously!</button>
-        <button class="btn-secondary" onclick="alert('Wrong answer! Try again 😉')">No</button>
-      </div>
-    </div>
-
-    <!-- Stage 3: Special Day Start -->
-    <div id="sec-3" class="section">
-      <div class="sub-title">SEPTEMBER 2ND</div>
-      <h1 class="title">It's Your Special Day, Jana! 💕</h1>
-      <p class="desc">Nineteen looks so good on you. Let's make today one to remember. ✨</p>
-      <button class="btn-primary" onclick="startCountdownStage()">Start Countdown ⏳</button>
-    </div>
-
-    <!-- Stage 4: Cake Cutting Countdown -->
-    <div id="sec-4" class="section">
-      <div class="sub-title">GET READY FOR THE CAKE</div>
-      <h1 style="font-size: 1.6rem;">Cake Cutting Countdown! 🎂</h1>
-      
-      <!-- Video / GIF Box for Countdown -->
-      <div class="gif-card">
-        <video autoplay loop muted playsinline>
-          <source src="VID-20260729-WA0010.mp4" type="video/mp4">
-          Your browser does not support video.
+      height: 105px;
+      background: linear-gradient(to bottom, #ff758f, #c77dff);
+      border-ra<div class="mood-gif-box">
+        <video id="mood-video" autoplay loop muted playsinline>
+          <source id="video-source" src="VID-20260729-WA0001.mp4" type="video/mp4">
+          Your browser does not support the video tag.
         </video>
       </div>
-
-      <div class="countdown-num" id="cd-number">10</div>
-      <p class="desc">Get ready to blow candles and make a wish!</p>
+      <div class="mood-note" id="mood-note-text">When you're being effortlessly cute 🥰</div>
     </div>
 
-    <!-- Stage 5: Cake Cutting -->
-    <div id="sec-5" class="section">
-      <div class="sub-title">LET'S CELEBRATE</div>
-      <h1 style="font-size: 2rem; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
-      <p id="cake-status-text" style="color: var(--text-muted); margin-bottom: 15px;">Make a wish and blow the candles</p>
-
-      <div class="cake-wrapper">
-        <div class="knife" id="knife-el">🔪</div>
-
-        <div class="candles-row">
-          <div class="candle"><div class="flame" id="flame-1"></div></div>
-          <div class="candle"><div class="flame" id="flame-2"></div></div>
-          <div class="candle"><div class="flame" id="flame-3"></div></div>
-        </div>
-        
-        <div class="cake-layer" id="main-cake">
-          <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
-        </div>
-        
-        <div class="cake-cut-right" id="right-cake">
-          <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
-        </div>
-      </div>
-
-      <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-top: 15px;">
-        <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
-        <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
-        <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
-      </div>
-
-      <!-- Cake Section Dynamic Video Box -->
-      <div class="cake-gif-card">
-        <video id="cake-video-el" autoplay loop muted playsinline>
-          <source id="cake-video-source" src="VID-20260729-WA0011.mp4" type="video/mp4">
-          Your browser does not support video.
-        </video>
-      </div>
+    <div class="carousel-nav">
+      <button class="btn-secondary" style="margin-top:0;" onclick="prevMood()">← Prev</button>
+      <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
     </div>
 
-    <!-- Stage 6: Pop the Balloons -->
-    <div id="sec-6" class="section">
-      <div class="sub-title">POP THE BALLOONS</div>
-      <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">Pop the Balloons! 🎈</h1>
-      
-      <div class="balloon-grid">
-        <div class="balloon" style="background:#ff4d6d; color:#ff4d6d;" onclick="popBalloon(this)"></div>
-        <div class="balloon" style="background:#ff758f; color:#ff758f;" onclick="popBalloon(this)"></div>
-        <div class="balloon" style="background:#ffb3c6; color:#ffb3c6;" onclick="popBalloon(this)"></div>
-        <div class="balloon" style="background:#ff85a1; color:#ff85a1;" onclick="popBalloon(this)"></div>
-        <div class="balloon" style="background:#f72585; color:#f72585;" onclick="popBalloon(this)"></div>
-        <div class="balloon" style="background:#7209b7; color:#7209b7;" onclick="popBalloon(this)"></div>
-      </div>
+    <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Grand Finale ✨</button>
+  </div>
 
-      <p id="balloon-status" class="desc">0 / 6 popped 💕</p>
-      <p id="balloon-msg" style="color: var(--accent-pink); font-size: 0.9rem; min-height: 24px;"></p>
-      
-      <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Read Special Letter ✉️</button>
+  <!-- Stage 10: Grand Finale -->
+  <div id="sec-10" class="section">
+    <div class="sub-title">SEPTEMBER 2ND • FOREVER YOUR FAVORITE DATE</div>
+    <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana!</span> 💕</h1>
+    <p>Here's to nineteen and every bit of magic it's going to bring you. With all my love, today and always.</p>
+    
+    <div style="display:flex; justify-content:center; gap:12px; margin-top:25px; flex-wrap:wrap;">
+      <button class="btn-primary" style="margin-top:0;" onclick="triggerFireworks()">Fireworks 🎆</button>
+      <button class="btn-secondary" style="margin-top:0;" onclick="nextSection(1)">Watch Again 🔄</button>
     </div>
-
-    <!-- Stage 7: Special Letter -->
-    <div id="sec-7" class="section">
-      <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
-      <div class="glass-card">
-        <div class="letter-box" id="typed-letter"></div>
-      </div>
-      <div style="display:flex; gap:10px;">
-        <button class="btn-secondary" onclick="replayLetter()">Replay 🔄</button>
-        <button class="btn-primary" id="letter-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
-      </div>
-    </div>
-
-    <!-- Stage 8: Flip Cards / Wishes -->
-    <div id="sec-8" class="section">
-      <div class="sub-title">SPECIAL WISHES FOR YOU</div>
-      <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">Flip Each Heart! 💖</h1>
-      <p class="desc" style="margin-bottom:10px;">Tap to reveal the sweet message behind it</p>
-
-      <div class="cards-grid">
-        <div class="flip-card" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">💖</div>
-            <div class="flip-card-back">Happy Birthday My Love! 💕</div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">💗</div>
-            <div class="flip-card-back">Happy Birthday My Darling! ✨</div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">💓</div>
-            <div class="flip-card-back">You make every single day brighter! 🌸</div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">💘</div>
-            <div class="flip-card-back">Happy Birthday My Sweet Bachaa! 🧸</div>
-          </div>
-        </div>
-      </div>
-
-      <button class="btn-primary" onclick="nextSection(9)">You, In Every Mood 🐻</button>
-    </div>
-
-    <!-- Stage 9: You, In Every Mood -->
-    <div id="sec-9" class="section">
-      <div class="sub-title">SEALED WITH LOVE</div>
-      <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
-
-      <div class="glass-card mood-card-container">
-        <div id="mood-counter" style="font-size: 0.8rem; color: var(--accent-pink); margin-bottom: 8px;">01 / 06</div>
-        
-        <div class="mood-gif-box">
-          <video id="mood-video-el" autoplay loop muted playsinline>
-            <source id="mood-video-source" src="VID-20260729-WA0002.mp4" type="video/mp4">
-            Your browser does not support video.
-          </video>
-        </div>
-
-        <p id="mood-caption" style="font-size: 0.95rem; font-weight: 500; text-align: center;">When you're being effortlessly cute 🥰</p>
-      </div>
-
-      <div style="display:flex; gap:15px; align-items:center;">
-        <button class="btn-secondary" onclick="prevMood()">← Prev</button>
-        <button class="btn-primary" onclick="nextMood()">Next Mood →</button>
-      </div>
-      <button class="btn-primary" id="finale-btn" style="display:none; margin-top:15px;" onclick="nextSection(10)">Grand Finale ✨</button>
-    </div>
-
-    <!-- Stage 10: Grand Finale -->
-    <div id="sec-10" class="section">
-      <div class="sub-title">SEPTEMBER 2ND • FOREVER YOUR FAVORITE DATE</div>
-      <h1 class="title" style="font-size: 2.8rem;">Happy Birthday, Jana! 💕</h1>
-      <p class="desc">Here's to nineteen and every bit of magic it's going to bring you. With all my love, today and always.</p>
-
-      <div style="display:flex; gap:10px; margin-top: 10px;">
-        <button class="btn-primary" onclick="triggerFireworks()">Fireworks 🎆</button>
-        <button class="btn-secondary" onclick="restartApp()">Watch Again 📑</button>
-      </div>
-    </div>
-
   </div>
 
   <script>
-    // Background Floating Hearts
-    function createBgHearts() {
-      const container = document.getElementById('bg-hearts-container');
-      const hearts = ['❤️', '💖', '🌸', '✨', '💕'];
-      for (let i = 0; i < 25; i++) {
-        const span = document.createElement('span');
-        span.className = 'heart-bg';
-        span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-        span.style.left = Math.random() * 100 + '%';
-        span.style.animationDelay = Math.random() * 8 + 's';
-        span.style.fontSize = (Math.random() * 15 + 12) + 'px';
-        container.appendChild(span);
-      }
-    }
-    createBgHearts();
-
-    // Section Navigation (FIXED)
-    function nextSection(secNum) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      const targetSec = document.getElementById('sec-' + secNum);
-      if (targetSec) {
-        targetSec.classList.add('active');
-      }
-
-      if (secNum === 7) {
-        startTypewriter();
-      }
+    // 1. Falling Particles
+    const bg = document.getElementById('bg-particles');
+    const items = ['🌹', '💓', '❣️', '💗', '💖', '🌸', '✨'];
+    
+    for(let i = 0; i < 26; i++) {
+      let particle = document.createElement('div');
+      particle.className = 'falling-particle';
+      particle.innerText = items[Math.floor(Math.random() * items.length)];
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDelay = Math.random() * 6 + 's';
+      particle.style.animationDuration = (5 + Math.random() * 4) + 's';
+      bg.appendChild(particle);
     }
 
-    // Countdown Logic
-    function startCountdownStage() {
-      nextSection(4);
+    function startApp() {
+      const music = document.getElementById('bg-music');
+      music.volume = 0.5;
+      music.play().catch(e => console.log("Audio waiting for interaction"));
+      nextSection(2);
+    }
+
+    function nextSection(secNumber) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById('sec-' + secNumber).classList.add('active');
+
+      if(secNumber === 4) {
+        startCountdown();
+      }
+    }
+
+    // 2. Balloon Popping
+    let poppedCount = 0;
+    function pop(element, msg) {
+      if(!element.classList.contains('popped')) {
+        element.classList.add('popped');
+        poppedCount++;
+        document.getElementById('pop-counter').innerText = `${poppedCount} / 6 popped 💕`;
+        document.getElementById('balloon-message').innerText = msg;
+
+        if(poppedCount === 6) {
+          document.getElementById('balloon-next-btn').style.display = "inline-block";
+        }
+      }
+    }
+
+    // 3. Countdown Timer
+    function startCountdown() {
       let count = 10;
-      const numEl = document.getElementById('cd-number');
-      numEl.innerText = count;
+      let el = document.getElementById('countdown-num');
+      el.innerText = count;
 
-      const timer = setInterval(() => {
+      let timer = setInterval(() => {
         count--;
-        if (count > 0) {
-          numEl.innerText = count;
+        if(count > 0) {
+          el.innerText = count;
         } else {
           clearInterval(timer);
           nextSection(5);
@@ -699,7 +523,7 @@
       }, 1000);
     }
 
-    // Cake Section Logic
+    // 4. Blow Candles
     function blowCandles() {
       document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
       document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
@@ -707,6 +531,7 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
+    // 5. Knife Slice with Dynamic Video Change
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
@@ -716,14 +541,12 @@
         document.getElementById('right-cake').classList.add('show-cut');
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
         
-        // Video switch on cake cut
+        // Cake cut hone par celebration video (VID-20260729-WA0013.mp4) load karein:
         const cakeVideo = document.getElementById('cake-video-el');
         const cakeSource = document.getElementById('cake-video-source');
-        if (cakeSource) {
-          cakeSource.src = "VID-20260729-WA0013.mp4";
-          cakeVideo.load();
-          cakeVideo.play();
-        }
+        cakeSource.src = "VID-20260729-WA0013.mp4";
+        cakeVideo.load();
+        cakeVideo.play();
 
         triggerFireworks();
         document.getElementById('cut-btn').style.display = 'none';
@@ -731,148 +554,156 @@
       }, 500);
     }
 
-    // Balloon Popping Logic
-    let poppedCount = 0;
-    const balloonMessages = [
-      "More laughs, more love this year. 💕",
-      "You bring so much joy! 🌸",
-      "You deserve the whole world, Jana. ✨",
-      "Stay sweet always! 💖",
-      "Here's to more memories together. ✨",
-      "All popped! You are amazing! 🎉"
-    ];
-
-    function popBalloon(el) {
-      if (!el.classList.contains('popped')) {
-        el.classList.add('popped');
-        poppedCount++;
-        document.getElementById('balloon-status').innerText = `${poppedCount} / 6 popped 💕`;
-        document.getElementById('balloon-msg').innerText = balloonMessages[poppedCount - 1];
-
-        if (poppedCount === 6) {
-          document.getElementById('balloon-next-btn').style.display = 'inline-block';
-          triggerFireworks();
-        }
-      }
+    // 6. Envelope Animation & Typewriter Letter
+    function openFloralEnvelope() {
+      const env = document.getElementById('envelope-el');
+      env.classList.add('open');
+      
+      setTimeout(() => {
+        document.getElementById('envelope-prompt').style.display = 'none';
+        document.getElementById('letter-content').style.display = 'block';
+        startTypewriter();
+      }, 700);
     }
 
-    // Typewriter Letter Logic
-    const letterText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
-    let typeIndex = 0;
-    let typeTimer;
+    const noteText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
+    let typeIdx = 0;
+    let typeTimer = null;
 
     function startTypewriter() {
-      const el = document.getElementById('typed-letter');
-      if (!el) return;
-      el.innerHTML = "";
-      typeIndex = 0;
+      typeIdx = 0;
+      document.getElementById('typed-text').innerText = "";
+      document.getElementById('type-next-btn').style.display = "none";
+      
       clearInterval(typeTimer);
-
       typeTimer = setInterval(() => {
-        if (typeIndex < letterText.length) {
-          const char = letterText.charAt(typeIndex);
-          el.innerHTML += char === '\n' ? '<br>' : char;
-          typeIndex++;
+        if(typeIdx < noteText.length) {
+          document.getElementById('typed-text').innerText += noteText.charAt(typeIdx);
+          typeIdx++;
         } else {
           clearInterval(typeTimer);
-          document.getElementById('letter-next-btn').style.display = 'inline-block';
+          document.getElementById('type-next-btn').style.display = "inline-block";
         }
       }, 35);
     }
 
-    function replayLetter() {
-      document.getElementById('letter-next-btn').style.display = 'none';
+    function restartTypewriter() {
       startTypewriter();
     }
 
-    // Flip Card Logic
-    function flipCard(card) {
-      card.classList.toggle('flipped');
+    // 7. 3D Heart Cards
+    let flippedCount = 0;
+    function flipHeart(card) {
+      if(!card.classList.contains('flipped')) {
+        card.classList.add('flipped');
+        flippedCount++;
+        if(flippedCount >= 2) {
+          document.getElementById('hearts-next-btn').style.display = 'inline-block';
+        }
+      }
     }
 
-    // Moods Slider Logic
-    const moods = [
-      { video: "VID-20260729-WA0002.mp4", caption: "When you're being effortlessly cute 🥰" },
-      { video: "VID-20260729-WA0002.mp4", caption: "When you get angry but still look super cute 😤❤️" },
-      { video: "VID-20260729-WA0002.mp4", caption: "When you're in full drama mode 🎭✨" },
-      { video: "VID-20260729-WA0002.mp4", caption: "When you get sleepy 😴" },
-      { video: "VID-20260729-WA0002.mp4", caption: "When you give the warmest hugs 💕" },
-      { video: "VID-20260729-WA0002.mp4", caption: "Just you being you — my favorite person always ❤️" }
+    // 8. Mood Carousel Logic
+    const moodData = [
+      {
+        src: "VID-20260729-WA0001.mp4",
+        note: "When you're being effortlessly cute 🥰"
+      },
+      {
+        src: "VID-20260729-WA0001.mp4",
+        note: "When you get angry but still look super cute 😡❤️"
+      },
+      {
+        src: "VID-20260729-WA0001.mp4",
+        note: "When you laugh out loud and make everything brighter ✨"
+      },
+      {
+        src: "VID-20260729-WA0001.mp4",
+        note: "When you get sleepy and grumpy 😴"
+      },
+      {
+        src: "VID-20260729-WA0001.mp4",
+        note: "When you give the warmest hugs 💕"
+      },
+      {
+        src: "VID-20260729-WA0001.mp4",
+        note: "Just you being you — my favorite person always ❤️"
+      }
     ];
 
     let currentMoodIdx = 0;
 
-    function updateMoodDisplay() {
-      const mood = moods[currentMoodIdx];
-      document.getElementById('mood-counter').innerText = `0${currentMoodIdx + 1} / 06`;
+    function updateMoodCard() {
+      const mood = moodData[currentMoodIdx];
+      const videoEl = document.getElementById('mood-video');
+      const sourceEl = document.getElementById('video-source');
       
-      const moodVid = document.getElementById('mood-video-el');
-      const moodSrc = document.getElementById('mood-video-source');
-      
-      if (moodSrc && moodSrc.getAttribute('src') !== mood.video) {
-        moodSrc.src = mood.video;
-        moodVid.load();
-        moodVid.play();
-      }
+      sourceEl.src = mood.src;
+      videoEl.load();
+      videoEl.play();
 
-      document.getElementById('mood-caption').innerText = mood.caption;
+      document.getElementById('mood-note-text').innerText = mood.note;
+      document.getElementById('mood-counter-text').innerText = `0${currentMoodIdx + 1} / 0${moodData.length}`;
 
-      if (currentMoodIdx === moods.length - 1) {
-        document.getElementById('finale-btn').style.display = 'inline-block';
+      if(currentMoodIdx === moodData.length - 1) {
+        document.getElementById('mood-finish-btn').style.display = 'inline-block';
       }
     }
 
     function nextMood() {
-      if (currentMoodIdx < moods.length - 1) {
+      if(currentMoodIdx < moodData.length - 1) {
         currentMoodIdx++;
-        updateMoodDisplay();
+        updateMoodCard();
       }
     }
 
     function prevMood() {
-      if (currentMoodIdx > 0) {
+      if(currentMoodIdx > 0) {
         currentMoodIdx--;
-        updateMoodDisplay();
+        updateMoodCard();
       }
     }
 
-    // Fireworks / Confetti
+    // 9. Fireworks Engine
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let particles = [];
     function triggerFireworks() {
-      if (typeof confetti === 'function') {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 }
+      for(let i = 0; i < 75; i++) {
+        particles.push({
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          dx: (Math.random() - 0.5) * 12,
+          dy: (Math.random() - 0.5) * 12,
+          color: `hsl(${Math.random() * 360}, 100%, 65%)`,
+          radius: Math.random() * 4 + 2,
+          life: 80
         });
       }
     }
 
-    // Restart Application
-    function restartApp() {
-      poppedCount = 0;
-      currentMoodIdx = 0;
-      document.querySelectorAll('.balloon').forEach(b => b.classList.remove('popped'));
-      document.getElementById('balloon-status').innerText = '0 / 6 popped 💕';
-      document.getElementById('balloon-msg').innerText = '';
-      document.getElementById('balloon-next-btn').style.display = 'none';
+    function animateFireworks() {
+      requestAnimationFrame(animateFireworks);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      document.querySelectorAll('.flame').forEach(f => f.classList.remove('off'));
-      document.getElementById('main-cake').classList.remove('cut');
-      document.getElementById('right-cake').classList.remove('show-cut');
-      document.getElementById('cake-status-text').innerText = "Make a wish and blow the candles";
-      document.getElementById('blow-btn').style.display = 'inline-block';
-      document.getElementById('cut-btn').style.display = 'none';
-      document.getElementById('after-cake-btn').style.display = 'none';
-
-      const cakeVideo = document.getElementById('cake-video-el');
-      const cakeSource = document.getElementById('cake-video-source');
-      if (cakeSource) {
-        cakeSource.src = "VID-20260729-WA0011.mp4";
-        cakeVideo.load();
-      }
-
-      nextSection(1);
+      particles.forEach((p, index) => {
+        if (p.life > 0) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          p.life--;
+        } else {
+          particles.splice(index, 1);
+        }
+      });
     }
+    animateFireworks();
   </script>
 </body>
 </html>
