@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Little Something For Jana ❤️</title>
+  <title>Happy Birthday Nae Sarang ❤️</title>
   
-  <!-- Google Fonts for Cinematic Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -31,7 +30,6 @@
       position: relative;
     }
 
-    /* Floating Hearts Particle Canvas */
     .bg-hearts {
       position: fixed;
       top: 0;
@@ -56,7 +54,6 @@
       100% { transform: translateY(-110vh) scale(1.3) rotate(360deg); opacity: 0; }
     }
 
-    /* Section Containers */
     .section {
       display: none;
       width: 90%;
@@ -83,19 +80,14 @@
 
     .fancy-name {
       font-family: 'Dancing Script', cursive;
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       color: #fff;
       text-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
       margin: 5px 0 15px 0;
     }
 
-    p {
-      font-size: 0.95rem;
-      color: #e0d0e6;
-      line-height: 1.6;
-    }
+    p { font-size: 0.95rem; color: #e0d0e6; line-height: 1.6; }
 
-    /* Primary Pink Button */
     .btn-primary {
       background: linear-gradient(45deg, #ff4081, #ff79b0);
       color: white;
@@ -127,7 +119,6 @@
       margin-top: 15px;
     }
 
-    /* Envelope Styling */
     .envelope-box {
       width: 140px;
       height: 100px;
@@ -141,7 +132,6 @@
       font-size: 40px;
     }
 
-    /* Live Typewriter Card */
     .note-card {
       background: rgba(35, 20, 45, 0.85);
       border: 1px solid rgba(255, 105, 180, 0.3);
@@ -160,7 +150,6 @@
       white-space: pre-wrap;
     }
 
-    /* Balloons Section */
     .balloon-grid {
       display: flex;
       justify-content: center;
@@ -193,12 +182,14 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* 3D Cake & Candles Setup */
+    /* Cake & Realistic Knife Styling */
     .cake-wrapper {
-      margin: 25px auto;
+      margin: 30px auto 20px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      width: 220px;
     }
 
     .candles-row {
@@ -236,8 +227,8 @@
     }
 
     .cake-layer {
-      width: 170px;
-      height: 95px;
+      width: 200px;
+      height: 105px;
       background: linear-gradient(to bottom, #ff79b0, #7c4dff);
       border-radius: 12px;
       border-top: 10px solid #fff;
@@ -246,24 +237,71 @@
       align-items: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       position: relative;
-      transition: all 0.5s ease;
-    }
-
-    .cake-layer.cut {
-      clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
-      transform: translateX(-15px) rotate(-3deg);
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .cake-badge {
-      background: rgba(0,0,0,0.3);
-      padding: 4px 12px;
+      background: rgba(0,0,0,0.35);
+      padding: 6px 14px;
       border-radius: 15px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       color: #fff;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
-    /* Fireworks Canvas Container */
+    /* Animated Knife Overlay */
+    .knife {
+      position: absolute;
+      top: -60px;
+      right: 20px;
+      font-size: 50px;
+      opacity: 0;
+      z-index: 20;
+      pointer-events: none;
+      transform: rotate(-45deg);
+    }
+
+    .knife.slice-anim {
+      animation: realisticSlice 1.2s ease-in-out forwards;
+    }
+
+    @keyframes realisticSlice {
+      0% { opacity: 0; top: -60px; transform: rotate(-45deg) scale(0.8); }
+      30% { opacity: 1; top: 10px; transform: rotate(-10deg) scale(1.1); }
+      60% { top: 60px; transform: rotate(15deg) scale(1); }
+      100% { opacity: 0; top: 110px; transform: rotate(30deg) scale(0.8); }
+    }
+
+    /* Cake Split Visual */
+    .cake-layer.cut {
+      clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
+      transform: translateX(-18px) rotate(-4deg);
+    }
+
+    .cake-cut-right {
+      position: absolute;
+      top: 34px;
+      width: 200px;
+      height: 105px;
+      background: linear-gradient(to bottom, #ff79b0, #7c4dff);
+      border-radius: 12px;
+      border-top: 10px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      clip-path: polygon(52% 0, 100% 0, 100% 100%, 52% 100%);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+
+    .cake-cut-right.show-cut {
+      opacity: 1;
+      transform: translateX(18px) rotate(4deg);
+    }
+
     #fireworks-canvas {
       position: fixed;
       top: 0;
@@ -308,30 +346,8 @@
     <button class="btn-primary" onclick="nextSection(4)">Continue →</button>
   </div>
 
-  <!-- Stage 4: Typewriter Note -->
+  <!-- Stage 4: Pop Balloons -->
   <div id="sec-4" class="section">
-    <div class="sub-title">A LITTLE NOTE, JUST FOR YOU</div>
-    <div class="note-card">
-      <div id="typed-text"></div>
-    </div>
-    <div style="display:flex; justify-content:center; gap:15px; margin-top:10px;">
-      <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
-      <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(5)">Continue →</button>
-    </div>
-  </div>
-
-  <!-- Stage 5: Photo Container -->
-  <div id="sec-5" class="section">
-    <div class="sub-title">SEALED WITH LOVE</div>
-    <div style="width: 100%; height: 200px; background: rgba(255,255,255,0.08); border-radius: 18px; margin: 20px 0; border: 1px dashed #ff758f; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-      <span style="font-size: 40px;">🧸</span>
-      <p style="margin-top: 10px; color: #ffb3c1;">Two silly bears, one very big heart. That's us. 🐻❤️</p>
-    </div>
-    <button class="btn-primary" onclick="nextSection(6)">Continue →</button>
-  </div>
-
-  <!-- Stage 6: Pop Balloons -->
-  <div id="sec-6" class="section">
     <div class="sub-title">POP THE BALLOONS</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff85a1;">Pop the Balloons! 🎈</h1>
     
@@ -347,39 +363,69 @@
     <p style="font-size: 0.85rem; color: #ff85a1;" id="pop-counter">0 / 6 popped</p>
     <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
 
-    <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Start Countdown ⏳</button>
+    <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(5)">Start Countdown ⏳</button>
   </div>
 
-  <!-- Stage 7: Countdown Timer -->
-  <div id="sec-7" class="section">
+  <!-- Stage 5: Countdown Timer -->
+  <div id="sec-5" class="section">
     <div class="sub-title">GET READY FOR THE CAKE</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown! 🎂</h1>
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4081; margin: 20px 0;">10</h1>
     <p>Get ready to blow candles and make a wish!</p>
   </div>
 
-  <!-- Stage 8: Cake & Candles -->
-  <div id="sec-8" class="section">
+  <!-- Stage 6: Cake & Candles (With Knife Cut) -->
+  <div id="sec-6" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2rem; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
     <p id="cake-status-text">Make a wish and blow the candles</p>
 
     <div class="cake-wrapper">
+      <div class="knife" id="knife-el">🔪</div>
+
       <div class="candles-row">
         <div class="candle"><div class="flame" id="flame-1"></div></div>
         <div class="candle"><div class="flame" id="flame-2"></div></div>
         <div class="candle"><div class="flame" id="flame-3"></div></div>
       </div>
+      
       <div class="cake-layer" id="main-cake">
-        <div class="cake-badge">JANA • 09.02</div>
+        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
+      </div>
+      
+      <!-- Right Half of Split Cake -->
+      <div class="cake-cut-right" id="right-cake">
+        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
       </div>
     </div>
 
     <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
-      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCake()">Cut the Cake 🔪</button>
-      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(9)">Continue →</button>
+      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
+      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(7)">Read Birthday Wish 💌</button>
     </div>
+  </div>
+
+  <!-- Stage 7: Typewriter Wish Message (Moved After Cake Cutting) -->
+  <div id="sec-7" class="section">
+    <div class="sub-title">A LITTLE NOTE, JUST FOR YOU</div>
+    <div class="note-card">
+      <div id="typed-text"></div>
+    </div>
+    <div style="display:flex; justify-content:center; gap:15px; margin-top:10px;">
+      <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
+      <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Continue →</button>
+    </div>
+  </div>
+
+  <!-- Stage 8: Photo Container -->
+  <div id="sec-8" class="section">
+    <div class="sub-title">SEALED WITH LOVE</div>
+    <div style="width: 100%; height: 200px; background: rgba(255,255,255,0.08); border-radius: 18px; margin: 20px 0; border: 1px dashed #ff758f; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+      <span style="font-size: 40px;">🧸</span>
+      <p style="margin-top: 10px; color: #ffb3c1;">Two silly bears, one very big heart. That's us. 🐻❤️</p>
+    </div>
+    <button class="btn-primary" onclick="nextSection(9)">Grand Finale ✨</button>
   </div>
 
   <!-- Stage 9: Grand Finale -->
@@ -395,7 +441,7 @@
   </div>
 
   <script>
-    // 1. Generate Floating Heart Background
+    // 1. Generate Floating Background Hearts
     const bg = document.getElementById('bg-hearts');
     for(let i = 0; i < 22; i++) {
       let heart = document.createElement('div');
@@ -407,19 +453,73 @@
       bg.appendChild(heart);
     }
 
-    // 2. Navigation Control
+    // 2. Section Navigation
     function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
 
-      if(secNumber === 4) {
-        startTypewriter();
-      } else if(secNumber === 7) {
+      if(secNumber === 5) {
         startCountdown();
+      } else if(secNumber === 7) {
+        startTypewriter();
       }
     }
 
-    // 3. Automatic Typewriter Effect
+    // 3. Balloon Popping Logic
+    let poppedCount = 0;
+    function pop(element, msg) {
+      if(!element.classList.contains('popped')) {
+        element.classList.add('popped');
+        poppedCount++;
+        document.getElementById('pop-counter').innerText = `${poppedCount} / 6 popped 💕`;
+        document.getElementById('balloon-message').innerText = msg;
+
+        if(poppedCount === 6) {
+          document.getElementById('balloon-next-btn').style.display = "inline-block";
+        }
+      }
+    }
+
+    // 4. Countdown Timer
+    function startCountdown() {
+      let count = 10;
+      let el = document.getElementById('countdown-num');
+      el.innerText = count;
+
+      let timer = setInterval(() => {
+        count--;
+        if(count > 0) {
+          el.innerText = count;
+        } else {
+          clearInterval(timer);
+          nextSection(6);
+        }
+      }, 1000);
+    }
+
+    // 5. Blow Candles
+    function blowCandles() {
+      document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
+      document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
+      document.getElementById('blow-btn').style.display = 'none';
+      document.getElementById('cut-btn').style.display = 'inline-block';
+    }
+
+    // 6. Realistic Knife Cut Animation
+    function cutCakeWithKnife() {
+      const knife = document.getElementById('knife-el');
+      knife.classList.add('slice-anim');
+
+      setTimeout(() => {
+        document.getElementById('main-cake').classList.add('cut');
+        document.getElementById('right-cake').classList.add('show-cut');
+        document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
+        document.getElementById('cut-btn').style.display = 'none';
+        document.getElementById('after-cake-btn').style.display = 'inline-block';
+      }, 500);
+    }
+
+    // 7. Live Typewriter Effect
     const noteText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
     let typeIdx = 0;
     let typeTimer = null;
@@ -445,54 +545,7 @@
       startTypewriter();
     }
 
-    // 4. Pop Balloons
-    let poppedCount = 0;
-    function pop(element, msg) {
-      if(!element.classList.contains('popped')) {
-        element.classList.add('popped');
-        poppedCount++;
-        document.getElementById('pop-counter').innerText = `${poppedCount} / 6 popped 💕`;
-        document.getElementById('balloon-message').innerText = msg;
-
-        if(poppedCount === 6) {
-          document.getElementById('balloon-next-btn').style.display = "inline-block";
-        }
-      }
-    }
-
-    // 5. 10 Seconds Countdown
-    function startCountdown() {
-      let count = 10;
-      let el = document.getElementById('countdown-num');
-      el.innerText = count;
-
-      let timer = setInterval(() => {
-        count--;
-        if(count > 0) {
-          el.innerText = count;
-        } else {
-          clearInterval(timer);
-          nextSection(8);
-        }
-      }, 1000);
-    }
-
-    // 6. Candles Blow & Cake Cutting
-    function blowCandles() {
-      document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
-      document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
-      document.getElementById('blow-btn').style.display = 'none';
-      document.getElementById('cut-btn').style.display = 'inline-block';
-    }
-
-    function cutCake() {
-      document.getElementById('main-cake').classList.add('cut');
-      document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
-      document.getElementById('cut-btn').style.display = 'none';
-      document.getElementById('after-cake-btn').style.display = 'inline-block';
-    }
-
-    // 7. Live Fireworks Engine
+    // 8. Live Fireworks System
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -500,7 +553,7 @@
 
     let particles = [];
     function triggerFireworks() {
-      for(let i = 0; i < 60; i++) {
+      for(let i = 0; i < 70; i++) {
         particles.push({
           x: canvas.width / 2,
           y: canvas.height / 2,
