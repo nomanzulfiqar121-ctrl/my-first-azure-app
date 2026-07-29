@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday Nae Sarang ❤️</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -18,13 +18,12 @@
     }
 
     body {
-      background: radial-gradient(circle at center, #3d0c27 0%, #1a0313 100%);
+      background: radial-gradient(circle at center, #3doc27 0%, #1a0313 100%);
       color: #fff;
       text-align: center;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       overflow-x: hidden;
       position: relative;
@@ -157,12 +156,12 @@
 
     .mood-note {
       font-size: 1rem;
-      color: #fce8f3;
+      color: #fc8ef3;
       font-weight: 500;
       min-height: 48px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
     }
 
     .carousel-nav {
@@ -213,7 +212,6 @@
       border-radius: 12px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.4);
       border: 1px solid #f2cfcd;
-      overflow: hidden;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -229,7 +227,7 @@
     }
 
     .envelope::after {
-      content: '🌹';
+      content: '🌿';
       position: absolute;
       bottom: 8px;
       right: 10px;
@@ -241,7 +239,6 @@
       font-size: 2.2rem;
       color: #6b2d3e;
       position: absolute;
-      width: 100%;
       top: 52%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -295,7 +292,7 @@
     #typed-text {
       font-size: 0.95rem;
       line-height: 1.7;
-      color: #fce8f3;
+      color: #fc8ef3;
       white-space: pre-wrap;
     }
 
@@ -318,10 +315,10 @@
     }
 
     .b1 { background: #ff4d6d; }
-    .b2 { background: #c77dff; }
+    .b2 { background: #cc7dff; }
     .b3 { background: #ff758f; }
     .b4 { background: #ffb703; }
-    .b5 { background: #e0aaff; }
+    .b5 { background: #00eaff; }
     .b6 { background: #ff4d6d; }
 
     .balloon.popped { animation: pop 0.25s forwards; }
@@ -344,6 +341,7 @@
 
     .candles-row {
       display: flex;
+      justify-content: center;
       gap: 12px;
       margin-bottom: -4px;
       z-index: 5;
@@ -386,7 +384,6 @@
       justify-content: center;
       align-items: center;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      position: relative;
       transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -405,7 +402,6 @@
       top: -60px;
       right: 20px;
       font-size: 50px;
-      opacity: 0;
       z-index: 20;
       pointer-events: none;
       transform: rotate(-45deg);
@@ -431,7 +427,267 @@
       width: 200px;
       height: 105px;
       background: linear-gradient(to bottom, #ff758f, #c77dff);
-      border-ra<div class="mood-gif-box">
+      border-radius: 12px;
+      border-top: 10px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      clip-path: polygon(52% 0, 100% 0, 100% 100%, 52% 100%);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+
+    .cake-cut-right.show-cut {
+      opacity: 1;
+      transform: translateX(18px) rotate(4deg);
+    }
+
+    /* 3D Flip Card System */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+      perspective: 1000px;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      height: 110px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .flip-card-front {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      font-size: 2.5rem;
+    }
+
+    .flip-card-back {
+      background: linear-gradient(135deg, #ff4d6d, #c77dff);
+      color: white;
+      transform: rotateY(180deg);
+      border-radius: 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: 1px solid #ffb703;
+      line-height: 1.3;
+    }
+
+    #fireworks-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="bg-particles" id="bg-particles"></div>
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Stage 1: Intro -->
+  <div id="sec-1" class="section active">
+    <div class="sub-title">A LITTLE SOMETHING FOR</div>
+    <div style="font-size: 45px; margin: 10px 0;">💌</div>
+    <div class="fancy-name">Jana</div>
+    <p>There's a whole little world waiting inside this envelope. Ready? ❤️</p>
+    <button class="btn-primary" onclick="startApp()">Open 🎁</button>
+  </div>
+
+  <!-- Stage 2: Question -->
+  <div id="sec-2" class="section">
+    <div class="sub-title">BEFORE WE BEGIN</div>
+    <h1 style="font-size: 1.8rem; margin: 10px 0;">Are you ready for this? 😏</h1>
+    <p>Because there's no going back once you say yes.</p>
+    <div style="display:flex; justify-content:center; gap:15px; margin-top: 20px;">
+      <button class="btn-primary" style="margin-top:0;" onclick="nextSection(3)">Yes, obviously!</button>
+      <button class="btn-secondary" style="margin-top:0;" onclick="nextSection(3)">No</button>
+    </div>
+  </div>
+
+  <!-- Stage 3: Special Day -->
+  <div id="sec-3" class="section">
+    <div class="sub-title">SEPTEMBER 2ND</div>
+    <h1 style="font-size: 2.2rem;">It's Your Special Day, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
+    <p>Nineteen looks so good on you. Let's make today one to remember. ✨</p>
+    <button class="btn-primary" onclick="nextSection(4)">Start Countdown ⏳</button>
+  </div>
+
+  <!-- Stage 4: Countdown -->
+  <div id="sec-4" class="section">
+    <div class="sub-title">GET READY FOR THE CAKE</div>
+    <h1 style="font-size: 1.8rem;">Cake Cutting Countdown!</h1>
+    <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
+    <p>Get ready to blow candles and make a wish!🎂</p>
+  </div>
+
+  <!-- Stage 5: Cake Cutting -->
+  <div id="sec-5" class="section">
+    <div class="sub-title">LET'S CELEBRATE</div>
+    <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
+
+    <p id="cake-status-text">Make a wish and blow the candles</p>
+
+    <div class="cake-wrapper">
+      <div class="knife" id="knife-el">🔪</div>
+
+      <div class="candles-row">
+        <div class="candle"><div class="flame" id="flame-1"></div></div>
+        <div class="candle"><div class="flame" id="flame-2"></div></div>
+        <div class="candle"><div class="flame" id="flame-3"></div></div>
+      </div>
+
+      <div class="cake-layer" id="main-cake">
+        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
+      </div>
+      <div class="cake-cut-right" id="right-cake">
+        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px;">
+      <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
+      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
+      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
+    </div>
+
+    <!-- Cake Section Video Display Box -->
+    <div class="cake-gif-card">
+      <video id="cake-video-el" autoplay loop muted playsinline>
+        <source id="cake-video-source" src="VID-20260729-WA0011.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+    </div>
+  </div>
+
+  <!-- Stage 6: Pop Balloons -->
+  <div id="sec-6" class="section">
+    <div class="sub-title">POP THE BALLOONS</div>
+    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff758f;">Pop the Balloons! 🎈</h1>
+
+    <div class="balloon-grid">
+      <div class="balloon b1" onclick="pop(this, 'More laughs, more love this year. 💕')"></div>
+      <div class="balloon b2" onclick="pop(this, 'Here\'s to more memories together. ✨')"></div>
+      <div class="balloon b3" onclick="pop(this, 'My favorite person, always. 💖')"></div>
+      <div class="balloon b4" onclick="pop(this, 'You deserve the whole world, Jana. ✨')"></div>
+      <div class="balloon b5" onclick="pop(this, 'You make my heart smile. 🥰')"></div>
+      <div class="balloon b6" onclick="pop(this, 'Happy Birthday My Love! 🎉')"></div>
+    </div>
+
+    <p style="font-size: 0.85rem; color: #ff758f;"><span id="pop-counter">0</span> / 6 popped</p>
+    <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
+
+    <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope ✉️</button>
+  </div>
+
+  <!-- Stage 7: Envelope View -->
+  <div id="sec-7" class="section">
+    <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
+
+    <div id="envelope-prompt">
+      <div class="envelope-wrapper">
+        <div class="envelope" id="envelope-el" onclick="openFloralEnvelope()">
+          <div class="envelope-flap"></div>
+          <div class="heart-seal">❤️</div>
+          <div class="envelope-text">A Special Message For You ❤️</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="openFloralEnvelope()">Open Envelope ✉️</button>
+    </div>
+
+    <div id="letter-content" style="display: none;">
+      <div class="note-card">
+        <div id="typed-text"></div>
+      </div>
+      <div style="display:flex; justify-content:center; gap:15px; margin-top: 15px;">
+        <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
+        <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 8: 3D Heart Cards -->
+  <div id="sec-8" class="section">
+    <div class="sub-title">SPECIAL WISHES FOR YOU</div>
+    <h1 style="font-size: 1.5rem; margin-bottom: 5px;">Flip Each Heart! 💖</h1>
+    <p style="font-size: 0.8rem; color: #ff758f;">Tap to reveal the sweet message behind it</p>
+
+    <div class="flip-grid">
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💖</div>
+          <div class="flip-card-back">Happy Birthday My Love! ❤️</div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💗</div>
+          <div class="flip-card-back">Happy Birthday My Darling! 💕</div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💓</div>
+          <div class="flip-card-back">Happy Birthday My Beautiful Girl! ⭐</div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💘</div>
+          <div class="flip-card-back">Happy Birthday My Sweet Bachaa! 🧸</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
+  </div>
+
+  <!-- Stage 9: You In Every Mood -->
+  <div id="sec-9" class="section">
+    <div class="sub-title">SEALED WITH LOVE</div>
+    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
+
+    <div class="mood-card">
+      <div class="mood-counter" id="mood-counter-text">01 / 06</div>
+      <div class="mood-gif-box">
         <video id="mood-video" autoplay loop muted playsinline>
           <source id="video-source" src="VID-20260729-WA0001.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -451,10 +707,10 @@
   <!-- Stage 10: Grand Finale -->
   <div id="sec-10" class="section">
     <div class="sub-title">SEPTEMBER 2ND • FOREVER YOUR FAVORITE DATE</div>
-    <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana!</span> 💕</h1>
-    <p>Here's to nineteen and every bit of magic it's going to bring you. With all my love, today and always.</p>
-    
-    <div style="display:flex; justify-content:center; gap:12px; margin-top:25px; flex-wrap:wrap;">
+    <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
+    <p>Here's to nineteen and every bit of magic it's going to bring you. With all my love, today and always. </p>
+
+    <div style="display:flex; justify-content:center; gap:12px; margin-top: 25px; flex-wrap:wrap;">
       <button class="btn-primary" style="margin-top:0;" onclick="triggerFireworks()">Fireworks 🎆</button>
       <button class="btn-secondary" style="margin-top:0;" onclick="nextSection(1)">Watch Again 🔄</button>
     </div>
@@ -463,9 +719,9 @@
   <script>
     // 1. Falling Particles
     const bg = document.getElementById('bg-particles');
-    const items = ['🌹', '💓', '❣️', '💗', '💖', '🌸', '✨'];
-    
-    for(let i = 0; i < 26; i++) {
+    const items = ['❤️', '💖', '🌸', '✨', '💕', '💫'];
+
+    for (let i = 0; i < 26; i++) {
       let particle = document.createElement('div');
       particle.className = 'falling-particle';
       particle.innerText = items[Math.floor(Math.random() * items.length)];
@@ -486,7 +742,7 @@
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
 
-      if(secNumber === 4) {
+      if (secNumber === 4) {
         startCountdown();
       }
     }
@@ -494,14 +750,14 @@
     // 2. Balloon Popping
     let poppedCount = 0;
     function pop(element, msg) {
-      if(!element.classList.contains('popped')) {
+      if (!element.classList.contains('popped')) {
         element.classList.add('popped');
         poppedCount++;
-        document.getElementById('pop-counter').innerText = `${poppedCount} / 6 popped 💕`;
+        document.getElementById('pop-counter').innerText = poppedCount;
         document.getElementById('balloon-message').innerText = msg;
 
-        if(poppedCount === 6) {
-          document.getElementById('balloon-next-btn').style.display = "inline-block";
+        if (poppedCount === 6) {
+          document.getElementById('balloon-next-btn').style.display = 'inline-block';
         }
       }
     }
@@ -514,7 +770,7 @@
 
       let timer = setInterval(() => {
         count--;
-        if(count > 0) {
+        if (count > 0) {
           el.innerText = count;
         } else {
           clearInterval(timer);
@@ -540,8 +796,8 @@
         document.getElementById('main-cake').classList.add('cut');
         document.getElementById('right-cake').classList.add('show-cut');
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
-        
-        // Cake cut hone par celebration video (VID-20260729-WA0013.mp4) load karein:
+
+        // Cake cut hone par celebration video (VID-20260729-WA0013.mp4) load karega!
         const cakeVideo = document.getElementById('cake-video-el');
         const cakeSource = document.getElementById('cake-video-source');
         cakeSource.src = "VID-20260729-WA0013.mp4";
@@ -549,6 +805,7 @@
         cakeVideo.play();
 
         triggerFireworks();
+
         document.getElementById('cut-btn').style.display = 'none';
         document.getElementById('after-cake-btn').style.display = 'inline-block';
       }, 500);
@@ -558,7 +815,7 @@
     function openFloralEnvelope() {
       const env = document.getElementById('envelope-el');
       env.classList.add('open');
-      
+
       setTimeout(() => {
         document.getElementById('envelope-prompt').style.display = 'none';
         document.getElementById('letter-content').style.display = 'block';
@@ -567,17 +824,17 @@
     }
 
     const noteText = "My Jaana,\n\nHappy birthday to the girl who turns ordinary days into something worth remembering. Nineteen looks so good on you — every bit as bright, as kind, and as wonderfully stubborn as always.\n\nI hope this year hands you everything you've been quietly hoping for, and a few things you didn't even know to ask for. Thank you for being exactly who you are.\n\nI love you more than these words know how to say.\n\n— Always yours ❤️";
+
     let typeIdx = 0;
     let typeTimer = null;
 
     function startTypewriter() {
-      typeIdx = 0;
       document.getElementById('typed-text').innerText = "";
       document.getElementById('type-next-btn').style.display = "none";
-      
+
       clearInterval(typeTimer);
       typeTimer = setInterval(() => {
-        if(typeIdx < noteText.length) {
+        if (typeIdx < noteText.length) {
           document.getElementById('typed-text').innerText += noteText.charAt(typeIdx);
           typeIdx++;
         } else {
@@ -588,16 +845,17 @@
     }
 
     function restartTypewriter() {
+      typeIdx = 0;
       startTypewriter();
     }
 
     // 7. 3D Heart Cards
     let flippedCount = 0;
     function flipHeart(card) {
-      if(!card.classList.contains('flipped')) {
+      if (!card.classList.contains('flipped')) {
         card.classList.add('flipped');
         flippedCount++;
-        if(flippedCount >= 2) {
+        if (flippedCount >= 2) {
           document.getElementById('hearts-next-btn').style.display = 'inline-block';
         }
       }
@@ -611,7 +869,7 @@
       },
       {
         src: "VID-20260729-WA0001.mp4",
-        note: "When you get angry but still look super cute 😡❤️"
+        note: "When you get angry but still look super cute 😤❤️"
       },
       {
         src: "VID-20260729-WA0001.mp4",
@@ -637,7 +895,7 @@
       const mood = moodData[currentMoodIdx];
       const videoEl = document.getElementById('mood-video');
       const sourceEl = document.getElementById('video-source');
-      
+
       sourceEl.src = mood.src;
       videoEl.load();
       videoEl.play();
@@ -645,20 +903,20 @@
       document.getElementById('mood-note-text').innerText = mood.note;
       document.getElementById('mood-counter-text').innerText = `0${currentMoodIdx + 1} / 0${moodData.length}`;
 
-      if(currentMoodIdx === moodData.length - 1) {
+      if (currentMoodIdx === moodData.length - 1) {
         document.getElementById('mood-finish-btn').style.display = 'inline-block';
       }
     }
 
     function nextMood() {
-      if(currentMoodIdx < moodData.length - 1) {
+      if (currentMoodIdx < moodData.length - 1) {
         currentMoodIdx++;
         updateMoodCard();
       }
     }
 
     function prevMood() {
-      if(currentMoodIdx > 0) {
+      if (currentMoodIdx > 0) {
         currentMoodIdx--;
         updateMoodCard();
       }
@@ -672,7 +930,7 @@
 
     let particles = [];
     function triggerFireworks() {
-      for(let i = 0; i < 75; i++) {
+      for (let i = 0; i < 75; i++) {
         particles.push({
           x: canvas.width / 2,
           y: canvas.height / 2,
@@ -688,7 +946,7 @@
     function animateFireworks() {
       requestAnimationFrame(animateFireworks);
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       particles.forEach((p, index) => {
         if (p.life > 0) {
           ctx.beginPath();
