@@ -118,6 +118,60 @@
       margin-top: 15px;
     }
 
+    /* --- Mood Carousel Styling --- */
+    .mood-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .mood-gif-box {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .mood-gif-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .mood-counter {
+      font-size: 0.8rem;
+      color: #ffb703;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .mood-note {
+      font-size: 1rem;
+      color: #fce8f3;
+      font-weight: 500;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     /* --- Floral Envelope Custom Styles --- */
     .envelope-wrapper {
       position: relative;
@@ -140,18 +194,14 @@
       transition: transform 0.3s;
     }
 
-    .envelope:hover {
-      transform: scale(1.02);
-    }
+    .envelope:hover { transform: scale(1.02); }
 
-    /* Floral Corner Accents */
     .envelope::before {
       content: '🌸';
       position: absolute;
       top: 8px;
       left: 10px;
       font-size: 26px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
     }
 
     .envelope::after {
@@ -160,7 +210,6 @@
       bottom: 8px;
       right: 10px;
       font-size: 28px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
     }
 
     .envelope-text {
@@ -185,7 +234,6 @@
       top: 22%;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -206,11 +254,8 @@
       z-index: 5;
     }
 
-    .envelope.open .envelope-flap {
-      transform: rotateX(180deg);
-    }
+    .envelope.open .envelope-flap { transform: rotateX(180deg); }
 
-    /* Letter Card Inside Envelope */
     .note-card {
       background: rgba(45, 12, 30, 0.9);
       border: 1px solid rgba(255, 117, 143, 0.4);
@@ -328,7 +373,6 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: #fff;
-      letter-spacing: 0.5px;
       border: 1px solid rgba(255,255,255,0.2);
     }
 
@@ -343,9 +387,7 @@
       transform: rotate(-45deg);
     }
 
-    .knife.slice-anim {
-      animation: realisticSlice 1.2s ease-in-out forwards;
-    }
+    .knife.slice-anim { animation: realisticSlice 1.2s ease-in-out forwards; }
 
     @keyframes realisticSlice {
       0% { opacity: 0; top: -60px; transform: rotate(-45deg) scale(0.8); }
@@ -405,9 +447,7 @@
       transform-style: preserve-3d;
     }
 
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
 
     .flip-card-front, .flip-card-back {
       position: absolute;
@@ -546,7 +586,7 @@
     <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope 💌</button>
   </div>
 
-  <!-- Stage 7: Realistic Envelope View -->
+  <!-- Stage 7: Envelope View -->
   <div id="sec-7" class="section">
     <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
     
@@ -608,17 +648,29 @@
       </div>
     </div>
 
-    <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">Continue →</button>
+    <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
   </div>
 
-  <!-- Stage 9: Bear Card -->
+  <!-- Stage 9: "You, In Every Mood" Bubu & Dudu Section -->
   <div id="sec-9" class="section">
     <div class="sub-title">SEALED WITH LOVE</div>
-    <div style="width: 100%; height: 200px; background: rgba(255,255,255,0.08); border-radius: 18px; margin: 20px 0; border: 1px dashed #ff758f; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-      <span style="font-size: 40px;">🧸</span>
-      <p style="margin-top: 10px; color: #ffb703;">Two silly bears, one very big heart. That's us. 🐻❤️</p>
+    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
+    
+    <div class="mood-card">
+      <div class="mood-counter" id="mood-counter-text">01 / 05</div>
+      <div class="mood-gif-box">
+        <!-- Replace src URLs with your GitHub repo GIF paths e.g., src="gifs/mood1.gif" -->
+        <img id="mood-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFlMnI4cG11NndhYms2eTlzNW15ZnlrbDR4cncwYWRrcm85dWFjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1prAOWI9k0u94Pai/giphy.gif" alt="Bubu Dudu Mood">
+      </div>
+      <div class="mood-note" id="mood-note-text">When you're being effortlessly cute 🥰</div>
     </div>
-    <button class="btn-primary" onclick="nextSection(10)">Grand Finale ✨</button>
+
+    <div class="carousel-nav">
+      <button class="btn-secondary" style="margin-top:0;" onclick="prevMood()">← Prev</button>
+      <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
+    </div>
+
+    <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Grand Finale ✨</button>
   </div>
 
   <!-- Stage 10: Grand Finale -->
@@ -655,7 +707,7 @@
       nextSection(2);
     }
 
-   function nextSection(secNumber) {
+    function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
 
@@ -768,7 +820,58 @@
       }
     }
 
-    // 8. Fireworks Engine
+    // 8. You, In Every Mood Carousel Logic
+    const moodData = [
+      {
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnFlMnI4cG11NndhYms2eTlzNW15ZnlrbDR4cncwYWRrcm85dWFjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1prAOWI9k0u94Pai/giphy.gif",
+        note: "When you're being effortlessly cute 🥰"
+      },
+      {
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGhqaWhndDlvbzJjODJmbmZtZmh4MGZ1bzF0ejMyaHFpdWllcnp1YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L13NsH0Aij4AVE2M03/giphy.gif",
+        note: "When you laugh out loud and make everything brighter ✨"
+      },
+      {
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHBkYzA1Nmk0N25xZWUwd28yZDN0ZHBsdXlqdG4xbzlydHRvdml3dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/c6X4N9uS2rM8Fk3fA1/giphy.gif",
+        note: "When you get sleepy and grumpy 😴"
+      },
+      {
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmsyZjA2MnR1Mmd1YXJvMDgyYWF4ZmtxeGlrM24xazQxcDk5NWU5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif",
+        note: "When you give the warmest hugs 💕"
+      },
+      {
+        gif: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm0wdzRkeHlxdmVhNmdrYjFmOG95cjUwdWR1dmdmcmNrcXpydHR1ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EFXGvbD4808RMEOE28/giphy.gif",
+        note: "Just you being you — my favorite person always ❤️"
+      }
+    ];
+
+    let currentMoodIdx = 0;
+
+    function updateMoodCard() {
+      const mood = moodData[currentMoodIdx];
+      document.getElementById('mood-gif').src = mood.gif;
+      document.getElementById('mood-note-text').innerText = mood.note;
+      document.getElementById('mood-counter-text').innerText = `0${currentMoodIdx + 1} / 0${moodData.length}`;
+
+      if(currentMoodIdx === moodData.length - 1) {
+        document.getElementById('mood-finish-btn').style.display = 'inline-block';
+      }
+    }
+
+    function nextMood() {
+      if(currentMoodIdx < moodData.length - 1) {
+        currentMoodIdx++;
+        updateMoodCard();
+      }
+    }
+
+    function prevMood() {
+      if(currentMoodIdx > 0) {
+        currentMoodIdx--;
+        updateMoodCard();
+      }
+    }
+
+    // 9. Fireworks Engine
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
