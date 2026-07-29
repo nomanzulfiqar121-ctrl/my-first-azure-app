@@ -141,7 +141,7 @@
       background: rgba(0, 0, 0, 0.2);
     }
 
-    .mood-gif-box video {
+    .mood-gif-box img, .mood-gif-box video {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
@@ -171,6 +171,29 @@
       align-items: center;
       gap: 10px;
       margin-top: 10px;
+    }
+
+    /* --- Cake Section GIF Display Box --- */
+    .cake-gif-card {
+      margin-top: 25px;
+      width: 140px;
+      height: 140px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.35);
+      border-radius: 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+    }
+
+    .cake-gif-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
     }
 
     /* --- Floral Envelope Custom Styles --- */
@@ -565,6 +588,11 @@
       <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
       <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
     </div>
+
+    <!-- Cake Section Dynamic GIF Box -->
+    <div class="cake-gif-card">
+      <img id="cake-gif-img" src="cake-before.gif" alt="Bubu Dudu Cake GIF">
+    </div>
   </div>
 
   <!-- Stage 6: Pop Balloons -->
@@ -652,13 +680,13 @@
     <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
   </div>
 
-  <!-- Stage 9: "You, In Every Mood" MP4 Video Carousel -->
+  <!-- Stage 9: "You, In Every Mood" Carousel -->
   <div id="sec-9" class="section">
     <div class="sub-title">SEALED WITH LOVE</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
     
     <div class="mood-card">
-      <div class="mood-counter" id="mood-counter-text">01 / 05</div>
+      <div class="mood-counter" id="mood-counter-text">01 / 06</div>
       <div class="mood-gif-box">
         <video id="mood-video" autoplay loop muted playsinline>
           <source id="video-source" src="VID-20260729-WA0001.mp4" type="video/mp4">
@@ -759,7 +787,7 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 5. Knife Slice with Fireworks
+    // 5. Knife Slice with Dynamic GIF change
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
@@ -768,6 +796,10 @@
         document.getElementById('main-cake').classList.add('cut');
         document.getElementById('right-cake').classList.add('show-cut');
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
+        
+        // Cake cut hone par celebration GIF set karein:
+        document.getElementById('cake-gif-img').src = "cake-after.gif"; // Aap yahan apni celebration GIF ka naam rakhein
+
         triggerFireworks();
         document.getElementById('cut-btn').style.display = 'none';
         document.getElementById('after-cake-btn').style.display = 'inline-block';
@@ -823,22 +855,26 @@
       }
     }
 
-    // 8. Mood Carousel Logic (Using uploaded MP4 video)
+    // 8. Mood Carousel Logic (Angry Mood added before Laughing mood)
     const moodData = [
       {
-        src: "VID-20260729-WA0002.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you're being effortlessly cute 🥰"
       },
       {
-        src: "VID-20260729-WA0009.mp4",
+        src: "VID-20260729-WA0001.mp4", // Yahan angry mood ki video/gif file name daal sakte hain
+        note: "When you get angry but still look super cute 😡❤️"
+      },
+      {
+        src: "VID-20260729-WA0001.mp4",
         note: "When you laugh out loud and make everything brighter ✨"
       },
       {
-        src: "VID-20260729-WA0004.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you get sleepy and grumpy 😴"
       },
       {
-        src: "VID-20260729-WA0005.mp4",
+        src: "VID-20260729-WA0001.mp4",
         note: "When you give the warmest hugs 💕"
       },
       {
