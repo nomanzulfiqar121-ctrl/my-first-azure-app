@@ -612,7 +612,7 @@
       <button class="btn-primary" onclick="nextSection(9)">You, In Every Mood 🐻</button>
     </div>
 
-    <!-- Stage 9: You, In Every Mood (Updated Video/GIF) -->
+    <!-- Stage 9: You, In Every Mood -->
     <div id="sec-9" class="section">
       <div class="sub-title">SEALED WITH LOVE</div>
       <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
@@ -662,21 +662,18 @@
         span.innerText = hearts[Math.floor(Math.random() * hearts.length)];
         span.style.left = Math.random() * 100 + '%';
         span.style.animationDelay = Math.random() * 8 + 's';
-        span.style.fontSize = ((Math.random() * 15 + 12) + 'px';
+        span.style.fontSize = (Math.random() * 15 + 12) + 'px';
         container.appendChild(span);
       }
     }
     createBgHearts();
 
-    // Section Navigation
-    let currentSection = 1;
-
+    // Section Navigation (FIXED)
     function nextSection(secNum) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       const targetSec = document.getElementById('sec-' + secNum);
       if (targetSec) {
         targetSec.classList.add('active');
-        currentSection = secNum;
       }
 
       if (secNum === 7) {
@@ -722,9 +719,11 @@
         // Video switch on cake cut
         const cakeVideo = document.getElementById('cake-video-el');
         const cakeSource = document.getElementById('cake-video-source');
-        cakeSource.src = "VID-20260729-WA0013.mp4";
-        cakeVideo.load();
-        cakeVideo.play();
+        if (cakeSource) {
+          cakeSource.src = "VID-20260729-WA0013.mp4";
+          cakeVideo.load();
+          cakeVideo.play();
+        }
 
         triggerFireworks();
         document.getElementById('cut-btn').style.display = 'none';
@@ -764,6 +763,7 @@
 
     function startTypewriter() {
       const el = document.getElementById('typed-letter');
+      if (!el) return;
       el.innerHTML = "";
       typeIndex = 0;
       clearInterval(typeTimer);
@@ -792,18 +792,12 @@
 
     // Moods Slider Logic
     const moods = [
-      { video: "VID-20260729-WA0002.mp4", 
-caption: "When you're being effortlessly cute 🥰" },
-      { video: "VID-20260729-WA0006.mp4", 
-caption: "When you get angry but still look super cute 😤❤️" },
-      { video: "VID-20260729-WA0008.mp4", 
-caption: "When you laugh out loud and make everything brighter ✨" },
-      { video: "VID-20260729-WA0004.mp4", 
-caption: "When you get sleepy 😴" },
-      { video: "VID-20260729-WA0005.mp4", 
-caption: "When you give the warmest hugs 💕" },
-      { video: "VID-20260729-WA0001.mp4", 
-caption: "Just you being you — my favorite person always ❤️" }
+      { video: "VID-20260729-WA0002.mp4", caption: "When you're being effortlessly cute 🥰" },
+      { video: "VID-20260729-WA0002.mp4", caption: "When you get angry but still look super cute 😤❤️" },
+      { video: "VID-20260729-WA0002.mp4", caption: "When you're in full drama mode 🎭✨" },
+      { video: "VID-20260729-WA0002.mp4", caption: "When you get sleepy 😴" },
+      { video: "VID-20260729-WA0002.mp4", caption: "When you give the warmest hugs 💕" },
+      { video: "VID-20260729-WA0002.mp4", caption: "Just you being you — my favorite person always ❤️" }
     ];
 
     let currentMoodIdx = 0;
@@ -815,7 +809,7 @@ caption: "Just you being you — my favorite person always ❤️" }
       const moodVid = document.getElementById('mood-video-el');
       const moodSrc = document.getElementById('mood-video-source');
       
-      if (moodSrc.getAttribute('src') !== mood.video) {
+      if (moodSrc && moodSrc.getAttribute('src') !== mood.video) {
         moodSrc.src = mood.video;
         moodVid.load();
         moodVid.play();
@@ -870,13 +864,13 @@ caption: "Just you being you — my favorite person always ❤️" }
       document.getElementById('cut-btn').style.display = 'none';
       document.getElementById('after-cake-btn').style.display = 'none';
 
-      // Reset cake video to first video
       const cakeVideo = document.getElementById('cake-video-el');
       const cakeSource = document.getElementById('cake-video-source');
-      cakeSource.src = "VID-20260729-WA0011.mp4";
-      cakeVideo.load();
+      if (cakeSource) {
+        cakeSource.src = "VID-20260729-WA0011.mp4";
+        cakeVideo.load();
+      }
 
-      updateMoodDisplay();
       nextSection(1);
     }
   </script>
