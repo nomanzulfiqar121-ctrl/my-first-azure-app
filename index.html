@@ -173,7 +173,7 @@
       margin-top: 10px;
     }
 
-    /* --- Cake Section Video Display Box --- */
+    /* --- Cake/GIF Section Video Display Box --- */
     .cake-gif-card {
       margin-top: 25px;
       width: 150px;
@@ -555,6 +555,14 @@
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown!</h1>
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
     <p>Get ready to blow candles and make a wish!🎂</p>
+    
+    <!-- New GIF Box for Countdown -->
+    <div class="cake-gif-card">
+      <video autoplay loop muted playsinline>
+        <source src="VID-20260729-WA0010.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+    </div>
   </div>
 
   <!-- Stage 5: Cake Cutting -->
@@ -635,6 +643,15 @@
       <div class="note-card">
         <div id="typed-text"></div>
       </div>
+      
+      <!-- New GIF Box for Typed Letter (Hidden initially) -->
+      <div class="cake-gif-card" id="letter-gif-box" style="display: none; margin-top: 20px;">
+        <video autoplay loop muted playsinline>
+          <source src="VID-20260729-WA0014.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+
       <div style="display:flex; justify-content:center; gap:15px; margin-top: 15px;">
         <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
         <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
@@ -689,8 +706,7 @@
     <div class="mood-card">
       <div class="mood-counter" id="mood-counter-text">01 / 06</div>
       <div class="mood-gif-box">
-        <video id="mood-video" autoplay loop
-muted playsinline>
+        <video id="mood-video" autoplay loop muted playsinline>
           <source id="video-source" src="VID-20260729-WA0002.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -832,6 +848,7 @@ muted playsinline>
     function startTypewriter() {
       document.getElementById('typed-text').innerText = "";
       document.getElementById('type-next-btn').style.display = "none";
+      document.getElementById('letter-gif-box').style.display = "none";
 
       clearInterval(typeTimer);
       typeTimer = setInterval(() => {
@@ -841,6 +858,7 @@ muted playsinline>
         } else {
           clearInterval(typeTimer);
           document.getElementById('type-next-btn').style.display = "inline-block";
+          document.getElementById('letter-gif-box').style.display = "inline-flex"; // Video box appears when typing is done
         }
       }, 35);
     }
