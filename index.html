@@ -355,7 +355,7 @@
       position: relative;
       width: 100px;
       height: 110px;
-      overflow: hidden;
+      overflow: visible; /* Changed to visible so candles don't get cut off */
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -462,10 +462,10 @@
       z-index: 11;
     }
 
-    /* Candles with Fixed High Z-Index */
+    /* Candles positioned properly above the cake body inside halves */
     .candles-static {
       position: absolute;
-      top: -14px;
+      top: -24px; /* Placed cleanly on top of the cake */
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -655,7 +655,7 @@
     </div>
   </div>
 
-  <!-- Stage 5: Cake Cutting (Fixed Split Effect) -->
+  <!-- Stage 5: Cake Cutting (Fixed Split Effect & Candles Visible) -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
@@ -671,12 +671,12 @@
           <div class="cake-half left">
             <div class="cake-half-inner">
               <div class="cake-body">
-                <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
                 <div class="candles-static">
                   <div class="candle-item"><div class="flame-item" id="flame-1"></div></div>
                   <div class="candle-item"><div class="flame-item" id="flame-2"></div></div>
                   <div class="candle-item"><div class="flame-item" id="flame-3"></div></div>
                 </div>
+                <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
                 <div class="chocolate-drip">
                   <div class="drip-drop d1"></div>
                   <div class="drip-drop d2"></div>
@@ -694,12 +694,12 @@
           <div class="cake-half right">
             <div class="cake-half-inner">
               <div class="cake-body">
-                <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
                 <div class="candles-static">
                   <div class="candle-item"><div class="flame-item" id="flame-1"></div></div>
                   <div class="candle-item"><div class="flame-item" id="flame-2"></div></div>
                   <div class="candle-item"><div class="flame-item" id="flame-3"></div></div>
                 </div>
+                <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
                 <div class="chocolate-drip">
                   <div class="drip-drop d1"></div>
                   <div class="drip-drop d2"></div>
