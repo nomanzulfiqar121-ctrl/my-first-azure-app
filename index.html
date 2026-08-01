@@ -118,10 +118,66 @@
       margin-top: 15px;
     }
 
+    /* --- Mood Carousel Styling --- */
+    .mood-card {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .mood-gif-box {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .mood-gif-box img, .mood-gif-box video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .mood-counter {
+      font-size: 0.8rem;
+      color: #ffb703;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .mood-note {
+      font-size: 1rem;
+      color: #fc8ef3;
+      font-weight: 500;
+      min-height: 48px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    /* --- Cake/GIF Section Video Display Box --- */
     .cake-gif-card {
-      margin-top: 20px;
-      width: 140px;
-      height: 140px;
+      margin-top: 25px;
+      width: 150px;
+      height: 150px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.35);
       border-radius: 20px;
@@ -140,7 +196,7 @@
       border-radius: 18px;
     }
 
-    /* Envelope Styles */
+    /* --- Floral Envelope Custom Styles --- */
     .envelope-wrapper {
       position: relative;
       width: 320px;
@@ -241,7 +297,7 @@
       white-space: pre-wrap;
     }
 
-    /* Balloons Grid */
+    /* Balloon Grid Styles */
     .balloon-grid {
       display: flex;
       justify-content: center;
@@ -274,107 +330,41 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* --- ORIGINAL STABLE CAKE DESIGN --- */
-    .cake-container {
+    /* Cake Animation Elements */
+    .cake-wrapper {
+      margin: 30px auto 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: relative;
-      width: 200px;
-      height: 140px;
-      margin: 30px auto 10px auto;
+      width: 220px;
+    }
+
+    .candles-row {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-    }
-
-    .cake-body {
-      position: relative;
-      width: 180px;
-      height: 100px;
-      background: linear-gradient(180deg, #ff758f 0%, #d9537e 100%);
-      border-radius: 12px 12px 16px 16px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.3);
-      border: 2px solid #ff4d6d;
-    }
-
-    .chocolate-drip {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 35px;
-      background: #3b140b;
-      border-radius: 10px 10px 0 0;
-    }
-
-    .drip-drop {
-      position: absolute;
-      background: #3b140b;
-      width: 16px;
-      height: 25px;
-      border-radius: 0 0 10px 10px;
-    }
-    .d1 { top: 33px; left: 15px; height: 18px; }
-    .d2 { top: 33px; left: 50px; height: 26px; }
-    .d3 { top: 33px; left: 90px; height: 22px; }
-    .d4 { top: 33px; left: 130px; height: 28px; }
-    .d5 { top: 33px; left: 155px; height: 16px; }
-
-    .cake-layer-middle {
-      position: absolute;
-      top: 42px;
-      left: 0;
-      width: 100%;
-      height: 25px;
-      background: linear-gradient(90deg, #ff4d6d, #ff758f, #ff4d6d);
-    }
-
-    .cake-layer-bottom-choco {
-      position: absolute;
-      top: 72px;
-      left: 0;
-      width: 100%;
-      height: 18px;
-      background: #3b140b;
-      border-radius: 0 0 14px 14px;
-    }
-
-    .cake-inscription {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.1rem;
-      color: #ffe6f0;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-      position: absolute;
-      top: 45px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .candles-group {
-      position: absolute;
-      top: -38px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 22px;
-      z-index: 20;
+      gap: 12px;
+      margin-bottom: -4px;
+      z-index: 5;
     }
 
     .candle {
-      width: 8px;
-      height: 36px;
-      background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 3px, #ff4d6d 3px, #ff4d6d 6px);
-      border-radius: 3px;
+      width: 10px;
+      height: 38px;
+      background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 4px, #fff 4px, #fff 8px);
+      border-radius: 3px 3px 0 0;
       position: relative;
     }
 
     .flame {
       width: 10px;
-      height: 16px;
+      height: 15px;
       background: #ffb703;
       border-radius: 50% 50% 20% 20%;
       position: absolute;
-      top: -14px;
-      left: -1px;
-      box-shadow: 0 0 12px #ffb703, 0 0 20px #ff4d6d;
+      top: -13px;
+      left: 0;
+      box-shadow: 0 0 8px #ff4d6d, 0 0 15px #ffb703;
       animation: flicker 0.2s infinite alternate;
     }
 
@@ -382,35 +372,79 @@
 
     @keyframes flicker {
       0% { transform: scale(1); }
-      100% { transform: scale(1.2); }
+      100% { transform: scale(1.15); }
     }
 
-    .cake-plate {
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
-      height: 14px;
-      background: linear-gradient(90deg, #8c7853, #e6d5b8, #8c7853);
-      border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    .cake-layer {
+      width: 200px;
+      height: 105px;
+      background: linear-gradient(to bottom, #ff758f, #c77dff);
+      border-radius: 12px;
+      border-top: 10px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .cake-badge {
+      background: rgba(0,0,0,0.35);
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .knife {
       position: absolute;
-      top: -15px;
-      right: -35px;
-      font-size: 2.5rem;
-      transition: transform 0.8s ease;
-      z-index: 30;
+      top: -60px;
+      right: 20px;
+      font-size: 50px;
+      z-index: 20;
+      pointer-events: none;
+      transform: rotate(-45deg);
     }
 
-    .knife.slice {
-      transform: translate(-110px, 45px) rotate(-45deg);
+    .knife.slice-anim { animation: realisticSlice 1.2s ease-in-out forwards; }
+
+    @keyframes realisticSlice {
+      0% { opacity: 0; top: -60px; transform: rotate(-45deg) scale(0.8); }
+      30% { opacity: 1; top: 10px; transform: rotate(-10deg) scale(1.1); }
+      60% { top: 60px; transform: rotate(15deg) scale(1); }
+      100% { opacity: 0; top: 110px; transform: rotate(30deg) scale(0.8); }
     }
 
-    /* 3D Flip Cards */
+    .cake-layer.cut {
+      clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
+      transform: translateX(-18px) rotate(-4deg);
+    }
+
+    .cake-cut-right {
+      position: absolute;
+      top: 34px;
+      width: 200px;
+      height: 105px;
+      background: linear-gradient(to bottom, #ff758f, #c77dff);
+      border-radius: 12px;
+      border-top: 10px solid #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      clip-path: polygon(52% 0, 100% 0, 100% 100%, 52% 100%);
+      opacity: 0;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+
+    .cake-cut-right.show-cut {
+      opacity: 1;
+      transform: translateX(18px) rotate(4deg);
+    }
+
+    /* 3D Flip Card System */
     .flip-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -520,8 +554,9 @@
     <div class="sub-title">GET READY FOR THE CAKE</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown!</h1>
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
-    <p>Get ready to blow candles and make a wish! 🎂</p>
+    <p>Get ready to blow candles and make a wish!🎂</p>
     
+    <!-- New GIF Box for Countdown -->
     <div class="cake-gif-card">
       <video autoplay loop muted playsinline>
         <source src="VID-20260729-WA0010.mp4" type="video/mp4">
@@ -530,41 +565,37 @@
     </div>
   </div>
 
-  <!-- Stage 5: Original Stable Cake Section -->
+  <!-- Stage 5: Cake Cutting -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
 
     <p id="cake-status-text">Make a wish and blow the candles</p>
 
-    <div class="cake-container">
+    <div class="cake-wrapper">
       <div class="knife" id="knife-el">🔪</div>
-      <div class="cake-body">
-        <div class="candles-group">
-          <div class="candle"><div class="flame" id="flame-1"></div></div>
-          <div class="candle"><div class="flame" id="flame-2"></div></div>
-          <div class="candle"><div class="flame" id="flame-3"></div></div>
-        </div>
-        <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
-        <div class="chocolate-drip">
-          <div class="drip-drop d1"></div>
-          <div class="drip-drop d2"></div>
-          <div class="drip-drop d3"></div>
-          <div class="drip-drop d4"></div>
-          <div class="drip-drop d5"></div>
-        </div>
-        <div class="cake-layer-middle"></div>
-        <div class="cake-layer-bottom-choco"></div>
+
+      <div class="candles-row">
+        <div class="candle"><div class="flame" id="flame-1"></div></div>
+        <div class="candle"><div class="flame" id="flame-2"></div></div>
+        <div class="candle"><div class="flame" id="flame-3"></div></div>
       </div>
-      <div class="cake-plate"></div>
+
+      <div class="cake-layer" id="main-cake">
+        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
+      </div>
+      <div class="cake-cut-right" id="right-cake">
+        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
+      </div>
     </div>
 
-    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px; margin-top: 15px;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
-      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCake()">Cut the Cake 🔪</button>
+      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
       <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
     </div>
 
+    <!-- Cake Section Video Display Box -->
     <div class="cake-gif-card">
       <video id="cake-video-el" autoplay loop muted playsinline>
         <source id="cake-video-source" src="VID-20260729-WA0013.mp4" type="video/mp4">
@@ -613,6 +644,7 @@
         <div id="typed-text"></div>
       </div>
       
+      <!-- New GIF Box for Typed Letter (Hidden initially) -->
       <div class="cake-gif-card" id="letter-gif-box" style="display: none; margin-top: 20px;">
         <video autoplay loop muted playsinline>
           <source src="VID-20260729-WA0014.mp4" type="video/mp4">
@@ -658,10 +690,10 @@
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">💘</div>
-          <div class="flip-card-back">Happy birthday My Sweet Bacha 🧸</div>
-        </div>
+          <div class="flip-card-back">Happy Birthday My Sweet Bacha 🧸</div>
+       </div>
       </div>
-    </div> 
+    </div>
 
     <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
   </div>
@@ -671,18 +703,18 @@
     <div class="sub-title">SEALED WITH LOVE</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
 
-    <div class="mood-card" style="background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 117, 143, 0.3); border-radius: 20px; padding: 20px; margin: 15px 0; backdrop-filter: blur(8px);">
-      <div class="mood-counter" id="mood-counter-text" style="font-size: 0.8rem; color: #ffb703; margin-bottom: 5px; font-weight: 600;">01 / 06</div>
-      <div class="mood-gif-box" style="width: 100%; height: 220px; display: flex; justify-content: center; align-items: center; border-radius: 12px; overflow: hidden; margin-bottom: 15px; background: rgba(0, 0, 0, 0.2);">
-        <video id="mood-video" autoplay loop muted playsinline style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px;">
+    <div class="mood-card">
+      <div class="mood-counter" id="mood-counter-text">01 / 06</div>
+      <div class="mood-gif-box">
+        <video id="mood-video" autoplay loop muted playsinline>
           <source id="video-source" src="VID-20260729-WA0002.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </div>
-      <div class="mood-note" id="mood-note-text" style="font-size: 1rem; color: #fc8ef3; font-weight: 500; min-height: 48px; display: flex; justify-content: center; align-items: center;">When you're being effortlessly cute 🥰</div>
+      <div class="mood-note" id="mood-note-text">When you're being effortlessly cute 🥰</div>
     </div>
 
-    <div class="carousel-nav" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 10px;">
+    <div class="carousel-nav">
       <button class="btn-secondary" style="margin-top:0;" onclick="prevMood()">← Prev</button>
       <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
     </div>
@@ -703,7 +735,7 @@
   </div>
 
   <script>
-    // Falling Particles
+    // 1. Falling Particles
     const bg = document.getElementById('bg-particles');
     const items = ['❤️', '💖', '🌸', '✨', '💕', '💫'];
 
@@ -733,7 +765,7 @@
       }
     }
 
-    // Balloon Popping
+    // 2. Balloon Popping
     let poppedCount = 0;
     function pop(element, msg) {
       if (!element.classList.contains('popped')) {
@@ -748,7 +780,7 @@
       }
     }
 
-    // Countdown Timer
+    // 3. Countdown Timer
     function startCountdown() {
       let count = 10;
       let el = document.getElementById('countdown-num');
@@ -765,7 +797,7 @@
       }, 1000);
     }
 
-    // Blow Candles
+    // 4. Blow Candles
     function blowCandles() {
       document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
       document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
@@ -773,27 +805,30 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // Cut Cake (Original Stable Logic)
-    function cutCake() {
+    // 5. Knife Slice with Dynamic Video Change
+    function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
-      knife.classList.add('slice');
-      document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
+      knife.classList.add('slice-anim');
 
-      const cakeVideo = document.getElementById('cake-video-el');
-      const cakeSource = document.getElementById('cake-video-source');
-      if (cakeSource && cakeVideo) {
+      setTimeout(() => {
+        document.getElementById('main-cake').classList.add('cut');
+        document.getElementById('right-cake').classList.add('show-cut');
+        document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
+
+        const cakeVideo = document.getElementById('cake-video-el');
+        const cakeSource = document.getElementById('cake-video-source');
         cakeSource.src = "VID-20260729-WA0011.mp4";
         cakeVideo.load();
         cakeVideo.play();
-      }
 
-      triggerFireworks();
+        triggerFireworks();
 
-      document.getElementById('cut-btn').style.display = 'none';
-      document.getElementById('after-cake-btn').style.display = 'inline-block';
+        document.getElementById('cut-btn').style.display = 'none';
+        document.getElementById('after-cake-btn').style.display = 'inline-block';
+      }, 500);
     }
 
-    // Envelope Animation & Typewriter Letter
+    // 6. Envelope Animation & Typewriter Letter
     function openFloralEnvelope() {
       const env = document.getElementById('envelope-el');
       env.classList.add('open');
@@ -823,7 +858,7 @@
         } else {
           clearInterval(typeTimer);
           document.getElementById('type-next-btn').style.display = "inline-block";
-          document.getElementById('letter-gif-box').style.display = "inline-flex"; 
+          document.getElementById('letter-gif-box').style.display = "inline-flex"; // Video box appears when typing is done
         }
       }, 35);
     }
@@ -833,7 +868,7 @@
       startTypewriter();
     }
 
-    // 3D Heart Cards
+    // 7. 3D Heart Cards
     let flippedCount = 0;
     function flipHeart(card) {
       if (!card.classList.contains('flipped')) {
@@ -845,7 +880,7 @@
       }
     }
 
-    // Mood Carousel Logic
+    // 8. Mood Carousel Logic
     const moodData = [
       {
         src: "VID-20260729-WA0002.mp4",
@@ -906,7 +941,7 @@
       }
     }
 
-    // Fireworks Engine
+    // 9. Fireworks Engine
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
