@@ -571,6 +571,35 @@
       pointer-events: none;
       z-index: 100;
     }
+
+    /* WhatsApp Style Text Floating (Neeche Se Upar) */
+    .chat-bubble {
+      position: fixed;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #075E54;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 18px;
+      font-size: 15px;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      animation: floatUp 8s linear forwards;
+      z-index: 101;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { bottom: -60px; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { bottom: 105vh; opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -801,7 +830,7 @@
 
     <div style="display:flex; justify-content:center; gap:12px; margin-top: 25px; flex-wrap:wrap;">
       <button class="btn-primary" style="margin-top:0;" onclick="triggerFireworks()">Fireworks 🎆</button>
-      <button class="btn-secondary" style="margin-top:0;" onclick="nextSection(1)">Watch Again 🔄</button>
+      <button class="btn-secondary" style="margin-top:0;" onclick="resetAndRestart()">Watch Again 🔄</button>
     </div>
   </div>
 
@@ -826,6 +855,8 @@
       nextSection(2);
     }
 
+    let bubbleInterval = null;
+
     function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
@@ -833,6 +864,47 @@
       if (secNumber === 4) {
         startCountdown();
       }
+
+      // Stage 10 (Grand Finale): Stop background particles & launch WhatsApp bubbles
+      if (secNumber === 10) {
+        bg.style.display = 'none';
+        triggerFireworks();
+        startWhatsAppBubbles();
+      }
+    }
+
+    function resetAndRestart() {
+      bg.style.display = 'block';
+      if (bubbleInterval) clearInterval(bubbleInterval);
+      document.querySelectorAll('.chat-bubble').forEach(b => b.remove());
+      nextSection(1);
+    }
+
+    /* WhatsApp Floating Text Messages (Neeche Se Upar) */
+    const chatMessages = [
+      "Happy birthday 🎂🥳🎈",
+      "Forever Grateful for You ❤️",
+      "Happy Birthday to my favorite person ✨",
+      "Wish you all the happiness in the world 🎉",
+      "Happy Birthday my Love 💖"
+    ];
+
+    function startWhatsAppBubbles() {
+      if (bubbleInterval) clearInterval(bubbleInterval);
+      
+      bubbleInterval = setInterval(() => {
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        const msg = chatMessages[Math.floor(Math.random() * chatMessages.length)];
+        bubble.innerHTML = msg;
+        
+        const randomX = Math.floor(Math.random() * 60) + 20; // 20% to 80% screen width
+        bubble.style.left = randomX + '%';
+        
+        document.body.appendChild(bubble);
+
+        setTimeout(() => { bubble.remove(); }, 8000);
+      }, 2400);
     }
 
     let poppedCount = 0;
@@ -1004,42 +1076,97 @@
       }
     }
 
+    /* Natural Rocket & Gravity Burst Fireworks Engine */
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    let particles = [];
+    let rockets = [];
+    let fwParticles = [];
+
+    class Rocket {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height;
+        this.targetY = Math.random() * (canvas.height * 0.45) + 50;
+        this.speed = Math.random() * 3 + 8;
+        this.color = `hsl(${Math.random() * 360}, 100%, 65%)`;
+      }
+      update() {
+        this.y -= this.speed;
+        if (this.y <= this.targetY) {
+          createBurst(this.x, this.y, this.color);
+          return true;
+        }
+        return false;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    class FWParticle {
+      constructor(x, y, color) {
+        this.x = x;
+        this.y = y;
+        this.color = color;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 5 + 1;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed;
+        this.gravity = 0.08;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.015 + 0.008;
+      }
+      update() {
+        this.vx *= 0.98;
+        this.vy *= 0.98;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.alpha -= this.decay;
+        return this.alpha <= 0;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function createBurst(x, y, color) {
+      for (let i = 0; i < 70; i++) {
+        fwParticles.push(new FWParticle(x, y, color));
+      }
+    }
+
     function triggerFireworks() {
-      for (let i = 0; i < 75; i++) {
-        particles.push({
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          dx: (Math.random() - 0.5) * 12,
-          dy: (Math.random() - 0.5) * 12,
-          color: `hsl(${Math.random() * 360}, 100%, 65%)`,
-          radius: Math.random() * 4 + 2,
-          life: 80
-        });
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => rockets.push(new Rocket()), i * 250);
       }
     }
 
     function animateFireworks() {
       requestAnimationFrame(animateFireworks);
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((p, index) => {
-        if (p.life > 0) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.fill();
-          p.x += p.dx;
-          p.y += p.dy;
-          p.life--;
-        } else {
-          particles.splice(index, 1);
-        }
+      rockets = rockets.filter(r => {
+        r.draw();
+        return !r.update();
+      });
+
+      fwParticles = fwParticles.filter(p => {
+        p.draw();
+        return !p.update();
       });
     }
     animateFireworks();
