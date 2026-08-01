@@ -196,6 +196,85 @@
       border-radius: 18px;
     }
 
+    /* --- Video Reference Wish Animation Styles --- */
+    .wish-stage-container {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      margin: 15px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.15);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 117, 143, 0.2);
+    }
+
+    .wish-top-text {
+      position: absolute;
+      top: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ff758f;
+      opacity: 0;
+      animation: wishFadeInText 1.5s ease-in-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .wish-main-heading {
+      position: absolute;
+      top: 55px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 117, 143, 0.7);
+      opacity: 0;
+      animation: wishFadeInText 1.5s ease-in-out forwards;
+      animation-delay: 1.8s;
+    }
+
+    .wish-sub-heading {
+      position: absolute;
+      top: 125px;
+      font-size: 0.85rem;
+      color: #f2d6e4;
+      opacity: 0;
+      animation: wishFadeInText 1.5s ease-in-out forwards;
+      animation-delay: 2.8s;
+    }
+
+    .wish-floating-balloon {
+      position: absolute;
+      bottom: -80px;
+      font-size: 60px;
+      animation: wishFloatUp 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      animation-delay: 0.2s;
+    }
+
+    @keyframes wishFloatUp {
+      0% {
+        bottom: -80px;
+        transform: scale(0.8);
+      }
+      60% {
+        bottom: 110px;
+        transform: scale(1.1);
+      }
+      100% {
+        bottom: 100px;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes wishFadeInText {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     /* --- Floral Envelope Custom Styles --- */
     .envelope-wrapper {
       position: relative;
@@ -592,7 +671,7 @@
     <div style="display:flex; flex-direction:column; align-items:center; gap: 10px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
       <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
-      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
+      <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(5.5)">Continue ✨</button>
     </div>
 
     <!-- Cake Section Video Display Box -->
@@ -602,6 +681,20 @@
         Your browser does not support video.
       </video>
     </div>
+  </div>
+
+  <!-- Stage 5.5: Video Reference Wish Animation Section -->
+  <div id="sec-5.5" class="section">
+    <div class="sub-title">A SPECIAL MOMENT</div>
+    
+    <div class="wish-stage-container">
+      <div class="wish-top-text">a little something, for you</div>
+      <div class="wish-main-heading">Happy Birthday</div>
+      <div class="wish-sub-heading">to someone extra-ordinary</div>
+      <div class="wish-floating-balloon">🎈</div>
+    </div>
+
+    <button class="btn-primary" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
   </div>
 
   <!-- Stage 6: Pop Balloons -->
@@ -691,7 +784,7 @@
         <div class="flip-card-inner">
           <div class="flip-card-front">💘</div>
           <div class="flip-card-back">Happy Birthday My Sweet Bacha 🧸</div>
-       </div>
+        </div>
       </div>
     </div>
 
