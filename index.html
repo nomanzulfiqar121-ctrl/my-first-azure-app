@@ -330,66 +330,29 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* --- REFINED PINTEREST CAKE & GLOSSY 3D WATER/AIR HEART CSS --- */
+    /* --- CLEAN PINTEREST CAKE STYLING (WITHOUT HEART & IMAGE) --- */
     .cake-container-static {
       position: relative;
       width: 220px;
       height: 230px;
-      margin: 15px auto;
+      margin: 25px auto 15px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Glossy 3D Water/Air-Filled Glowing Floating Heart Topper */
-    .floating-golden-heart-box {
-      position: relative;
-      width: 95px;
-      height: 95px;
-      margin-bottom: -12px;
-      z-index: 40;
-      animation: floatGoldenHeart 2.5s ease-in-out infinite alternate;
-      /* Intense Golden Warm Light Glow + Glass Bubble Depth */
-      filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 30px rgba(255, 105, 180, 0.7));
-    }
-
-    .gf-heart-inner-wrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      clip-path: url(#heartClip);
-      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 182, 193, 0.2) 50%, rgba(139, 0, 139, 0.3) 100%);
-      border: 3px solid rgba(255, 223, 109, 0.9);
-      box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.8), inset 0 0 25px rgba(255, 215, 0, 0.6);
-      overflow: hidden;
-    }
-
-    /* Glossy Liquid/Bubble Shine Overlay */
-    .gf-heart-inner-wrap::before {
-      content: '';
+    /* Cake Message Inscription Plate */
+    .cake-inscription {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1rem;
+      color: #ffe6f0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: 60%;
-      height: 60%;
-      background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .gf-heart-img {
+      top: 50px;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      position: relative;
-      z-index: 2;
-    }
-
-    @keyframes floatGoldenHeart {
-      0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-10px) scale(1.05); }
+      z-index: 25;
+      text-align: center;
+      pointer-events: none;
     }
 
     /* Solid Layered Cake Body with Natural Organic Drips */
@@ -402,6 +365,7 @@
       box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,117,143,0.2);
       border: 2px solid #5a1d35;
       z-index: 10;
+      margin-top: 20px;
     }
 
     /* Cake Layers */
@@ -448,10 +412,10 @@
     .d4 { top: 36px; left: 145px; height: 30px; }
     .d5 { top: 36px; left: 175px; height: 20px; }
 
-    /* Candles with Fixed High Z-Index (Never Hidden Behind Drips) */
+    /* Candles with Fixed High Z-Index */
     .candles-static {
       position: absolute;
-      top: -34px;
+      top: -14px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -507,7 +471,7 @@
 
     .knife-static {
       position: absolute;
-      top: -40px;
+      top: -10px;
       left: 50%;
       font-size: 3.2rem;
       opacity: 0;
@@ -520,10 +484,10 @@
     }
 
     @keyframes cutStatic {
-      0% { top: -40px; opacity: 0; }
-      30% { top: 40px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
-      70% { top: 130px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
-      100% { top: 160px; opacity: 0; }
+      0% { top: -10px; opacity: 0; }
+      30% { top: 50px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
+      70% { top: 140px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
+      100% { top: 170px; opacity: 0; }
     }
 
     /* 3D Flip Card System */
@@ -596,15 +560,6 @@
 </head>
 <body>
 
-  <!-- Invisible SVG Mask for Perfect Heart Shape -->
-  <svg width="0" height="0" style="position: absolute;">
-    <defs>
-      <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
-        <path d="M0.5,0.95 C0.5,0.95 0,0.5 0,0.25 C0,0.1 0.1,0 0.25,0 C0.35,0 0.5,0.1 0.5,0.1 C0.5,0.1 0.65,0 0.75,0 C0.9,0 1,0.1 1,0.25 C1,0.5 0.5,0.95 0.5,0.95 Z"></path>
-      </clipPath>
-    </defs>
-  </svg>
-
   <audio id="bg-music" loop>
     <source src="my.music.mp3" type="audio/mpeg">
   </audio>
@@ -655,7 +610,7 @@
     </div>
   </div>
 
-  <!-- Stage 5: Cake Cutting (PINTEREST STATIC CAKE + GLOSSY 3D HEART) -->
+  <!-- Stage 5: Cake Cutting (CLEAN PINTEREST CAKE WITH TEXT INSCRIPTION) -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
@@ -666,15 +621,9 @@
       <div class="knife-static" id="knife-el">🔪</div>
       
       <div class="cake-container-static" id="cake-container-el">
-        <!-- Glossy 3D Water/Air-Filled Glowing Heart with GF Image Inside -->
-        <div class="floating-golden-heart-box">
-          <div class="gf-heart-inner-wrap">
-            <img src="Screenshot_2025-10-24-22-36-27-20.png" class="gf-heart-img" alt="My Love">
-          </div>
-        </div>
-
         <!-- Solid Aesthetic Cake Body & High Z-Index Candles -->
         <div class="cake-body">
+          <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
           <div class="candles-static">
             <div class="candle-item"><div class="flame-item" id="flame-1"></div></div>
             <div class="candle-item"><div class="flame-item" id="flame-2"></div></div>
@@ -715,7 +664,7 @@
 
     <div class="balloon-grid">
       <div class="balloon b1" onclick="pop(this, 'More laughs, more love this year. 💕')"></div>
-      <div class="balloon b2" onclick="pop(this Here\'s to more memories together. ✨')"></div>
+      <div class="balloon b2" onclick="pop(this, 'Here\'s to more memories together. ✨')"></div>
       <div class="balloon b3" onclick="pop(this, 'My favorite person, always. 💖')"></div>
       <div class="balloon b4" onclick="pop(this, 'You deserve the whole world, Jana. ✨')"></div>
       <div class="balloon b5" onclick="pop(this, 'You make my heart smile. 🥰')"></div>
@@ -756,7 +705,8 @@
       </div>
 
       <div style="display:flex; justify-content:center; gap:15px; margin-top: 15px;">
-        <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
+        <button class="btn-secondary"
+onclick="restartTypewriter()">Replay 🔄</button>
         <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
       </div>
     </div>
