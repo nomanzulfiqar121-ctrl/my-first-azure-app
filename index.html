@@ -27,6 +27,7 @@
       align-items: center;
       justify-content: center;
       overflow-x: hidden;
+      overflow-y: auto;
       position: relative;
     }
 
@@ -57,7 +58,8 @@
       display: none;
       width: 90%;
       max-width: 450px;
-      padding: 25px 20px;
+      padding: 20px 15px;
+      margin: auto;
       z-index: 10;
       animation: fadeIn 0.7s ease-in-out;
     }
@@ -364,7 +366,7 @@
       justify-content: center;
       gap: 12px;
       flex-wrap: wrap;
-      margin: 25px 0 15px 0;
+      margin: 20px 0 10px 0;
     }
 
     .balloon {
@@ -388,7 +390,7 @@
     @keyframes pop {
       0% { transform: scale(1); }
       50% { transform: scale(1.3); }
-      100% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(0); opacity: 0; pointer-events: none; }
     }
 
     /* Cake Animation Elements */
@@ -569,10 +571,10 @@
       width: 100vw;
       height: 100vh;
       pointer-events: none;
-      z-index: 1; /* Background par rakh diya hai taaki text na chupe */
+      z-index: 1;
     }
 
-    /* WhatsApp Style Text Floating (Neeche Se Upar) */
+    /* WhatsApp Style Text Floating */
     .chat-bubble {
       position: fixed;
       bottom: -60px;
@@ -720,7 +722,107 @@
     </div>
 
     <p style="font-size: 0.85rem; color: #ff758f;"><span id="pop-counter">0</span> / 6 popped</p>
-    <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
+    <p id="balloon-message" style="min-height: 35px; font-style: italic; margin-top: 5px; color: #fc8ef3; font-weight: 500;"></p>
+
+    <!-- Fixed Next Button for Balloon Section -->
+    <div style="margin-top: 10px; margin-bottom: 20px;">
+      <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope ✉️</button>
+    </div>
+  </div>
+
+  <!-- Stage 7: Envelope View -->
+  <div id="sec-7" class="section">
+    <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
+
+    <div id="envelope-prompt">
+      <div class="envelope-wrapper">
+        <div class="envelope" id="envelope-el" onclick="openFloralEnvelope()">
+          <div class="envelope-flap"></div>
+          <div class="heart-seal">❤️</div>
+          <div class="envelope-text">A Special Message For You ❤️</div>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="openFloralEnvelope()">Open Envelope ✉️</button>
+    </div>
+
+    <div id="letter-content" style="display: none;">
+      <div class="note-card">
+        <div id="typed-text"></div>
+      </div>
+      
+      <div class="cake-gif-card" id="letter-gif-box" style="display: none; margin-top: 20px;">
+        <video autoplay loop muted playsinline>
+          <source src="VID-20260729-WA0014.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:15px; margin-top: 15px;">
+        <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
+        <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 8: 3D Heart Cards -->
+  <div id="sec-8" class="section">
+    <div class="sub-title">SPECIAL WISHES FOR YOU</div>
+    <h1 style="font-size: 1.5rem; margin-bottom: 5px;">Flip Each Heart! 💖</h1>
+    <p style="font-size: 0.8rem; color: #ff758f;">Tap to reveal the sweet message behind it</p>
+
+    <div class="flip-grid">
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💖</div>
+          <div class="flip-card-back">Happy Birthday My Love! ❤️</div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💗</div>
+          <div class="flip-card-back">Happy Birthday My Darling! 💕</div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💓</div>
+          <div class="flip-card-back">Happy Birthday My Beautiful Girl! ⭐</div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="flipHeart(this)">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">💘</div>
+          <div class="flip-card-back">Happy Birthday My Sweet Bacha 🧸</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
+  </div>
+
+  <!-- Stage 9: You In Every Mood -->
+  <div id="sec-9" class="section">
+    <div class="sub-title">SEALED WITH LOVE</div>
+    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
+
+    <div class="mood-card">
+      <div class="mood-counter" id="mood-counter-text">01 / 06</div>
+      <div class="mood-gif-box">
+        <video id="mood-video" autoplay loop muted playsinline>
+          <source id="video-source" src="VID-20260729-WA0002.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="mood-note" id="mood-note-text">When you're being effortlessly cute 🥰</div>
+    </div>
+
+    <div class="carousel-nav">
+      <button class="btn-secondary" style="margin-top:0;" onclick="prevMood()">← Prev</button>
+      <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
+    </div>
 
     <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Grand Finale ✨</button>
   </div>
@@ -763,12 +865,12 @@
     function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.getElementById('sec-' + secNumber).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if (secNumber === 4) {
         startCountdown();
       }
 
-      // Stage 10 (Grand Finale): Stop background particles & launch WhatsApp bubbles
       if (secNumber === 10) {
         bg.style.display = 'none';
         triggerFireworks();
@@ -780,10 +882,14 @@
       bg.style.display = 'block';
       if (bubbleInterval) clearInterval(bubbleInterval);
       document.querySelectorAll('.chat-bubble').forEach(b => b.remove());
+      poppedCount = 0;
+      document.getElementById('pop-counter').innerText = 0;
+      document.querySelectorAll('.balloon').forEach(b => b.classList.remove('popped'));
+      document.getElementById('balloon-next-btn').style.display = 'none';
       nextSection(1);
     }
 
-    /* WhatsApp Floating Text Messages (Neeche Se Upar) */
+    /* WhatsApp Floating Text Messages */
     const chatMessages = [
       "Happy Birthday, My Love. ❤️🎂",
       "To My Forever. 💖✨",
@@ -819,7 +925,7 @@
         const msg = chatMessages[Math.floor(Math.random() * chatMessages.length)];
         bubble.innerHTML = msg;
         
-        const randomX = Math.floor(Math.random() * 60) + 20; // 20% to 80% screen width
+        const randomX = Math.floor(Math.random() * 60) + 20;
         bubble.style.left = randomX + '%';
         
         document.body.appendChild(bubble);
@@ -837,7 +943,9 @@
         document.getElementById('balloon-message').innerText = msg;
 
         if (poppedCount === 6) {
-          document.getElementById('balloon-next-btn').style.display = 'inline-block';
+          const btn = document.getElementById('balloon-next-btn');
+          btn.style.display = 'inline-block';
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }
     }
