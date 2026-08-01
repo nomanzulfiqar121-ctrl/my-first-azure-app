@@ -175,9 +175,9 @@
 
     /* --- Cake/GIF Section Video Display Box --- */
     .cake-gif-card {
-      margin-top: 25px;
-      width: 150px;
-      height: 150px;
+      margin-top: 20px;
+      width: 140px;
+      height: 140px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 117, 143, 0.35);
       border-radius: 20px;
@@ -330,147 +330,170 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* --- PREMIUM 3D CAKE ANIMATION CSS --- */
-    .scene {
-      perspective: 1000px;
+    /* --- PINTEREST-INSPIRED STATIC PREMIUM CAKE CSS --- */
+    .cake-container-static {
       position: relative;
-      width: 100%;
-      height: 380px;
-      margin: 10px auto;
+      width: 220px;
+      height: 230px;
+      margin: 15px auto;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
     }
 
-    .heart-wrapper {
-      position: absolute;
-      top: 10px;
-      z-index: 50;
-      animation: floatHeart 2.5s ease-in-out infinite alternate;
+    /* Glowing Golden Floating Heart with GF Image */
+    .floating-golden-heart-box {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin-bottom: -15px;
+      z-index: 20;
+      animation: floatGoldenHeart 2.5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 25px rgba(255, 107, 107, 0.6));
     }
 
     .gf-heart-img {
-      width: 95px;
-      height: 95px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: center 20%;
       clip-path: url(#heartClip);
-      filter: drop-shadow(0 0 25px #ffcf54) drop-shadow(0 0 45px #ff6b6b);
-      transition: all 0.8s ease;
+      border: 3px solid #ffdf6d;
     }
 
-    @keyframes floatHeart {
+    @keyframes floatGoldenHeart {
       0% { transform: translateY(0) scale(1); }
-      100% { transform: translateY(-12px) scale(1.08); }
+      100% { transform: translateY(-10px) scale(1.06); }
     }
 
-    .cake-3d {
-      position: absolute;
-      bottom: 60px;
+    /* Solid Layered Cake Body */
+    .cake-body {
+      position: relative;
       width: 200px;
-      height: 120px;
-      transform-style: preserve-3d;
-      transform: rotateX(-15deg); 
-      animation: spinCake 15s linear infinite;
+      height: 110px;
+      background: linear-gradient(180deg, #3d1424 0%, #2a0b16 100%);
+      border-radius: 12px 12px 20px 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,117,143,0.2);
+      border: 2px solid #5a1d35;
     }
 
-    @keyframes spinCake {
-      0% { transform: rotateX(-15deg) rotateY(0deg); }
-      100% { transform: rotateX(-15deg) rotateY(360deg); }
-    }
-
-    .cake-3d.stop-spin {
-      animation-play-state: paused;
-    }
-
-    .cake-top {
+    /* Cake Layers */
+    .cake-layer-pink {
       position: absolute;
-      top: -100px;
+      top: 35px;
       left: 0;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, #101c38, #050a17);
-      border: 3px solid #d4af37;
-      border-radius: 50%;
-      transform: rotateX(90deg) translateZ(60px);
-      box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.3);
-      transform-style: preserve-3d;
+      width: 100%;
+      height: 35px;
+      background: linear-gradient(90deg, #d9537e, #ff758f, #d9537e);
     }
 
-    .cake-face {
+    .cake-layer-cream {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: #fdf0ed;
+    }
+
+    /* Chocolate Drip Frosting at top */
+    .chocolate-drip {
       position: absolute;
       top: 0;
-      left: 79px; 
-      width: 44px;
-      height: 120px;
-      background: linear-gradient(180deg, #101c38, #02040a);
-      border-top: 3px solid #d4af37;
-      border-bottom: 3px solid #d4af37;
-      backface-visibility: hidden;
-    }
-
-    .candles-3d {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotateX(-90deg) translateZ(10px); 
-      display: flex;
-      gap: 18px;
-      transform-style: preserve-3d;
-    }
-
-    .candle {
-      width: 10px;
+      left: 0;
+      width: 100%;
       height: 38px;
-      background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 4px, #fff 4px, #fff 8px);
-      border-radius: 3px 3px 0 0;
+      background: #3b140b;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .drip-drop {
+      position: absolute;
+      background: #3b140b;
+      width: 16px;
+      height: 25px;
+      border-radius: 0 0 10px 10px;
+    }
+    .d1 { top: 35px; left: 20px; height: 20px; }
+    .d2 { top: 35px; left: 65px; height: 30px; }
+    .d3 { top: 35px; left: 115px; height: 22px; }
+    .d4 { top: 35px; left: 160px; height: 27px; }
+
+    /* Candles on Cake */
+    .candles-static {
+      position: absolute;
+      top: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 22px;
+      z-index: 10;
+    }
+
+    .candle-item {
+      width: 8px;
+      height: 32px;
+      background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 3px, #ff4d6d 3px, #ff4d6d 6px);
+      border-radius: 2px;
       position: relative;
     }
 
-    .flame {
-      width: 10px;
-      height: 15px;
+    .flame-item {
+      width: 8px;
+      height: 14px;
       background: #ffb703;
       border-radius: 50% 50% 20% 20%;
       position: absolute;
-      top: -13px;
+      top: -12px;
       left: 0;
-      box-shadow: 0 0 8px #ff4d6d, 0 0 15px #ffb703;
+      box-shadow: 0 0 10px #ffb703, 0 0 18px #ff4d6d;
       animation: flicker 0.2s infinite alternate;
     }
 
-    .flame.off { display: none; }
+    .flame-item.off { display: none; }
 
     @keyframes flicker {
       0% { transform: scale(1); }
-      100% { transform: scale(1.15); }
+      100% { transform: scale(1.18); }
     }
 
-    .knife-3d {
+    /* Plate base */
+    .cake-plate {
+      width: 230px;
+      height: 16px;
+      background: linear-gradient(90deg, #8c7853, #e6d5b8, #8c7853);
+      border-radius: 50%;
+      margin-top: -4px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Slice cut effect class */
+    .cake-container-static.cut-open {
+      transform: scale(1.05);
+      opacity: 0;
+      filter: blur(8px);
+      transition: all 0.9s ease-in-out;
+    }
+
+    .knife-static {
       position: absolute;
-      top: -60px;
+      top: -40px;
       left: 50%;
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       opacity: 0;
       transform: translateX(-50%) rotate(-15deg);
-      z-index: 100;
+      z-index: 50;
     }
 
-    .knife-3d.slice-anim {
-      animation: cut3D 1.5s forwards;
+    .knife-static.slice-anim {
+      animation: cutStatic 1.2s forwards;
     }
 
-    @keyframes cut3D {
-      0% { top: -60px; opacity: 0; }
-      25% { top: 30px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
-      75% { top: 220px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
-      100% { top: 250px; opacity: 0; }
-    }
-
-    .cake-3d.cut-open {
-      transform: rotateX(-15deg) rotateY(0deg) scale(1.15);
-      opacity: 0;
-      filter: blur(10px);
-      transition: all 1s ease-in-out;
+    @keyframes cutStatic {
+      0% { top: -40px; opacity: 0; }
+      30% { top: 40px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
+      70% { top: 130px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
+      100% { top: 160px; opacity: 0; }
     }
 
     /* 3D Flip Card System */
@@ -594,7 +617,6 @@
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
     <p>Get ready to blow candles and make a wish!🎂</p>
     
-    <!-- New GIF Box for Countdown -->
     <div class="cake-gif-card">
       <video autoplay loop muted playsinline>
         <source src="VID-20260729-WA0010.mp4" type="video/mp4">
@@ -603,40 +625,48 @@
     </div>
   </div>
 
-  <!-- Stage 5: Cake Cutting (UPDATED TO 3D) -->
+  <!-- Stage 5: Cake Cutting (PINTEREST-INSPIRED STATIC CAKE) -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
 
     <p id="cake-status-text">Make a wish and blow the candles</p>
 
-    <div class="scene">
-      <div class="heart-wrapper">
-        <!-- GF IMAGE ADDED HERE -->
-        <img src="Screenshot_2025-10-24-22-36-27-20.png" class="gf-heart-img" id="gf-heart" alt="My Love">
-      </div>
-
-      <div class="cake-3d" id="cake-3d">
-        <div class="cake-top">
-           <div class="candles-3d">
-              <div class="candle"><div class="flame" id="flame-1"></div></div>
-              <div class="candle"><div class="flame" id="flame-2"></div></div>
-              <div class="candle"><div class="flame" id="flame-3"></div></div>
-           </div>
+    <div style="position: relative; display: inline-block;">
+      <div class="knife-static" id="knife-el">🔪</div>
+      
+      <div class="cake-container-static" id="cake-container-el">
+        <!-- Glowing Golden Floating Heart with GF Image inside -->
+        <div class="floating-golden-heart-box">
+          <img src="Screenshot_2025-10-24-22-36-27-20.png" class="gf-heart-img" alt="My Love">
         </div>
-        <div id="cake-faces"></div>
+
+        <!-- Solid Aesthetic Cake Body -->
+        <div class="cake-body">
+          <div class="candles-static">
+            <div class="candle-item"><div class="flame-item" id="flame-1"></div></div>
+            <div class="candle-item"><div class="flame-item" id="flame-2"></div></div>
+            <div class="candle-item"><div class="flame-item" id="flame-3"></div></div>
+          </div>
+          <div class="chocolate-drip">
+            <div class="drip-drop d1"></div>
+            <div class="drip-drop d2"></div>
+            <div class="drip-drop d3"></div>
+            <div class="drip-drop d4"></div>
+          </div>
+          <div class="cake-layer-pink"></div>
+          <div class="cake-layer-cream"></div>
+        </div>
+        <div class="cake-plate"></div>
       </div>
     </div>
-    
-    <div class="knife-3d" id="knife-el">🔪</div>
 
-    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px; margin-top: 20px;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px; margin-top: 10px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
       <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
       <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
     </div>
 
-    <!-- Cake Section Video Display Box -->
     <div class="cake-gif-card">
       <video id="cake-video-el" autoplay loop muted playsinline>
         <source id="cake-video-source" src="VID-20260729-WA0013.mp4" type="video/mp4">
@@ -685,7 +715,6 @@
         <div id="typed-text"></div>
       </div>
       
-      <!-- New GIF Box for Typed Letter (Hidden initially) -->
       <div class="cake-gif-card" id="letter-gif-box" style="display: none; margin-top: 20px;">
         <video autoplay loop muted playsinline>
           <source src="VID-20260729-WA0014.mp4" type="video/mp4">
@@ -731,8 +760,8 @@
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">💘</div>
-          <div class="flip-card-back">Happy birthday My   Sweet Bacha 🧸</div>
-           </div>
+          <div class="flip-card-back">Happy birthday My Sweet Bacha 🧸</div>
+        </div>
       </div>
     </div>
 
@@ -840,29 +869,21 @@
 
     // 4. Blow Candles
     function blowCandles() {
-      document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
+      document.querySelectorAll('.flame-item').forEach(f => f.classList.add('off'));
       document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
       document.getElementById('blow-btn').style.display = 'none';
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 5. Knife Slice for 3D Cake (UPDATED)
+    // 5. Knife Slice for Static Cake
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
 
-      const cake = document.getElementById('cake-3d');
-      cake.classList.add('stop-spin');
-
       setTimeout(() => {
-        cake.classList.add('cut-open');
+        const cakeContainer = document.getElementById('cake-container-el');
+        cakeContainer.classList.add('cut-open');
         
-        const heart = document.getElementById('gf-heart');
-        if (heart) {
-          heart.style.transform = 'scale(0)';
-          heart.style.opacity = '0';
-        }
-
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
 
         const cakeVideo = document.getElementById('cake-video-el');
@@ -877,7 +898,7 @@
 
         document.getElementById('cut-btn').style.display = 'none';
         document.getElementById('after-cake-btn').style.display = 'inline-block';
-      }, 800); // 800ms wait for 3D knife to reach cake
+      }, 650);
     }
 
     // 6. Envelope Animation & Typewriter Letter
@@ -1033,29 +1054,6 @@
       });
     }
     animateFireworks();
-
-    // 10. Generate 3D Cake Sides automatically
-    function createCakeSides() {
-        const facesContainer = document.getElementById('cake-faces');
-        if (!facesContainer) return;
-        facesContainer.innerHTML = '';
-        const numFaces = 16; 
-        const angle = 360 / numFaces;
-        const radius = 98; 
-
-        for (let i = 0; i < numFaces; i++) {
-            const face = document.createElement('div');
-            face.className = 'cake-face';
-            face.style.transform = `rotateY(${i * angle}deg) translateZ(${radius}px)`;
-            
-            if (i % 2 === 0) {
-                face.style.backgroundImage = "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 1px, transparent 1px), radial-gradient(circle at 20% 80%, rgba(255,215,0,0.3) 1px, transparent 1px)";
-                face.style.backgroundSize = "20px 30px";
-            }
-            facesContainer.appendChild(face);
-        }
-    }
-    createCakeSides(); // Generates immediately
   </script>
 </body>
 </html>
