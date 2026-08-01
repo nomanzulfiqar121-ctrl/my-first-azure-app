@@ -722,103 +722,6 @@
     <p style="font-size: 0.85rem; color: #ff758f;"><span id="pop-counter">0</span> / 6 popped</p>
     <p id="balloon-message" style="min-height: 45px; font-style: italic; margin-top: 10px;"></p>
 
-    <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope ✉️</button>
-  </div>
-
-  <!-- Stage 7: Envelope View -->
-  <div id="sec-7" class="section">
-    <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
-
-    <div id="envelope-prompt">
-      <div class="envelope-wrapper">
-        <div class="envelope" id="envelope-el" onclick="openFloralEnvelope()">
-          <div class="envelope-flap"></div>
-          <div class="heart-seal">❤️</div>
-          <div class="envelope-text">A Special Message For You ❤️</div>
-        </div>
-      </div>
-      <button class="btn-primary" onclick="openFloralEnvelope()">Open Envelope ✉️</button>
-    </div>
-
-    <div id="letter-content" style="display: none;">
-      <div class="note-card">
-      <div id="typed-text"></div>
-      </div>
-      
-      <div class="cake-gif-card" id="letter-gif-box" style="display: none; margin-top: 20px;">
-        <video autoplay loop muted playsinline>
-          <source src="VID-20260729-WA0014.mp4" type="video/mp4">
-          Your browser does not support video.
-        </video>
-      </div>
-
-      <div style="display:flex; justify-content:center; gap:15px; margin-top: 15px;">
-        <button class="btn-secondary" onclick="restartTypewriter()">Replay 🔄</button>
-        <button class="btn-primary" id="type-next-btn" style="display:none;" onclick="nextSection(8)">Tap My Hearts 💕</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Stage 8: 3D Heart Cards -->
-  <div id="sec-8" class="section">
-    <div class="sub-title">SPECIAL WISHES FOR YOU</div>
-    <h1 style="font-size: 1.5rem; margin-bottom: 5px;">Flip Each Heart! 💖</h1>
-    <p style="font-size: 0.8rem; color: #ff758f;">Tap to reveal the sweet message behind it</p>
-
-    <div class="flip-grid">
-      <div class="flip-card" onclick="flipHeart(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">💖</div>
-          <div class="flip-card-back">Happy Birthday My Love! ❤️</div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="flipHeart(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">💗</div>
-          <div class="flip-card-back">Happy Birthday My Darling! 💕</div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="flipHeart(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">💓</div>
-          <div class="flip-card-back">Happy Birthday My Beautiful Girl! ⭐</div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="flipHeart(this)">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">💘</div>
-          <div class="flip-card-back">Happy Birthday My Sweet Bacha 🧸</div>
-        </div>
-      </div>
-    </div>
-
-    <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
-  </div>
-
-  <!-- Stage 9: You In Every Mood -->
-  <div id="sec-9" class="section">
-    <div class="sub-title">SEALED WITH LOVE</div>
-    <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
-
-    <div class="mood-card">
-      <div class="mood-counter" id="mood-counter-text">01 / 06</div>
-      <div class="mood-gif-box">
-        <video id="mood-video" autoplay loop muted playsinline>
-          <source id="video-source" src="VID-20260729-WA0002.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="mood-note" id="mood-note-text">When you're being effortlessly cute 🥰</div>
-    </div>
-
-    <div class="carousel-nav">
-      <button class="btn-secondary" style="margin-top:0;" onclick="prevMood()">← Prev</button>
-      <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
-    </div>
-
     <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Grand Finale ✨</button>
   </div>
 
@@ -882,11 +785,29 @@
 
     /* WhatsApp Floating Text Messages (Neeche Se Upar) */
     const chatMessages = [
-      "Happy birthday 🎂🥳🎈",
-      "Forever Grateful for You ❤️",
-      "Happy Birthday to my favorite person ✨",
-      "Wish you all the happiness in the world 🎉",
-      "Happy Birthday my Love 💖"
+      "Happy Birthday, My Love. ❤️🎂",
+      "To My Forever. 💖✨",
+      "My Endless Smile. 😊💖",
+      "Lucky to Love You. 🍀❤️",
+      "Every Wish, You. ✨💞",
+      "You Make Life Beautiful. 🌸",
+      "Happy Birthday, Beautiful Soul. 🤍🎉",
+      "My Heart Chose You. 💘",
+      "Forever My Person. 🫂❤️",
+      "You Are My Peace. 🌙",
+      "My Greatest Blessing. 🌹✨",
+      "Happy Birthday, My Forever Favorite. ❤️🎂",
+      "You Make Every Day Beautiful. 🌸💖",
+      "Forever Grateful You Are Mine. 🫶✨",
+      "My Heart Smiles Because Of You. 💞",
+      "Every Love Story Needs You. 🌹❤️",
+      "You Are My Greatest Blessing. 🤍✨",
+      "Happy Birthday, My Beautiful Soul. 🎉💕",
+      "Loving You Is My Favorite. 💘",
+      "You Complete My Whole World. 🌍❤️",
+      "Forever Starts And Ends With You. 💖🌙",
+      "My Heart Belongs Only To You. 🥹❤️",
+      "You Are My Safe Place 🥰"
     ];
 
     function startWhatsAppBubbles() {
@@ -904,7 +825,7 @@
         document.body.appendChild(bubble);
 
         setTimeout(() => { bubble.remove(); }, 8000);
-      }, 2400);
+      }, 2000);
     }
 
     let poppedCount = 0;
@@ -1156,7 +1077,7 @@
 
     function animateFireworks() {
       requestAnimationFrame(animateFireworks);
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Clears canvas completely without darkening screen
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       rockets = rockets.filter(r => {
         r.draw();
