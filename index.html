@@ -118,7 +118,6 @@
       margin-top: 15px;
     }
 
-    /* --- Cake/GIF Section Video Display Box --- */
     .cake-gif-card {
       margin-top: 20px;
       width: 140px;
@@ -141,7 +140,7 @@
       border-radius: 18px;
     }
 
-    /* --- Floral Envelope Custom Styles --- */
+    /* Envelope Styles */
     .envelope-wrapper {
       position: relative;
       width: 320px;
@@ -242,7 +241,7 @@
       white-space: pre-wrap;
     }
 
-    /* Balloon Grid Styles */
+    /* Balloons Grid */
     .balloon-grid {
       display: flex;
       justify-content: center;
@@ -275,80 +274,25 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* --- PERFECT CLEAN SPLIT CAKE STYLING --- */
-    .cake-outer-container {
-      position: relative;
-      width: 220px;
-      height: 150px;
-      margin: 25px auto 15px auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .cake-split-wrapper {
+    /* --- ORIGINAL STABLE CAKE DESIGN --- */
+    .cake-container {
       position: relative;
       width: 200px;
-      height: 110px;
+      height: 140px;
+      margin: 30px auto 10px auto;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
     }
 
-    .cake-half {
-      position: relative;
-      width: 100px;
-      height: 110px;
-      overflow: hidden;
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .cake-half.left {
-      transform-origin: right center;
-      border-top-left-radius: 12px;
-      border-bottom-left-radius: 20px;
-    }
-
-    .cake-half.right {
-      transform-origin: left center;
-      border-top-right-radius: 12px;
-      border-bottom-right-radius: 20px;
-    }
-
-    .cake-inner-content {
-      position: absolute;
-      top: 0;
-      width: 200px;
-      height: 110px;
-    }
-
-    .cake-half.left .cake-inner-content {
-      left: 0;
-    }
-
-    .cake-half.right .cake-inner-content {
-      left: -100px;
-    }
-
-    /* Split Action Trigger */
-    .cake-split-wrapper.cut-open .cake-half.left {
-      transform: translateX(-15px) rotate(-6deg);
-    }
-
-    .cake-split-wrapper.cut-open .cake-half.right {
-      transform: translateX(15px) rotate(6deg);
-    }
-
-    /* Cake Body Base */
     .cake-body {
       position: relative;
-      width: 200px;
-      height: 110px;
+      width: 180px;
+      height: 100px;
       background: linear-gradient(180deg, #ff758f 0%, #d9537e 100%);
-      border-radius: 12px 12px 20px 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.3);
+      border-radius: 12px 12px 16px 16px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.3);
       border: 2px solid #ff4d6d;
-      z-index: 10;
     }
 
     .chocolate-drip {
@@ -356,93 +300,85 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 40px;
+      height: 35px;
       background: #3b140b;
       border-radius: 10px 10px 0 0;
-      z-index: 12;
     }
 
     .drip-drop {
       position: absolute;
       background: #3b140b;
-      width: 18px;
-      height: 28px;
-      border-radius: 0 0 12px 12px;
+      width: 16px;
+      height: 25px;
+      border-radius: 0 0 10px 10px;
     }
-    .d1 { top: 36px; left: 15px; height: 22px; }
-    .d2 { top: 36px; left: 55px; height: 32px; }
-    .d3 { top: 36px; left: 100px; height: 25px; }
-    .d4 { top: 36px; left: 145px; height: 30px; }
-    .d5 { top: 36px; left: 175px; height: 20px; }
+    .d1 { top: 33px; left: 15px; height: 18px; }
+    .d2 { top: 33px; left: 50px; height: 26px; }
+    .d3 { top: 33px; left: 90px; height: 22px; }
+    .d4 { top: 33px; left: 130px; height: 28px; }
+    .d5 { top: 33px; left: 155px; height: 16px; }
 
     .cake-layer-middle {
       position: absolute;
-      top: 45px;
+      top: 42px;
       left: 0;
       width: 100%;
-      height: 30px;
+      height: 25px;
       background: linear-gradient(90deg, #ff4d6d, #ff758f, #ff4d6d);
-      z-index: 11;
     }
 
     .cake-layer-bottom-choco {
       position: absolute;
-      top: 78px;
+      top: 72px;
       left: 0;
       width: 100%;
-      height: 20px;
+      height: 18px;
       background: #3b140b;
-      border-radius: 0 0 18px 18px;
-      z-index: 11;
+      border-radius: 0 0 14px 14px;
     }
 
     .cake-inscription {
       font-family: 'Dancing Script', cursive;
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: #ffe6f0;
       text-shadow: 0 1px 3px rgba(0,0,0,0.8);
       position: absolute;
-      top: 50px;
-      width: 200px;
-      z-index: 25;
+      top: 45px;
+      width: 100%;
       text-align: center;
-      pointer-events: none;
     }
 
-    /* Candles */
-    .candles-static {
+    .candles-group {
       position: absolute;
-      top: -24px;
+      top: -38px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 26px;
-      z-index: 30;
-      width: 200px;
-      justify-content: center;
+      gap: 22px;
+      z-index: 20;
     }
 
-    .candle-item {
-      width: 9px;
+    .candle {
+      width: 8px;
       height: 36px;
       background: repeating-linear-gradient(45deg, #ffc6ff, #ffc6ff 3px, #ff4d6d 3px, #ff4d6d 6px);
       border-radius: 3px;
       position: relative;
     }
 
-    .flame-item {
+    .flame {
       width: 10px;
       height: 16px;
       background: #ffb703;
       border-radius: 50% 50% 20% 20%;
       position: absolute;
       top: -14px;
-      left: -0.5px;
+      left: -1px;
       box-shadow: 0 0 12px #ffb703, 0 0 20px #ff4d6d;
       animation: flicker 0.2s infinite alternate;
     }
 
-    .flame-item.off { display: none; }
+    .flame.off { display: none; }
 
     @keyframes flicker {
       0% { transform: scale(1); }
@@ -451,39 +387,30 @@
 
     .cake-plate {
       position: absolute;
-      bottom: -10px;
+      bottom: -8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 230px;
-      height: 16px;
+      width: 220px;
+      height: 14px;
       background: linear-gradient(90deg, #8c7853, #e6d5b8, #8c7853);
       border-radius: 50%;
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-      z-index: 5;
     }
 
-    .knife-static {
+    .knife {
       position: absolute;
-      top: -20px;
-      left: 50%;
-      font-size: 3.2rem;
-      opacity: 0;
-      transform: translateX(-50%) rotate(-15deg);
-      z-index: 50;
+      top: -15px;
+      right: -35px;
+      font-size: 2.5rem;
+      transition: transform 0.8s ease;
+      z-index: 30;
     }
 
-    .knife-static.slice-anim {
-      animation: cutStatic 1.2s forwards;
+    .knife.slice {
+      transform: translate(-110px, 45px) rotate(-45deg);
     }
 
-    @keyframes cutStatic {
-      0% { top: -20px; opacity: 0; }
-      30% { top: 30px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
-      70% { top: 90px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
-      100% { top: 120px; opacity: 0; }
-    }
-
-    /* 3D Flip Card System */
+    /* 3D Flip Cards */
     .flip-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -593,7 +520,7 @@
     <div class="sub-title">GET READY FOR THE CAKE</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown!</h1>
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
-    <p>Get ready to blow candles and make a wish!🎂</p>
+    <p>Get ready to blow candles and make a wish! 🎂</p>
     
     <div class="cake-gif-card">
       <video autoplay loop muted playsinline>
@@ -603,70 +530,38 @@
     </div>
   </div>
 
-  <!-- Stage 5: Cake Cutting (Fixed Clean Split & Layout) -->
+  <!-- Stage 5: Original Stable Cake Section -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
 
     <p id="cake-status-text">Make a wish and blow the candles</p>
 
-    <div class="cake-outer-container">
-      <div class="knife-static" id="knife-el">🔪</div>
-      
-      <div class="cake-split-wrapper" id="cake-container-el">
-        <!-- Left Half -->
-        <div class="cake-half left">
-          <div class="cake-inner-content">
-            <div class="cake-body">
-              <div class="candles-static">
-                <div class="candle-item"><div class="flame-item" id="flame-1"></div></div>
-                <div class="candle-item"><div class="flame-item" id="flame-2"></div></div>
-                <div class="candle-item"><div class="flame-item" id="flame-3"></div></div>
-              </div>
-              <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
-              <div class="chocolate-drip">
-                <div class="drip-drop d1"></div>
-                <div class="drip-drop d2"></div>
-                <div class="drip-drop d3"></div>
-                <div class="drip-drop d4"></div>
-                <div class="drip-drop d5"></div>
-              </div>
-              <div class="cake-layer-middle"></div>
-              <div class="cake-layer-bottom-choco"></div>
-            </div>
-          </div>
+    <div class="cake-container">
+      <div class="knife" id="knife-el">🔪</div>
+      <div class="cake-body">
+        <div class="candles-group">
+          <div class="candle"><div class="flame" id="flame-1"></div></div>
+          <div class="candle"><div class="flame" id="flame-2"></div></div>
+          <div class="candle"><div class="flame" id="flame-3"></div></div>
         </div>
-
-        <!-- Right Half -->
-        <div class="cake-half right">
-          <div class="cake-inner-content">
-            <div class="cake-body">
-              <div class="candles-static">
-                <div class="candle-item"><div class="flame-item" id="flame-1"></div></div>
-                <div class="candle-item"><div class="flame-item" id="flame-2"></div></div>
-                <div class="candle-item"><div class="flame-item" id="flame-3"></div></div>
-              </div>
-              <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
-              <div class="chocolate-drip">
-                <div class="drip-drop d1"></div>
-                <div class="drip-drop d2"></div>
-                <div class="drip-drop d3"></div>
-                <div class="drip-drop d4"></div>
-                <div class="drip-drop d5"></div>
-              </div>
-              <div class="cake-layer-middle"></div>
-              <div class="cake-layer-bottom-choco"></div>
-            </div>
-          </div>
+        <div class="cake-inscription">Happy Birthday My Nae Sarang</div>
+        <div class="chocolate-drip">
+          <div class="drip-drop d1"></div>
+          <div class="drip-drop d2"></div>
+          <div class="drip-drop d3"></div>
+          <div class="drip-drop d4"></div>
+          <div class="drip-drop d5"></div>
         </div>
+        <div class="cake-layer-middle"></div>
+        <div class="cake-layer-bottom-choco"></div>
       </div>
-
       <div class="cake-plate"></div>
     </div>
 
-    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px; margin-top: 10px;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px; margin-top: 15px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
-      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
+      <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCake()">Cut the Cake 🔪</button>
       <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
     </div>
 
@@ -766,7 +661,7 @@
           <div class="flip-card-back">Happy birthday My Sweet Bacha 🧸</div>
         </div>
       </div>
-    </div>
+    </div> 
 
     <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
   </div>
@@ -808,7 +703,7 @@
   </div>
 
   <script>
-    // 1. Falling Particles
+    // Falling Particles
     const bg = document.getElementById('bg-particles');
     const items = ['❤️', '💖', '🌸', '✨', '💕', '💫'];
 
@@ -838,7 +733,7 @@
       }
     }
 
-    // 2. Balloon Popping
+    // Balloon Popping
     let poppedCount = 0;
     function pop(element, msg) {
       if (!element.classList.contains('popped')) {
@@ -853,7 +748,7 @@
       }
     }
 
-    // 3. Countdown Timer
+    // Countdown Timer
     function startCountdown() {
       let count = 10;
       let el = document.getElementById('countdown-num');
@@ -870,41 +765,35 @@
       }, 1000);
     }
 
-    // 4. Blow Candles
+    // Blow Candles
     function blowCandles() {
-      document.querySelectorAll('.flame-item').forEach(f => f.classList.add('off'));
+      document.querySelectorAll('.flame').forEach(f => f.classList.add('off'));
       document.getElementById('cake-status-text').innerText = "Wish granted, I hope. 💫";
       document.getElementById('blow-btn').style.display = 'none';
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 5. Knife Slice with Clean Cake Split Animation
-    function cutCakeWithKnife() {
+    // Cut Cake (Original Stable Logic)
+    function cutCake() {
       const knife = document.getElementById('knife-el');
-      knife.classList.add('slice-anim');
+      knife.classList.add('slice');
+      document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
 
-      setTimeout(() => {
-        const cakeContainer = document.getElementById('cake-container-el');
-        cakeContainer.classList.add('cut-open');
-        
-        document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
+      const cakeVideo = document.getElementById('cake-video-el');
+      const cakeSource = document.getElementById('cake-video-source');
+      if (cakeSource && cakeVideo) {
+        cakeSource.src = "VID-20260729-WA0011.mp4";
+        cakeVideo.load();
+        cakeVideo.play();
+      }
 
-        const cakeVideo = document.getElementById('cake-video-el');
-        const cakeSource = document.getElementById('cake-video-source');
-        if (cakeSource && cakeVideo) {
-          cakeSource.src = "VID-20260729-WA0011.mp4";
-          cakeVideo.load();
-          cakeVideo.play();
-        }
+      triggerFireworks();
 
-        triggerFireworks();
-
-        document.getElementById('cut-btn').style.display = 'none';
-        document.getElementById('after-cake-btn').style.display = 'inline-block';
-      }, 600);
+      document.getElementById('cut-btn').style.display = 'none';
+      document.getElementById('after-cake-btn').style.display = 'inline-block';
     }
 
-    // 6. Envelope Animation & Typewriter Letter
+    // Envelope Animation & Typewriter Letter
     function openFloralEnvelope() {
       const env = document.getElementById('envelope-el');
       env.classList.add('open');
@@ -944,7 +833,7 @@
       startTypewriter();
     }
 
-    // 7. 3D Heart Cards
+    // 3D Heart Cards
     let flippedCount = 0;
     function flipHeart(card) {
       if (!card.classList.contains('flipped')) {
@@ -956,7 +845,7 @@
       }
     }
 
-    // 8. Mood Carousel Logic
+    // Mood Carousel Logic
     const moodData = [
       {
         src: "VID-20260729-WA0002.mp4",
@@ -1017,7 +906,7 @@
       }
     }
 
-    // 9. Fireworks Engine
+    // Fireworks Engine
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
