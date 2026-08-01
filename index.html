@@ -330,22 +330,92 @@
       100% { transform: scale(0); opacity: 0; }
     }
 
-    /* Cake Animation Elements */
-    .cake-wrapper {
-      margin: 30px auto 20px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* --- PREMIUM 3D CAKE ANIMATION CSS --- */
+    .scene {
+      perspective: 1000px;
       position: relative;
-      width: 220px;
-    }
-
-    .candles-row {
+      width: 100%;
+      height: 380px;
+      margin: 10px auto;
       display: flex;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: -4px;
-      z-index: 5;
+      align-items: center;
+    }
+
+    .heart-wrapper {
+      position: absolute;
+      top: 10px;
+      z-index: 50;
+      animation: floatHeart 2.5s ease-in-out infinite alternate;
+    }
+
+    .gf-heart-img {
+      width: 95px;
+      height: 95px;
+      object-fit: cover;
+      clip-path: url(#heartClip);
+      filter: drop-shadow(0 0 25px #ffcf54) drop-shadow(0 0 45px #ff6b6b);
+      transition: all 0.8s ease;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-12px) scale(1.08); }
+    }
+
+    .cake-3d {
+      position: absolute;
+      bottom: 60px;
+      width: 200px;
+      height: 120px;
+      transform-style: preserve-3d;
+      transform: rotateX(-15deg); 
+      animation: spinCake 15s linear infinite;
+    }
+
+    @keyframes spinCake {
+      0% { transform: rotateX(-15deg) rotateY(0deg); }
+      100% { transform: rotateX(-15deg) rotateY(360deg); }
+    }
+
+    .cake-3d.stop-spin {
+      animation-play-state: paused;
+    }
+
+    .cake-top {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #101c38, #050a17);
+      border: 3px solid #d4af37;
+      border-radius: 50%;
+      transform: rotateX(90deg) translateZ(60px);
+      box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.3);
+      transform-style: preserve-3d;
+    }
+
+    .cake-face {
+      position: absolute;
+      top: 0;
+      left: 79px; 
+      width: 44px;
+      height: 120px;
+      background: linear-gradient(180deg, #101c38, #02040a);
+      border-top: 3px solid #d4af37;
+      border-bottom: 3px solid #d4af37;
+      backface-visibility: hidden;
+    }
+
+    .candles-3d {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotateX(-90deg) translateZ(10px); 
+      display: flex;
+      gap: 18px;
+      transform-style: preserve-3d;
     }
 
     .candle {
@@ -375,73 +445,32 @@
       100% { transform: scale(1.15); }
     }
 
-    .cake-layer {
-      width: 200px;
-      height: 105px;
-      background: linear-gradient(to bottom, #ff758f, #c77dff);
-      border-radius: 12px;
-      border-top: 10px solid #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .cake-badge {
-      background: rgba(0,0,0,0.35);
-      padding: 6px 14px;
-      border-radius: 15px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .knife {
+    .knife-3d {
       position: absolute;
       top: -60px;
-      right: 20px;
-      font-size: 50px;
-      z-index: 20;
-      pointer-events: none;
-      transform: rotate(-45deg);
-    }
-
-    .knife.slice-anim { animation: realisticSlice 1.2s ease-in-out forwards; }
-
-    @keyframes realisticSlice {
-      0% { opacity: 0; top: -60px; transform: rotate(-45deg) scale(0.8); }
-      30% { opacity: 1; top: 10px; transform: rotate(-10deg) scale(1.1); }
-      60% { top: 60px; transform: rotate(15deg) scale(1); }
-      100% { opacity: 0; top: 110px; transform: rotate(30deg) scale(0.8); }
-    }
-
-    .cake-layer.cut {
-      clip-path: polygon(0 0, 48% 0, 48% 100%, 0 100%);
-      transform: translateX(-18px) rotate(-4deg);
-    }
-
-    .cake-cut-right {
-      position: absolute;
-      top: 34px;
-      width: 200px;
-      height: 105px;
-      background: linear-gradient(to bottom, #ff758f, #c77dff);
-      border-radius: 12px;
-      border-top: 10px solid #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      clip-path: polygon(52% 0, 100% 0, 100% 100%, 52% 100%);
+      left: 50%;
+      font-size: 3.5rem;
       opacity: 0;
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      pointer-events: none;
+      transform: translateX(-50%) rotate(-15deg);
+      z-index: 100;
     }
 
-    .cake-cut-right.show-cut {
-      opacity: 1;
-      transform: translateX(18px) rotate(4deg);
+    .knife-3d.slice-anim {
+      animation: cut3D 1.5s forwards;
+    }
+
+    @keyframes cut3D {
+      0% { top: -60px; opacity: 0; }
+      25% { top: 30px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
+      75% { top: 220px; opacity: 1; transform: translateX(-50%) rotate(0deg); }
+      100% { top: 250px; opacity: 0; }
+    }
+
+    .cake-3d.cut-open {
+      transform: rotateX(-15deg) rotateY(0deg) scale(1.15);
+      opacity: 0;
+      filter: blur(10px);
+      transition: all 1s ease-in-out;
     }
 
     /* 3D Flip Card System */
@@ -514,6 +543,15 @@
 </head>
 <body>
 
+  <!-- Invisible SVG Mask for Perfect Heart Shape -->
+  <svg width="0" height="0" style="position: absolute;">
+    <defs>
+      <clipPath id="heartClip" clipPathUnits="objectBoundingBox">
+        <path d="M0.5,0.95 C0.5,0.95 0,0.5 0,0.25 C0,0.1 0.1,0 0.25,0 C0.35,0 0.5,0.1 0.5,0.1 C0.5,0.1 0.65,0 0.75,0 C0.9,0 1,0.1 1,0.25 C1,0.5 0.5,0.95 0.5,0.95 Z"></path>
+      </clipPath>
+    </defs>
+  </svg>
+
   <audio id="bg-music" loop>
     <source src="my.music.mp3" type="audio/mpeg">
   </audio>
@@ -565,31 +603,34 @@
     </div>
   </div>
 
-  <!-- Stage 5: Cake Cutting -->
+  <!-- Stage 5: Cake Cutting (UPDATED TO 3D) -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
 
     <p id="cake-status-text">Make a wish and blow the candles</p>
 
-    <div class="cake-wrapper">
-      <div class="knife" id="knife-el">🔪</div>
-
-      <div class="candles-row">
-        <div class="candle"><div class="flame" id="flame-1"></div></div>
-        <div class="candle"><div class="flame" id="flame-2"></div></div>
-        <div class="candle"><div class="flame" id="flame-3"></div></div>
+    <div class="scene">
+      <div class="heart-wrapper">
+        <!-- GF IMAGE ADDED HERE -->
+        <img src="Screenshot_2025-10-24-22-36-27-20.png" class="gf-heart-img" id="gf-heart" alt="My Love">
       </div>
 
-      <div class="cake-layer" id="main-cake">
-        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
-      </div>
-      <div class="cake-cut-right" id="right-cake">
-        <div class="cake-badge">Happy Birthday "Nae Sarang"</div>
+      <div class="cake-3d" id="cake-3d">
+        <div class="cake-top">
+           <div class="candles-3d">
+              <div class="candle"><div class="flame" id="flame-1"></div></div>
+              <div class="candle"><div class="flame" id="flame-2"></div></div>
+              <div class="candle"><div class="flame" id="flame-3"></div></div>
+           </div>
+        </div>
+        <div id="cake-faces"></div>
       </div>
     </div>
+    
+    <div class="knife-3d" id="knife-el">🔪</div>
 
-    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap: 10px; margin-top: 20px;">
       <button class="btn-primary" id="blow-btn" onclick="blowCandles()">Blow Candles 🕯️</button>
       <button class="btn-primary" id="cut-btn" style="display:none;" onclick="cutCakeWithKnife()">Cut the Cake 🔪</button>
       <button class="btn-primary" id="after-cake-btn" style="display:none;" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
@@ -690,8 +731,8 @@
       <div class="flip-card" onclick="flipHeart(this)">
         <div class="flip-card-inner">
           <div class="flip-card-front">💘</div>
-          <div class="flip-card-back">Happy Birthday My Sweet Bachaa! 🧸</div>
-        </div>
+          <div class="flip-card-back">Happy birthday My   Sweet Bacha 🧸</div>
+           </div>
       </div>
     </div>
 
@@ -805,27 +846,38 @@
       document.getElementById('cut-btn').style.display = 'inline-block';
     }
 
-    // 5. Knife Slice with Dynamic Video Change
+    // 5. Knife Slice for 3D Cake (UPDATED)
     function cutCakeWithKnife() {
       const knife = document.getElementById('knife-el');
       knife.classList.add('slice-anim');
 
+      const cake = document.getElementById('cake-3d');
+      cake.classList.add('stop-spin');
+
       setTimeout(() => {
-        document.getElementById('main-cake').classList.add('cut');
-        document.getElementById('right-cake').classList.add('show-cut');
+        cake.classList.add('cut-open');
+        
+        const heart = document.getElementById('gf-heart');
+        if (heart) {
+          heart.style.transform = 'scale(0)';
+          heart.style.opacity = '0';
+        }
+
         document.getElementById('cake-status-text').innerText = "Cake Cut Successfully! 🎉";
 
         const cakeVideo = document.getElementById('cake-video-el');
         const cakeSource = document.getElementById('cake-video-source');
-        cakeSource.src = "VID-20260729-WA0011.mp4";
-        cakeVideo.load();
-        cakeVideo.play();
+        if (cakeSource && cakeVideo) {
+          cakeSource.src = "VID-20260729-WA0011.mp4";
+          cakeVideo.load();
+          cakeVideo.play();
+        }
 
         triggerFireworks();
 
         document.getElementById('cut-btn').style.display = 'none';
         document.getElementById('after-cake-btn').style.display = 'inline-block';
-      }, 500);
+      }, 800); // 800ms wait for 3D knife to reach cake
     }
 
     // 6. Envelope Animation & Typewriter Letter
@@ -858,7 +910,7 @@
         } else {
           clearInterval(typeTimer);
           document.getElementById('type-next-btn').style.display = "inline-block";
-          document.getElementById('letter-gif-box').style.display = "inline-flex"; // Video box appears when typing is done
+          document.getElementById('letter-gif-box').style.display = "inline-flex"; 
         }
       }, 35);
     }
@@ -981,6 +1033,29 @@
       });
     }
     animateFireworks();
+
+    // 10. Generate 3D Cake Sides automatically
+    function createCakeSides() {
+        const facesContainer = document.getElementById('cake-faces');
+        if (!facesContainer) return;
+        facesContainer.innerHTML = '';
+        const numFaces = 16; 
+        const angle = 360 / numFaces;
+        const radius = 98; 
+
+        for (let i = 0; i < numFaces; i++) {
+            const face = document.createElement('div');
+            face.className = 'cake-face';
+            face.style.transform = `rotateY(${i * angle}deg) translateZ(${radius}px)`;
+            
+            if (i % 2 === 0) {
+                face.style.backgroundImage = "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 1px, transparent 1px), radial-gradient(circle at 20% 80%, rgba(255,215,0,0.3) 1px, transparent 1px)";
+                face.style.backgroundSize = "20px 30px";
+            }
+            facesContainer.appendChild(face);
+        }
+    }
+    createCakeSides(); // Generates immediately
   </script>
 </body>
 </html>
