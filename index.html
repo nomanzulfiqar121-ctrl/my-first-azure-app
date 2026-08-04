@@ -120,26 +120,53 @@
       margin-top: 15px;
     }
 
-    /* --- Custom 3D Animated SVG Heart Container --- */
+    /* --- Custom 3D SVG Heart + Yellow Rotating Orbit Ring --- */
     .heart-container-main {
       position: relative;
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
       margin: 10px auto 20px auto;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
+    /* Soft Background Glow */
     .heart-glow-ring {
       position: absolute;
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 0, 85, 0.45) 0%, rgba(255, 0, 85, 0) 70%);
+      background: radial-gradient(circle, rgba(255, 0, 85, 0.4) 0%, rgba(255, 0, 85, 0) 70%);
       animation: ringPulse 1.8s infinite ease-in-out;
     }
 
+    /* Continuous 360-degree Yellow Golden Orbit Ring */
+    .yellow-orbit-ring {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(255, 215, 0, 0.75);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4), inset 0 0 10px rgba(255, 215, 0, 0.3);
+      animation: rotateOrbitRing 4s linear infinite;
+      z-index: 1;
+    }
+
+    /* Revolving Yellow Dot Particle on Orbit */
+    .yellow-orbit-dot {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #ffea00;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffea00, 0 0 18px #ffb703;
+    }
+
+    /* 3D Heart Pulse */
     .heart-svg-3d {
       width: 65px;
       height: 65px;
@@ -147,6 +174,7 @@
       animation: realisticHeartbeat 1.8s infinite ease-in-out;
     }
 
+    /* Floating Ambient Sparkles */
     .heart-orbit-particle {
       position: absolute;
       border-radius: 50%;
@@ -155,8 +183,8 @@
     }
 
     .p1 {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       top: 10px;
       left: 15px;
       animation: floatParticle 2.2s infinite ease-in-out alternate;
@@ -170,12 +198,9 @@
       animation: floatParticle 1.7s infinite ease-in-out alternate-reverse;
     }
 
-    .p3 {
-      width: 5px;
-      height: 5px;
-      top: 18px;
-      right: 12px;
-      animation: floatParticle 2.5s infinite ease-in-out alternate;
+    @keyframes rotateOrbitRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     @keyframes realisticHeartbeat {
@@ -746,15 +771,21 @@
   <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
-  <!-- Stage 1: Intro (With Realistic 3D SVG Animated Heart) -->
+  <!-- Stage 1: Intro (With Yellow Rotating Orbit Ring & 3D Heart) -->
   <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
     
     <div class="heart-container-main">
       <div class="heart-glow-ring"></div>
+      
+      <!-- Rotating Golden Orbit Ring with Yellow Glowing Dot -->
+      <div class="yellow-orbit-ring">
+        <div class="yellow-orbit-dot"></div>
+      </div>
+
       <div class="heart-orbit-particle p1"></div>
       <div class="heart-orbit-particle p2"></div>
-      <div class="heart-orbit-particle p3"></div>
+
       <svg class="heart-svg-3d" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="heartGrad" cx="35%" cy="35%" r="65%">
@@ -1303,8 +1334,7 @@
         this.x = x;
         this.y = y;
         this.color = color;
-        const angle = Math.random() * Math.PI * 
-2;
+        const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 5 + 1;
         this.vx = Math.cos(angle) * speed;
         this.vy = Math.sin(angle) * speed;
