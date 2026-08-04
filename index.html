@@ -131,7 +131,6 @@
       justify-content: center;
     }
 
-    /* Soft Background Glow */
     .heart-glow-ring {
       position: absolute;
       width: 100%;
@@ -141,7 +140,6 @@
       animation: ringPulse 1.8s infinite ease-in-out;
     }
 
-    /* Continuous 360-degree Yellow Golden Orbit Ring */
     .yellow-orbit-ring {
       position: absolute;
       width: 90px;
@@ -153,7 +151,6 @@
       z-index: 1;
     }
 
-    /* Revolving Yellow Dot Particle on Orbit */
     .yellow-orbit-dot {
       position: absolute;
       top: -4px;
@@ -166,7 +163,6 @@
       box-shadow: 0 0 10px #ffea00, 0 0 18px #ffb703;
     }
 
-    /* 3D Heart Pulse */
     .heart-svg-3d {
       width: 65px;
       height: 65px;
@@ -174,7 +170,6 @@
       animation: realisticHeartbeat 1.8s infinite ease-in-out;
     }
 
-    /* Floating Ambient Sparkles */
     .heart-orbit-particle {
       position: absolute;
       border-radius: 50%;
@@ -760,25 +755,75 @@
       90% { opacity: 1; }
       100% { bottom: 105vh; opacity: 0; }
     }
+
+    /* --- Locked Button & Timer Styling --- */
+    .btn-locked {
+      background: rgba(255, 255, 255, 0.15) !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+      border: 1px dashed rgba(255, 117, 143, 0.4) !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
+      transform: none !important;
+    }
+
+    /* --- Section 11 TikTok ASCII Heart Canvas --- */
+    #sec-11 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      padding: 0;
+      background: #000;
+      z-index: 100;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #sec-11.active {
+      display: flex;
+    }
+
+    #tiktok-heart-canvas {
+      width: 100vw;
+      height: 75vh;
+      display: block;
+    }
+
+    .the-end-footer {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      z-index: 105;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Main Background Music -->
   <audio id="bg-music" loop>
     <source src="my.music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Special TikTok Heart Section Music -->
+  <audio id="heart-music" loop>
+    <source src="final_heart_music.mp3" type="audio/mpeg">
   </audio>
 
   <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
-  <!-- Stage 1: Intro (With Yellow Rotating Orbit Ring & 3D Heart) -->
+  <!-- Stage 1: Intro -->
   <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
     
     <div class="heart-container-main">
       <div class="heart-glow-ring"></div>
       
-      <!-- Rotating Golden Orbit Ring with Yellow Glowing Dot -->
       <div class="yellow-orbit-ring">
         <div class="yellow-orbit-dot"></div>
       </div>
@@ -1038,8 +1083,8 @@
     <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Grand Finale ✨</button>
   </div>
 
-  <!-- Stage 10: Grand Finale -->
-  <div id="sec-10" class="section">
+  <!-- Stage 10: Grand Finale (With 30 Seconds Timer & Lock Button) -->
+<div id="sec-10" class="section">
     <div class="sub-title">SEPTEMBER 2ND • FOREVER YOUR FAVORITE DATE</div>
     <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
     <p>Here's to nineteen and every bit of magic it's going to bring you. With all my love, today and always.</p>
@@ -1047,6 +1092,25 @@
     <div style="display:flex; justify-content:center; gap:12px; margin-top: 25px; flex-wrap:wrap;">
       <button class="btn-primary" style="margin-top:0;" onclick="triggerFireworks()">Fireworks 🎆</button>
       <button class="btn-secondary" style="margin-top:0;" onclick="resetAndRestart()">Watch Again 🔄</button>
+    </div>
+
+    <div style="margin-top: 25px;">
+      <button class="btn-primary btn-locked" id="final-reveal-btn" onclick="openTheEndSection()">
+        🔒 Unlocking Final Secret... (<span id="timer-sec">30</span>s)
+      </button>
+    </div>
+  </div>
+
+  <!-- Stage 11: The End - Exact TikTok 3D ASCII Text-Heart Screen -->
+  <div id="sec-11" class="section">
+    <canvas id="tiktok-heart-canvas"></canvas>
+
+    <div class="the-end-footer">
+      <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff758f; text-shadow: 0 0 15px #ff0055;">
+        Forever & Always, Jana ❤️
+      </h2>
+      <p style="font-size: 0.85rem; color: #ffe5ec; opacity: 0.8; margin-top: 5px;">The End ✨</p>
+      <button class="btn-secondary" style="margin-top: 15px; border-color: #ff758f;" onclick="resetAndRestart()">Replay Website 🔄</button>
     </div>
   </div>
 
@@ -1072,6 +1136,7 @@
     }
 
     let bubbleInterval = null;
+    let timerCountdown = null;
 
     function nextSection(secNumber) {
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -1085,18 +1150,28 @@
       if (secNumber === 10) {
         bg.style.display = 'none';
         triggerFireworks();
-        startWhatsAppBubbles();
+        startWhatsAppBubblesAndTimer();
       }
     }
 
     function resetAndRestart() {
       bg.style.display = 'block';
       if (bubbleInterval) clearInterval(bubbleInterval);
+      if (timerCountdown) clearInterval(timerCountdown);
+      
+      const heartMusic = document.getElementById('heart-music');
+      heartMusic.pause();
+      heartMusic.currentTime = 0;
+
+      const mainMusic = document.getElementById('bg-music');
+      mainMusic.play().catch(e => console.log("Music play"));
+
       document.querySelectorAll('.chat-bubble').forEach(b => b.remove());
       poppedCount = 0;
       document.getElementById('pop-counter').innerText = 0;
       document.querySelectorAll('.balloon').forEach(b => b.classList.remove('popped'));
       document.getElementById('balloon-next-btn').style.display = 'none';
+      
       nextSection(1);
     }
 
@@ -1126,22 +1201,61 @@
       "You Are My Safe Place 🥰"
     ];
 
-    function startWhatsAppBubbles() {
+    function startWhatsAppBubblesAndTimer() {
       if (bubbleInterval) clearInterval(bubbleInterval);
-      
-      bubbleInterval = setInterval(() => {
-        const bubble = document.createElement('div');
-        bubble.className = 'chat-bubble';
-        const msg = chatMessages[Math.floor(Math.random() * chatMessages.length)];
-        bubble.innerHTML = msg;
-        
-        const randomX = Math.floor(Math.random() * 60) + 20;
-        bubble.style.left = randomX + '%';
-        
-        document.body.appendChild(bubble);
+      if (timerCountdown) clearInterval(timerCountdown);
 
-        setTimeout(() => { bubble.remove(); }, 8000);
-      }, 2000);
+      const btn = document.getElementById('final-reveal-btn');
+      const timerSpan = document.getElementById('timer-sec');
+      
+      btn.classList.add('btn-locked');
+      btn.disabled = true;
+      let timeLeft = 30;
+      timerSpan.innerText = timeLeft;
+
+      // 30 Seconds Timer Logic
+      timerCountdown = setInterval(() => {
+        timeLeft--;
+        if (timeLeft >= 0) {
+          timerSpan.innerText = timeLeft;
+        }
+        if (timeLeft <= 0) {
+          clearInterval(timerCountdown);
+          btn.classList.remove('btn-locked');
+          btn.disabled = false;
+          btn.innerHTML = "Click for Final Reveal 💖 ✨";
+        }
+      }, 1000);
+
+      // Exact 30 Seconds Mein Messages Complete Floor Engine (1.25s Interval)
+      let msgIdx = 0;
+      bubbleInterval = setInterval(() => {
+        if (msgIdx < chatMessages.length) {
+          const bubble = document.createElement('div');
+          bubble.className = 'chat-bubble';
+          bubble.innerHTML = chatMessages[msgIdx];
+          
+          const randomX = Math.floor(Math.random() * 60) + 20;
+          bubble.style.left = randomX + '%';
+          
+          document.body.appendChild(bubble);
+
+          setTimeout(() => { bubble.remove(); }, 8000);
+          msgIdx++;
+        }
+      }, 1250);
+    }
+
+    function openTheEndSection() {
+      const mainMusic = document.getElementById('bg-music');
+      mainMusic.pause();
+
+      const heartMusic = document.getElementById('heart-music');
+      heartMusic.volume = 0.8;
+      heartMusic.play().catch(e => console.log("Heart audio error"));
+
+      nextSection(11);
+      initTikTokHeart3D();
     }
 
     let poppedCount = 0;
@@ -1297,6 +1411,7 @@
       }
     }
 
+    // Fireworks Canvas Engine
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -1389,6 +1504,81 @@
       });
     }
     animateFireworks();
+
+    /* --- Exact TikTok Math ASCII 3D Text-Heart Engine --- */
+    let tkAnimId = null;
+
+    function initTikTokHeart3D() {
+      const tkCanvas = document.getElementById('tiktok-heart-canvas');
+      const tkCtx = tkCanvas.getContext('2d');
+
+      tkCanvas.width = window.innerWidth;
+      tkCanvas.height = window.innerHeight * 0.75;
+
+      const particles = [];
+      const numParticles = 350;
+      const textString = "i love you";
+
+      for (let i = 0; i < numParticles; i++) {
+        const t = (i / numParticles) * Math.PI * 2;
+        // Parametric 3D Heart Curve Equation
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+        const z = (Math.random() - 0.5) * 8;
+
+        particles.push({ x: x, y: y, z: z, baseT: t });
+      }
+
+      let angleY = 0;
+      let angleX = 0;
+      let pulse = 0;
+
+      function renderTikTokHeart() {
+        tkCtx.fillStyle = "rgba(0, 0, 0, 0.25)";
+        tkCtx.fillRect(0, 0, tkCanvas.width, tkCanvas.height);
+
+        angleY += 0.02;
+        angleX = Math.sin(angleY * 0.5) * 0.35;
+        pulse += 0.04;
+        const scalePulse = 1 + Math.sin(pulse) * 0.08;
+
+        const centerX = tkCanvas.width / 2;
+        const centerY = tkCanvas.height / 2;
+        const scale = Math.min(tkCanvas.width, tkCanvas.height) / 45 * scalePulse;
+
+        tkCtx.font = "bold 13px Poppins, sans-serif";
+        tkCtx.textAlign = "center";
+
+        particles.forEach((p, index) => {
+          // 3D Y-Axis Rotation
+          let x1 = p.x * Math.cos(angleY) - p.z * Math.sin(angleY);
+          let z1 = p.x * Math.sin(angleY) + p.z * Math.cos(angleY);
+
+          // 3D X-Axis Rotation
+          let y2 = p.y * Math.cos(angleX) - z1 * Math.sin(angleX);
+          let z2 = p.y * Math.sin(angleX) + z1 * Math.cos(angleX);
+
+          // Perspective Projection
+          const perspective = 300 / (300 + z2);
+          const screenX = centerX + x1 * scale * perspective;
+          const screenY = centerY + y2 * scale * perspective;
+
+          const alpha = Math.max(0.2, (z2 + 20) / 40);
+
+          tkCtx.save();
+          tkCtx.fillStyle = `rgba(255, 117, 143, ${alpha})`;
+          tkCtx.shadowColor = "#ff0055";
+          tkCtx.shadowBlur = 10;
+          tkCtx.fillText(textString, screenX, screenY);
+          tkCtx.restore();
+        });
+
+        tkAnimId = requestAnimationFrame(renderTikTokHeart);
+      }
+
+      if (tkAnimId) cancelAnimationFrame(tkAnimId);
+      renderTikTokHeart();
+    }
   </script>
 </body>
 </html>
