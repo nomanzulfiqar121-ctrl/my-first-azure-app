@@ -120,6 +120,88 @@
       margin-top: 15px;
     }
 
+    /* --- Animated Glowing Heart (Intro Section) --- */
+    .glow-heart-avatar {
+      width: 75px;
+      height: 75px;
+      margin: 15px auto;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 34px;
+      box-shadow: 0 0 25px rgba(255, 77, 109, 0.8), 0 0 50px rgba(255, 117, 143, 0.4);
+      animation: heartPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes heartPulse {
+      0% { transform: scale(0.92); box-shadow: 0 0 15px rgba(255, 77, 109, 0.6); }
+      100% { transform: scale(1.1); box-shadow: 0 0 30px rgba(255, 77, 109, 1), 0 0 50px rgba(255, 117, 143, 0.8); }
+    }
+
+    /* --- 19 Years Old Section Styling --- */
+    .years-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 117, 143, 0.25);
+      border-radius: 20px;
+      padding: 20px 15px;
+      margin-top: 15px;
+      backdrop-filter: blur(8px);
+    }
+
+    .years-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .digit-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 117, 143, 0.4);
+      border-radius: 12px;
+      width: 65px;
+      height: 75px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 117, 143, 0.8);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .years-label {
+      font-size: 1rem;
+      letter-spacing: 4px;
+      font-weight: 600;
+      color: #ff758f;
+      margin-top: 5px;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .feature-item {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: #f2d6e4;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     /* --- Mood Carousel Styling --- */
     .mood-card {
       background: rgba(255, 255, 255, 0.07);
@@ -175,7 +257,6 @@
       margin-top: 10px;
     }
 
-    /* --- Cake/GIF Section Video Display Box --- */
     .cake-gif-card {
       margin-top: 25px;
       width: 150px;
@@ -198,7 +279,6 @@
       border-radius: 18px;
     }
 
-    /* --- Video Reference Clean Wish Animation Styles --- */
     .video-wish-stage {
       position: relative;
       width: 100%;
@@ -259,7 +339,6 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Floral Envelope Custom Styles --- */
     .envelope-wrapper {
       position: relative;
       width: 320px;
@@ -360,7 +439,6 @@
       white-space: pre-wrap;
     }
 
-    /* Balloon Grid Styles */
     .balloon-grid {
       display: flex;
       justify-content: center;
@@ -393,7 +471,6 @@
       100% { transform: scale(0); opacity: 0; pointer-events: none; }
     }
 
-    /* Cake Animation Elements */
     .cake-wrapper {
       margin: 30px auto 20px auto;
       display: flex;
@@ -507,7 +584,6 @@
       transform: translateX(18px) rotate(4deg);
     }
 
-    /* 3D Flip Card System */
     .flip-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -574,7 +650,6 @@
       z-index: 1;
     }
 
-    /* WhatsApp Style Text Floating */
     .chat-bubble {
       position: fixed;
       bottom: -60px;
@@ -613,10 +688,10 @@
   <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
-  <!-- Stage 1: Intro -->
+  <!-- Stage 1: Intro (With Glowing Animated Heart) -->
   <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
-    <div style="font-size: 45px; margin: 10px 0;">💌</div>
+    <div class="glow-heart-avatar">💖</div>
     <div class="fancy-name">Jana</div>
     <p>There's a whole little world waiting inside this envelope. Ready? ❤️</p>
     <button class="btn-primary" onclick="startApp()">Open 🎁</button>
@@ -654,6 +729,32 @@
         Your browser does not support video.
       </video>
     </div>
+  </div>
+
+  <!-- Stage 4.5: 19 Years Old Section (Added) -->
+  <div id="sec-4.5" class="section">
+    <div class="sub-title">TODAY, MADAM JI, YOU TURN...</div>
+
+    <div class="years-display">
+      <div class="digit-box">1</div>
+      <div class="digit-box">9</div>
+    </div>
+    <div class="years-label">YEARS OLD</div>
+
+    <div class="years-card">
+      <h2 style="font-size: 1.3rem; color: #ff758f; margin-bottom: 5px;">Welcome to 19, queen 👑✨</h2>
+      <p style="font-size: 0.82rem; color: #f2d6e4;">Old enough to rule the world, still young enough to make it magical.</p>
+
+      <div class="feature-list">
+        <div class="feature-item"><span>👑</span> You are officially NINETEEN</div>
+        <div class="feature-item"><span>✨</span> 19 years of making the world brighter</div>
+        <div class="feature-item"><span>🧸</span> From a little girl to an absolute queen</div>
+        <div class="feature-item"><span>🌍</span> The whole world is now yours to conquer</div>
+        <div class="feature-item"><span>💖</span> Every year made you more magical than the last</div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="nextSection(5)">Let's Celebrate 🎉 →</button>
   </div>
 
   <!-- Stage 5: Cake Cutting -->
@@ -694,7 +795,7 @@
     </div>
   </div>
 
-  <!-- Stage 5.5: Clean Video-Style Wish Transition Section -->
+  <!-- Stage 5.5: Transition Section -->
   <div id="sec-5.5" class="section">
     <div class="sub-title">A SPECIAL MOMENT</div>
     
@@ -724,7 +825,6 @@
     <p style="font-size: 0.85rem; color: #ff758f;"><span id="pop-counter">0</span> / 6 popped</p>
     <p id="balloon-message" style="min-height: 35px; font-style: italic; margin-top: 5px; color: #fc8ef3; font-weight: 500;"></p>
 
-    <!-- Fixed Next Button for Balloon Section -->
     <div style="margin-top: 10px; margin-bottom: 20px;">
       <button class="btn-primary" id="balloon-next-btn" style="display:none;" onclick="nextSection(7)">Open Letter Envelope ✉️</button>
     </div>
@@ -889,7 +989,6 @@
       nextSection(1);
     }
 
-    /* WhatsApp Floating Text Messages */
     const chatMessages = [
       "Happy Birthday, My Love. ❤️🎂",
       "To My Forever. 💖✨",
@@ -961,7 +1060,7 @@
           el.innerText = count;
         } else {
           clearInterval(timer);
-          nextSection(5);
+          nextSection(4.5); // Redirects to 19 Years Old Section
         }
       }, 1000);
     }
@@ -1046,30 +1145,12 @@
     }
 
     const moodData = [
-      {
-        src: "VID-20260729-WA0002.mp4",
-        note: "When you're being effortlessly cute 🥰"
-      },
-      {
-        src: "VID-20260729-WA0006.mp4",
-        note: "When you get angry but still look super cute 😤❤️"
-      },
-      {
-        src: "VID-20260729-WA0008.mp4",
-        note: "When you laugh out loud and make everything brighter ✨"
-      },
-      {
-        src: "VID-20260729-WA0004.mp4",
-        note: "When you get sleepy and grumpy 😴"
-      },
-      {
-        src: "VID-20260729-WA0005.mp4",
-        note: "When you give the warmest hugs 💕"
-      },
-      {
-        src: "VID-20260729-WA0001.mp4",
-        note: "Just you being you — my favorite person always ❤️"
-      }
+      { src: "VID-20260729-WA0002.mp4", note: "When you're being effortlessly cute 🥰" },
+      { src: "VID-20260729-WA0006.mp4", note: "When you get angry but still look super cute 😤❤️" },
+      { src: "VID-20260729-WA0008.mp4", note: "When you laugh out loud and make everything brighter ✨" },
+      { src: "VID-20260729-WA0004.mp4", note: "When you get sleepy and grumpy 😴" },
+      { src: "VID-20260729-WA0005.mp4", note: "When you give the warmest hugs 💕" },
+      { src: "VID-20260729-WA0001.mp4", note: "Just you being you — my favorite person always ❤️" }
     ];
 
     let currentMoodIdx = 0;
@@ -1105,7 +1186,6 @@
       }
     }
 
-    /* Fixed Clean Fireworks Engine */
     const canvas = document.getElementById('fireworks-canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
