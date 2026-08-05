@@ -102,6 +102,8 @@
       transition: all 0.3s ease;
       margin-top: 20px;
       display: inline-block;
+      position: relative;
+      z-index: 35;
     }
 
     .btn-primary:hover {
@@ -118,6 +120,8 @@
       border-radius: 30px;
       cursor: pointer;
       margin-top: 15px;
+      position: relative;
+      z-index: 35;
     }
 
     /* --- Custom 3D SVG Heart + Yellow Rotating Orbit Ring --- */
@@ -766,16 +770,17 @@
       z-index: 1;
     }
 
+    /* Fixed Overlapping WhatsApp Chat Bubbles z-index */
     .chat-bubble {
       position: fixed;
       bottom: -60px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #075E54;
+      background-color: rgba(7, 94, 84, 0.9);
       color: #ffffff;
       padding: 10px 18px;
       border-radius: 18px;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
       box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       display: flex;
@@ -783,8 +788,10 @@
       gap: 8px;
       white-space: nowrap;
       animation: floatUp 8s linear forwards;
-      z-index: 20;
+      z-index: 5;
       pointer-events: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
     }
 
     @keyframes floatUp {
@@ -1121,25 +1128,25 @@
     <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
     <p>Here's to nineteen and every bit of magic it's going to bring you. With all my love, today and always.</p>
 
-    <div style="display:flex; justify-content:center; gap:12px; margin-top: 25px; flex-wrap:wrap;">
+    <div style="display:flex; justify-content:center; gap:12px; margin-top: 25px; flex-wrap:wrap; position:relative; z-index:35;">
       <button class="btn-primary" style="margin-top:0;" onclick="triggerFireworks()">Fireworks 🎆</button>
       <button class="btn-secondary" style="margin-top:0;" onclick="resetAndRestart()">Watch Again 🔄</button>
     </div>
 
-    <div style="margin-top: 25px;">
+    <div style="margin-top: 25px; position:relative; z-index:35;">
       <button class="btn-primary btn-locked" id="final-reveal-btn" onclick="openTheEndSection()">
         🔒 Unlocking Final Secret... (<span id="timer-sec">30</span>s)
       </button>
     </div>
   </div>
 
-  <!-- Stage 11: The End -->
+  <!-- Stage 11: The End - With Particle Intro, Rotation & Outro Engine -->
   <div id="sec-11" class="section">
     <canvas id="tiktok-heart-canvas"></canvas>
 
     <div class="the-end-footer">
       <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff758f; text-shadow: 0 0 15px #ff0055;">
-        Forever & Always Love you, Jana ❤️
+        Forever & Always, Jana ❤️
       </h2>
       <p style="font-size: 0.85rem; color: #ffe5ec; opacity: 0.8; margin-top: 5px;">The End ✨</p>
       <button class="btn-secondary" style="margin-top: 15px; border-color: #ff758f;" onclick="resetAndRestart()">Replay Website 🔄</button>
@@ -1265,7 +1272,8 @@
           bubble.className = 'chat-bubble';
           bubble.innerHTML = chatMessages[msgIdx];
           
-          const randomX = Math.floor(Math.random() * 60) + 20;
+          // Floating Path Fixed to Side Boundaries (12% to 75%)
+          const randomX = Math.floor(Math.random() * 63) + 12;
           bubble.style.left = randomX + '%';
           
           document.body.appendChild(bubble);
@@ -1534,6 +1542,7 @@
     }
     animateFireworks();
 
+    /* --- TikTok Math 3D ASCII Text-Heart Engine with Particle Intro & Outro --- */
     let tkAnimId = null;
 
     function initTikTokHeart3D() {
@@ -1544,25 +1553,50 @@
       tkCanvas.height = window.innerHeight * 0.75;
 
       const particles = [];
-      const numParticles = 350;
+      const numParticles = 380;
       const textString = "i love you";
 
       for (let i = 0; i < numParticles; i++) {
         const t = (i / numParticles) * Math.PI * 2;
-        const x = 16 * Math.pow(Math.sin(t), 3);
-        const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-        const z = (Math.random() - 0.5) * 8;
+        const targetX = 16 * Math.pow(Math.sin(t), 3);
+        const targetY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+        const targetZ = (Math.random() - 0.5) * 8;
 
-        particles.push({ x: x, y: y, z: z, baseT: t });
+        particles.push({
+          targetX: targetX,
+          targetY: targetY,
+          targetZ: targetZ,
+          index: i
+        });
       }
 
       let angleY = 0;
       let angleX = 0;
       let pulse = 0;
+      let cycleTime = 0;
 
       function renderTikTokHeart() {
         tkCtx.fillStyle = "rgba(0, 0, 0, 0.25)";
         tkCtx.fillRect(0, 0, tkCanvas.width, tkCanvas.height);
+
+        cycleTime += 0.016; // Time in seconds
+        const loopDuration = 16; 
+        const currentProgress = cycleTime % loopDuration;
+
+        let drawFactor = 1;
+
+        // Stage 1: Particle Drawing Entry (0s to 3s)
+        if (currentProgress < 3) {
+          drawFactor = currentProgress / 3;
+        } 
+        // Stage 2: 3D Rotation (3s to 13s)
+        else if (currentProgress >= 3 && currentProgress <= 13) {
+          drawFactor = 1;
+        } 
+        // Stage 3: Particle Shrink Outro (13s to 16s)
+        else {
+          drawFactor = (16 - currentProgress) / 3;
+        }
 
         angleY += 0.02;
         angleX = Math.sin(angleY * 0.5) * 0.35;
@@ -1571,30 +1605,47 @@
 
         const centerX = tkCanvas.width / 2;
         const centerY = tkCanvas.height / 2;
-        const scale = Math.min(tkCanvas.width, tkCanvas.height) / 45 * scalePulse;
+        const scale = (Math.min(tkCanvas.width, tkCanvas.height) / 45) * scalePulse;
 
         tkCtx.font = "bold 13px Poppins, sans-serif";
         tkCtx.textAlign = "center";
 
-        particles.forEach((p, index) => {
-          let x1 = p.x * Math.cos(angleY) - p.z * Math.sin(angleY);
-          let z1 = p.x * Math.sin(angleY) + p.z * Math.cos(angleY);
+        particles.forEach((p) => {
+          // Particle Interpolation (Point Origin to Target Heart Shape)
+          const pRatio = p.index / numParticles;
+          let activeRatio = 0;
 
-          let y2 = p.y * Math.cos(angleX) - z1 * Math.sin(angleX);
-          let z2 = p.y * Math.sin(angleX) + z1 * Math.cos(angleX);
+          if (drawFactor > 0) {
+            activeRatio = Math.min(1, Math.max(0, (drawFactor - pRatio * 0.3) / 0.7));
+          }
 
+          let curX = p.targetX * activeRatio;
+          let curY = p.targetY * activeRatio;
+          let curZ = p.targetZ * activeRatio;
+
+          // 3D Y-Axis Rotation
+          let x1 = curX * Math.cos(angleY) - curZ * Math.sin(angleY);
+          let z1 = curX * Math.sin(angleY) + curZ * Math.cos(angleY);
+
+          // 3D X-Axis Rotation
+          let y2 = curY * Math.cos(angleX) - z1 * Math.sin(angleX);
+          let z2 = curY * Math.sin(angleX) + z1 * Math.cos(angleX);
+
+          // Perspective Projection
           const perspective = 300 / (300 + z2);
           const screenX = centerX + x1 * scale * perspective;
           const screenY = centerY + y2 * scale * perspective;
 
-          const alpha = Math.max(0.2, (z2 + 20) / 40);
+          const alpha = Math.max(0.05, ((z2 + 20) / 40) * activeRatio);
 
-          tkCtx.save();
-          tkCtx.fillStyle = `rgba(255, 117, 143, ${alpha})`;
-          tkCtx.shadowColor = "#ff0055";
-          tkCtx.shadowBlur = 10;
-          tkCtx.fillText(textString, screenX, screenY);
-          tkCtx.restore();
+          if (activeRatio > 0.01) {
+            tkCtx.save();
+            tkCtx.fillStyle = `rgba(255, 117, 143, ${alpha})`;
+            tkCtx.shadowColor = "#ff0055";
+            tkCtx.shadowBlur = 10;
+            tkCtx.fillText(textString, screenX, screenY);
+            tkCtx.restore();
+          }
         });
 
         tkAnimId = requestAnimationFrame(renderTikTokHeart);
