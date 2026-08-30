@@ -878,7 +878,7 @@
       transform: none !important;
     }
 
-    /* --- Stage 11: Electric Energy Flame Heart Section --- */
+    /* Section 11 - Heart Canvas Overlay */
     #sec-11 {
       position: fixed;
       top: 0;
@@ -897,24 +897,69 @@
 
     #sec-11.active { display: flex; }
 
-    #flame-heart-canvas {
+    #tiktok-heart-canvas {
       width: 100vw;
       height: 75vh;
       display: block;
     }
 
-    .the-end-footer {
+    .heart-footer-text {
       position: absolute;
-      bottom: 25px;
+      bottom: 30px;
       width: 100%;
       text-align: center;
       z-index: 105;
+    }
+
+    /* Section 12 - Grand Finale GIF/Video Overlay */
+    #sec-12 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-width: 100%;
+      padding: 0;
+      background: #000;
+      z-index: 101;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #sec-12.active { display: flex; }
+
+    .finale-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .finale-media {
+      max-width: 85vw;
+      max-height: 55vh;
+      border-radius: 18px;
+      box-shadow: 0 0 30px rgba(255, 117, 143, 0.5);
+      object-fit: cover;
+    }
+
+    .the-end-title {
+      font-family: 'Great Vibes', 'Dancing Script', cursive;
+      font-size: 3.2rem;
+      color: #ffb6c1;
+      margin-top: 25px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 15px #ff0055, 0 0 25px #ff0055;
     }
   </style>
 </head>
 <body>
 
-  <!-- Royal Curtain Overlay -->
   <div id="curtain-overlay">
     <div class="curtain-panel curtain-left"></div>
     <div class="curtain-panel curtain-right"></div>
@@ -929,7 +974,7 @@
   </div>
 
   <audio id="bg-music" loop>
-    <source src="my.music1.mp3" type="audio/mpeg">
+    <source src="my music1.mp3" type="audio/mpeg">
   </audio>
 
   <audio id="heart-music" loop>
@@ -939,8 +984,8 @@
   <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
-  <!-- Stage 1: Intro -->
-  <div id="sec-1" class="section active">
+    <!-- Stage 1: Intro ->
+    <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
     
     <div class="heart-container-main">
@@ -975,8 +1020,8 @@
     <button class="btn-primary" onclick="startApp()">Open 🎁</button>
   </div>
 
-  <!-- Stage 2: Question -->
-  <div id="sec-2" class="section">
+   <!-- Stage 2: Question -->
+   <div id="sec-2" class="section">
     <div class="sub-title">BEFORE WE BEGIN</div>
     <h1 style="font-size: 1.8rem; margin: 10px 0;">Are you ready for this? 😏</h1>
     <p>Because there's no going back once you say yes.</p>
@@ -986,7 +1031,6 @@
     </div>
   </div>
 
-  <!-- Stage 3: Special Day -->
   <div id="sec-3" class="section">
     <div class="sub-title">SEPTEMBER 2ND</div>
     <h1 style="font-size: 2.2rem;">It's Your Special Day, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
@@ -994,7 +1038,6 @@
     <button class="btn-primary" onclick="nextSection(4)">Start Countdown ⏳</button>
   </div>
 
-  <!-- Stage 4: Countdown -->
   <div id="sec-4" class="section">
     <div class="sub-title">GET READY FOR THE CAKE</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown!</h1>
@@ -1009,7 +1052,6 @@
     </div>
   </div>
 
-  <!-- Stage 4.5: 19 Years Old Section -->
   <div id="sec-4.5" class="section">
     <div class="sub-title">TODAY, MADAM JI, YOU TURN...</div>
 
@@ -1035,7 +1077,6 @@
     <button class="btn-primary" onclick="nextSection(5)">Let's Celebrate 🎉 →</button>
   </div>
 
-  <!-- Stage 5: Cake Cutting -->
   <div id="sec-5" class="section">
     <div class="sub-title">LET'S CELEBRATE</div>
     <h1 style="font-size: 2em; font-family: 'Dancing Script', cursive;">Let's Celebrate! 🎉</h1>
@@ -1073,7 +1114,6 @@
     </div>
   </div>
 
-  <!-- Stage 5.5: Transition Section -->
   <div id="sec-5.5" class="section">
     <div class="sub-title">A SPECIAL MOMENT</div>
     
@@ -1086,7 +1126,6 @@
     <button class="btn-primary" onclick="nextSection(6)">Pop Balloons Now 🎈</button>
   </div>
 
-  <!-- Stage 6: Pop Balloons -->
   <div id="sec-6" class="section">
     <div class="sub-title">POP THE BALLOONS</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive; color: #ff758f;">Pop the Balloons! 🎈</h1>
@@ -1108,7 +1147,6 @@
     </div>
   </div>
 
-  <!-- Stage 7: Envelope View -->
   <div id="sec-7" class="section">
     <div class="sub-title">A SPECIAL LETTER FOR YOU</div>
 
@@ -1142,7 +1180,6 @@
     </div>
   </div>
 
-  <!-- Stage 8: 3D Heart Cards -->
   <div id="sec-8" class="section">
     <div class="sub-title">SPECIAL WISHES FOR YOU</div>
     <h1 style="font-size: 1.5rem; margin-bottom: 5px;">Flip Each Heart! 💖</h1>
@@ -1181,7 +1218,6 @@
     <button class="btn-primary" id="hearts-next-btn" style="display:none;" onclick="nextSection(9)">You, In Every Mood 🐻</button>
   </div>
 
-  <!-- Stage 9: You In Every Mood -->
   <div id="sec-9" class="section">
     <div class="sub-title">SEALED WITH LOVE</div>
     <h1 style="font-size: 1.8rem; font-family: 'Dancing Script', cursive;">You, In Every Mood 💕</h1>
@@ -1202,11 +1238,9 @@
       <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
     </div>
 
-    <!-- UPDATED BUTTON TEXT: Light Up The Sky 🎆 -->
     <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Light Up The Sky 🎆</button>
   </div>
 
-  <!-- Stage 10: Celebration Stage -->
   <div id="sec-10" class="section">
     <div class="sub-title">SEPTEMBER 2ND • FOREVER YOUR FAVORITE DATE</div>
     <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
@@ -1224,16 +1258,26 @@
     </div>
   </div>
 
-  <!-- Stage 11: Glowing Electric Flame Heart Finale -->
   <div id="sec-11" class="section">
-    <canvas id="flame-heart-canvas"></canvas>
+    <canvas id="tiktok-heart-canvas"></canvas>
 
-    <div class="the-end-footer">
+    <div class="heart-footer-text">
       <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff758f; text-shadow: 0 0 15px #ff0055;">
         Forever & Always Love You, Jana ❤️
       </h2>
-      <p style="font-size: 0.85rem; color: #ffe5ec; opacity: 0.8; margin-top: 5px;">The End ✨</p>
-      <button class="btn-secondary" style="margin-top: 15px; border-color: #ff758f;" onclick="resetAndRestart()">Replay Website 🔄</button>
+    </div>
+  </div>
+
+  <div id="sec-12" class="section">
+    <div class="finale-container">
+      <video class="finale-media" autoplay loop muted playsinline>
+        <source src="VID-20260830-WA0001.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <h1 class="the-end-title">The End ✨</h1>
+
+      <button class="btn-secondary" style="margin-top: 20px; border-color: #ff758f;" onclick="resetAndRestart()">Replay Website 🔄</button>
     </div>
   </div>
 
@@ -1270,10 +1314,20 @@
 
     let bubbleInterval = null;
     let timerCountdown = null;
+    let finaleTimer = null;
 
     function nextSection(secNumber) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.getElementById('sec-' + secNumber).classList.add('active');
+      document.querySelectorAll('.section').forEach(s => {
+        s.classList.remove('active');
+        s.style.display = 'none';
+      });
+
+      const currentSec = document.getElementById('sec-' + secNumber);
+      if (currentSec) {
+        currentSec.classList.add('active');
+        currentSec.style.display = (secNumber === 11 || secNumber === 12) ? 'flex' : 'block';
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if (secNumber === 4) {
@@ -1291,6 +1345,7 @@
       bg.style.display = 'block';
       if (bubbleInterval) clearInterval(bubbleInterval);
       if (timerCountdown) clearInterval(timerCountdown);
+      if (finaleTimer) clearTimeout(finaleTimer);
       
       const heartMusic = document.getElementById('heart-music');
       heartMusic.pause();
@@ -1386,7 +1441,13 @@
       heartMusic.play().catch(e => console.log("Heart audio error"));
 
       nextSection(11);
-      initElectricFlameHeartEngine();
+      initTikTokHeart3D();
+
+      // 13 Seconds Baad Grand Finale GIF/Video Transition (Music Continuously Bajta Rahega)
+      if (finaleTimer) clearTimeout(finaleTimer);
+      finaleTimer = setTimeout(() => {
+        nextSection(12);
+      }, 13000);
     }
 
     let poppedCount = 0;
@@ -1635,152 +1696,111 @@
     }
     animateFireworks();
 
-    /* --- Stage 11: Electric Energy Flame Heart Engine --- */
-    let flameAnimId = null;
+    let tkAnimId = null;
 
-    function initElectricFlameHeartEngine() {
-      const fCanvas = document.getElementById('flame-heart-canvas');
-      const fCtx = fCanvas.getContext('2d');
+    function initTikTokHeart3D() {
+      const tkCanvas = document.getElementById('tiktok-heart-canvas');
+      const tkCtx = tkCanvas.getContext('2d');
 
-      fCanvas.width = window.innerWidth;
-      fCanvas.height = window.innerHeight * 0.75;
+      tkCanvas.width = window.innerWidth;
+      tkCanvas.height = window.innerHeight * 0.75;
 
-      const cX = fCanvas.width / 2;
-      const cY = fCanvas.height / 2 - 10;
-      const baseScale = Math.min(fCanvas.width, fCanvas.height) / 38;
+      const particles = [];
+      const numParticles = 380;
+      const textString = "i love you";
 
-      let time = 0;
-      let traceProgress = 0; 
-      let burstRays = [];
+      for (let i = 0; i < numParticles; i++) {
+        const t = (i / numParticles) * Math.PI * 2;
+        const targetX = 16 * Math.pow(Math.sin(t), 3);
+        const targetY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+        const targetZ = (Math.random() - 0.5) * 8;
 
-      for (let i = 0; i < 45; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 7 + 3;
-        burstRays.push({
-          x: cX,
-          y: cY,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          size: Math.random() * 3.5 + 1.5,
-          alpha: 1,
-          decay: Math.random() * 0.02 + 0.01,
-          color: i % 2 === 0 ? '#ff0055' : '#ff758f'
+        particles.push({
+          targetX: targetX,
+          targetY: targetY,
+          targetZ: targetZ,
+          index: i
         });
       }
 
-      function getHeartPoint(t) {
-        const x = 16 * Math.pow(Math.sin(t), 3);
-        const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
-        return {
-          x: cX + x * baseScale,
-          y: cY + y * baseScale
-        };
+      let angleY = 0;
+      let angleX = 0;
+      let pulse = 0;
+      let cycleTime = 0;
+
+      function renderTikTokHeart() {
+        tkCtx.fillStyle = "rgba(0, 0, 0, 0.25)";
+        tkCtx.fillRect(0, 0, tkCanvas.width, tkCanvas.height);
+
+        cycleTime += 0.016;
+        const loopDuration = 16; 
+        const currentProgress = cycleTime % loopDuration;
+
+        let drawFactor = 1;
+
+        if (currentProgress < 3) {
+          drawFactor = currentProgress / 3;
+        } 
+        else if (currentProgress >= 3 && currentProgress <= 13) {
+          drawFactor = 1;
+        } 
+        else {
+          drawFactor = (16 - currentProgress) / 3;
+        }
+
+        angleY += 0.02;
+        angleX = Math.sin(angleY * 0.5) * 0.35;
+        pulse += 0.04;
+        const scalePulse = 1 + Math.sin(pulse) * 0.08;
+
+        const centerX = tkCanvas.width / 2;
+        const centerY = tkCanvas.height / 2;
+        const scale = (Math.min(tkCanvas.width, tkCanvas.height) / 45) * scalePulse;
+
+        tkCtx.font = "bold 13px Poppins, sans-serif";
+        tkCtx.textAlign = "center";
+
+        particles.forEach((p) => {
+          const pRatio = p.index / numParticles;
+          let activeRatio = 0;
+
+          if (drawFactor > 0) {
+            activeRatio = Math.min(1, Math.max(0, (drawFactor - pRatio * 0.3) / 0.7));
+          }
+
+          let curX = p.targetX * activeRatio;
+          let curY = p.targetY * activeRatio;
+          let curZ = p.targetZ * activeRatio;
+
+          let x1 = curX * Math.cos(angleY) - curZ * Math.sin(angleY);
+          let z1 = curX * Math.sin(angleY) + curZ * Math.cos(angleY);
+
+          let y2 = curY * Math.cos(angleX) - z1 * Math.sin(angleX);
+          let z2 = curY * Math.sin(angleX) + z1 * Math.cos(angleX);
+
+          const perspective = 300 / (300 + z2);
+          const screenX = centerX + x1 * scale * perspective;
+          const screenY = centerY + y2 * scale * perspective;
+
+          const alpha = Math.max(0.05, ((z2 + 20) / 40) * activeRatio);
+
+          if (activeRatio > 0.01) {
+            tkCtx.save();
+            tkCtx.fillStyle = `rgba(255, 117, 143, ${alpha})`;
+            tkCtx.shadowColor = "#ff0055";
+            tkCtx.shadowBlur = 10;
+            tkCtx.fillText(textString, screenX, screenY);
+            tkCtx.restore();
+          }
+        });
+
+        tkAnimId = requestAnimationFrame(renderTikTokHeart);
       }
 
-      function renderFlameHeart() {
-        fCtx.fillStyle = "rgba(0, 0, 0, 0.18)";
-        fCtx.fillRect(0, 0, fCanvas.width, fCanvas.height);
-
-        time += 0.03;
-
-        if (traceProgress < 1) {
-          traceProgress += 0.018;
-          if (traceProgress > 1) traceProgress = 1;
-        }
-
-        const pulseScale = 1 + Math.sin(time * 3) * 0.04;
-
-        if (traceProgress < 0.6) {
-          burstRays.forEach(r => {
-            if (r.alpha > 0) {
-              fCtx.save();
-              fCtx.globalAlpha = r.alpha;
-              fCtx.shadowColor = r.color;
-              fCtx.shadowBlur = 12;
-              fCtx.fillStyle = r.color;
-              fCtx.beginPath();
-              fCtx.arc(r.x, r.y, r.size, 0, Math.PI * 2);
-              fCtx.fill();
-              fCtx.restore();
-
-              r.x += r.vx;
-              r.y += r.vy;
-              r.vx *= 0.96;
-              r.vy *= 0.96;
-              r.alpha -= r.decay;
-            }
-          });
-        }
-
-        const step = 0.015;
-        const maxT = Math.PI * 2 * traceProgress;
-
-        for (let pass = 0; pass < 3; pass++) {
-          fCtx.save();
-          fCtx.beginPath();
-
-          let first = true;
-          for (let t = 0; t <= maxT; t += step) {
-            const rawPt = getHeartPoint(t);
-            const noiseX = (Math.sin(t * 12 + time * 5 + pass) * 2.5);
-            const noiseY = (Math.cos(t * 12 + time * 5 + pass) * 2.5);
-
-            const finalX = cX + (rawPt.x - cX) * pulseScale + noiseX;
-            const finalY = cY + (rawPt.y - cY) * pulseScale + noiseY;
-
-            if (first) {
-              fCtx.moveTo(finalX, finalY);
-              first = false;
-            } else {
-              fCtx.lineTo(finalX, finalY);
-            }
-          }
-
-          if (pass === 0) {
-            fCtx.strokeStyle = "rgba(255, 0, 85, 0.9)";
-            fCtx.lineWidth = 6;
-            fCtx.shadowColor = "#ff0055";
-            fCtx.shadowBlur = 22;
-          } else if (pass === 1) {
-            fCtx.strokeStyle = "rgba(255, 117, 143, 0.95)";
-            fCtx.lineWidth = 3;
-            fCtx.shadowColor = "#ff758f";
-            fCtx.shadowBlur = 14;
-          } else {
-            fCtx.strokeStyle = "#ffffff";
-            fCtx.lineWidth = 1.5;
-            fCtx.shadowColor = "#ffffff";
-            fCtx.shadowBlur = 8;
-          }
-
-          fCtx.stroke();
-          fCtx.restore();
-        }
-
-        if (traceProgress >= 0.8) {
-          for (let i = 0; i < 4; i++) {
-            const randT = Math.random() * Math.PI * 2;
-            const p = getHeartPoint(randT);
-            
-            fCtx.save();
-            fCtx.fillStyle = i % 2 === 0 ? "#ffb703" : "#ffffff";
-            fCtx.shadowColor = "#ff4d6d";
-            fCtx.shadowBlur = 10;
-            fCtx.beginPath();
-            const sparkX = cX + (p.x - cX) * pulseScale + (Math.random() - 0.5) * 8;
-            const sparkY = cY + (p.y - cY) * pulseScale + (Math.random() - 0.5) * 8;
-            fCtx.arc(sparkX, sparkY, Math.random() * 2 + 1, 0, Math.PI * 2);
-            fCtx.fill();
-            fCtx.restore();
-          }
-        }
-
-        flameAnimId = requestAnimationFrame(renderFlameHeart);
-      }
-
-      if (flameAnimId) cancelAnimationFrame(flameAnimId);
-      renderFlameHeart();
+      if (tkAnimId) cancelAnimationFrame(tkAnimId);
+      renderTikTokHeart();
     }
   </script>
 </body>
 </html>
+  
