@@ -878,6 +878,7 @@
       transform: none !important;
     }
 
+    /* --- Stage 11: Electric Energy Flame Heart Section --- */
     #sec-11 {
       position: fixed;
       top: 0;
@@ -896,7 +897,7 @@
 
     #sec-11.active { display: flex; }
 
-    #tiktok-heart-canvas {
+    #flame-heart-canvas {
       width: 100vw;
       height: 75vh;
       display: block;
@@ -904,7 +905,7 @@
 
     .the-end-footer {
       position: absolute;
-      bottom: 30px;
+      bottom: 25px;
       width: 100%;
       text-align: center;
       z-index: 105;
@@ -913,7 +914,7 @@
 </head>
 <body>
 
-  <!-- Royal Curtain Overlay Overlay -->
+  <!-- Royal Curtain Overlay -->
   <div id="curtain-overlay">
     <div class="curtain-panel curtain-left"></div>
     <div class="curtain-panel curtain-right"></div>
@@ -928,7 +929,7 @@
   </div>
 
   <audio id="bg-music" loop>
-    <source src="my music1.mp3" type="audio/mpeg">
+    <source src="my.music.mp3" type="audio/mpeg">
   </audio>
 
   <audio id="heart-music" loop>
@@ -1201,10 +1202,11 @@
       <button class="btn-primary" style="margin-top:0;" onclick="nextMood()">Next Mood →</button>
     </div>
 
+    <!-- UPDATED BUTTON TEXT: Light Up The Sky 🎆 -->
     <button class="btn-primary" id="mood-finish-btn" style="margin-top: 20px; display: none;" onclick="nextSection(10)">Light Up The Sky 🎆</button>
   </div>
 
-  <!-- Stage 10: Grand Finale -->
+  <!-- Stage 10: Celebration Stage -->
   <div id="sec-10" class="section">
     <div class="sub-title">SEPTEMBER 2ND • FOREVER YOUR FAVORITE DATE</div>
     <h1 style="font-size: 2.2rem;">Happy Birthday, <span class="fancy-name" style="font-size: 2.8rem;">Jana</span></h1>
@@ -1222,9 +1224,9 @@
     </div>
   </div>
 
-  <!-- Stage 11: The End -->
+  <!-- Stage 11: Glowing Electric Flame Heart Finale -->
   <div id="sec-11" class="section">
-    <canvas id="tiktok-heart-canvas"></canvas>
+    <canvas id="flame-heart-canvas"></canvas>
 
     <div class="the-end-footer">
       <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff758f; text-shadow: 0 0 15px #ff0055;">
@@ -1384,7 +1386,7 @@
       heartMusic.play().catch(e => console.log("Heart audio error"));
 
       nextSection(11);
-      initTikTokHeart3D();
+      initElectricFlameHeartEngine();
     }
 
     let poppedCount = 0;
@@ -1633,109 +1635,151 @@
     }
     animateFireworks();
 
-    let tkAnimId = null;
+    /* --- Stage 11: Electric Energy Flame Heart Engine --- */
+    let flameAnimId = null;
 
-    function initTikTokHeart3D() {
-      const tkCanvas = document.getElementById('tiktok-heart-canvas');
-      const tkCtx = tkCanvas.getContext('2d');
+    function initElectricFlameHeartEngine() {
+      const fCanvas = document.getElementById('flame-heart-canvas');
+      const fCtx = fCanvas.getContext('2d');
 
-      tkCanvas.width = window.innerWidth;
-      tkCanvas.height = window.innerHeight * 0.75;
+      fCanvas.width = window.innerWidth;
+      fCanvas.height = window.innerHeight * 0.75;
 
-      const particles = [];
-      const numParticles = 380;
-      const textString = "i love you";
+      const cX = fCanvas.width / 2;
+      const cY = fCanvas.height / 2 - 10;
+      const baseScale = Math.min(fCanvas.width, fCanvas.height) / 38;
 
-      for (let i = 0; i < numParticles; i++) {
-        const t = (i / numParticles) * Math.PI * 2;
-        const targetX = 16 * Math.pow(Math.sin(t), 3);
-        const targetY = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-        const targetZ = (Math.random() - 0.5) * 8;
+      let time = 0;
+      let traceProgress = 0; 
+      let burstRays = [];
 
-        particles.push({
-          targetX: targetX,
-          targetY: targetY,
-          targetZ: targetZ,
-          index: i
+      for (let i = 0; i < 45; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 7 + 3;
+        burstRays.push({
+          x: cX,
+          y: cY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          size: Math.random() * 3.5 + 1.5,
+          alpha: 1,
+          decay: Math.random() * 0.02 + 0.01,
+          color: i % 2 === 0 ? '#ff0055' : '#ff758f'
         });
       }
 
-      let angleY = 0;
-      let angleX = 0;
-      let pulse = 0;
-      let cycleTime = 0;
+      function getHeartPoint(t) {
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+        return {
+          x: cX + x * baseScale,
+          y: cY + y * baseScale
+        };
+      }
 
-      function renderTikTokHeart() {
-        tkCtx.fillStyle = "rgba(0, 0, 0, 0.25)";
-        tkCtx.fillRect(0, 0, tkCanvas.width, tkCanvas.height);
+      function renderFlameHeart() {
+        fCtx.fillStyle = "rgba(0, 0, 0, 0.18)";
+        fCtx.fillRect(0, 0, fCanvas.width, fCanvas.height);
 
-        cycleTime += 0.016;
-        const loopDuration = 16; 
-        const currentProgress = cycleTime % loopDuration;
+        time += 0.03;
 
-        let drawFactor = 1;
-
-        if (currentProgress < 3) {
-          drawFactor = currentProgress / 3;
-        } 
-        else if (currentProgress >= 3 && currentProgress <= 13) {
-          drawFactor = 1;
-        } 
-        else {
-          drawFactor = (16 - currentProgress) / 3;
+        if (traceProgress < 1) {
+          traceProgress += 0.018;
+          if (traceProgress > 1) traceProgress = 1;
         }
 
-        angleY += 0.02;
-        angleX = Math.sin(angleY * 0.5) * 0.35;
-        pulse += 0.04;
-        const scalePulse = 1 + Math.sin(pulse) * 0.08;
+        const pulseScale = 1 + Math.sin(time * 3) * 0.04;
 
-        const centerX = tkCanvas.width / 2;
-        const centerY = tkCanvas.height / 2;
-        const scale = (Math.min(tkCanvas.width, tkCanvas.height) / 45) * scalePulse;
+        if (traceProgress < 0.6) {
+          burstRays.forEach(r => {
+            if (r.alpha > 0) {
+              fCtx.save();
+              fCtx.globalAlpha = r.alpha;
+              fCtx.shadowColor = r.color;
+              fCtx.shadowBlur = 12;
+              fCtx.fillStyle = r.color;
+              fCtx.beginPath();
+              fCtx.arc(r.x, r.y, r.size, 0, Math.PI * 2);
+              fCtx.fill();
+              fCtx.restore();
 
-        tkCtx.font = "bold 13px Poppins, sans-serif";
-        tkCtx.textAlign = "center";
+              r.x += r.vx;
+              r.y += r.vy;
+              r.vx *= 0.96;
+              r.vy *= 0.96;
+              r.alpha -= r.decay;
+            }
+          });
+        }
 
-        particles.forEach((p) => {
-          const pRatio = p.index / numParticles;
-          let activeRatio = 0;
+        const step = 0.015;
+        const maxT = Math.PI * 2 * traceProgress;
 
-          if (drawFactor > 0) {
-            activeRatio = Math.min(1, Math.max(0, (drawFactor - pRatio * 0.3) / 0.7));
+        for (let pass = 0; pass < 3; pass++) {
+          fCtx.save();
+          fCtx.beginPath();
+
+          let first = true;
+          for (let t = 0; t <= maxT; t += step) {
+            const rawPt = getHeartPoint(t);
+            const noiseX = (Math.sin(t * 12 + time * 5 + pass) * 2.5);
+            const noiseY = (Math.cos(t * 12 + time * 5 + pass) * 2.5);
+
+            const finalX = cX + (rawPt.x - cX) * pulseScale + noiseX;
+            const finalY = cY + (rawPt.y - cY) * pulseScale + noiseY;
+
+            if (first) {
+              fCtx.moveTo(finalX, finalY);
+              first = false;
+            } else {
+              fCtx.lineTo(finalX, finalY);
+            }
           }
 
-          let curX = p.targetX * activeRatio;
-          let curY = p.targetY * activeRatio;
-          let curZ = p.targetZ * activeRatio;
-
-          let x1 = curX * Math.cos(angleY) - curZ * Math.sin(angleY);
-          let z1 = curX * Math.sin(angleY) + curZ * Math.cos(angleY);
-
-          let y2 = curY * Math.cos(angleX) - z1 * Math.sin(angleX);
-          let z2 = curY * Math.sin(angleX) + z1 * Math.cos(angleX);
-
-          const perspective = 300 / (300 + z2);
-          const screenX = centerX + x1 * scale * perspective;
-          const screenY = centerY + y2 * scale * perspective;
-
-          const alpha = Math.max(0.05, ((z2 + 20) / 40) * activeRatio);
-
-          if (activeRatio > 0.01) {
-            tkCtx.save();
-            tkCtx.fillStyle = `rgba(255, 117, 143, ${alpha})`;
-            tkCtx.shadowColor = "#ff0055";
-            tkCtx.shadowBlur = 10;
-            tkCtx.fillText(textString, screenX, screenY);
-            tkCtx.restore();
+          if (pass === 0) {
+            fCtx.strokeStyle = "rgba(255, 0, 85, 0.9)";
+            fCtx.lineWidth = 6;
+            fCtx.shadowColor = "#ff0055";
+            fCtx.shadowBlur = 22;
+          } else if (pass === 1) {
+            fCtx.strokeStyle = "rgba(255, 117, 143, 0.95)";
+            fCtx.lineWidth = 3;
+            fCtx.shadowColor = "#ff758f";
+            fCtx.shadowBlur = 14;
+          } else {
+            fCtx.strokeStyle = "#ffffff";
+            fCtx.lineWidth = 1.5;
+            fCtx.shadowColor = "#ffffff";
+            fCtx.shadowBlur = 8;
           }
-        });
 
-        tkAnimId = requestAnimationFrame(renderTikTokHeart);
+          fCtx.stroke();
+          fCtx.restore();
+        }
+
+        if (traceProgress >= 0.8) {
+          for (let i = 0; i < 4; i++) {
+            const randT = Math.random() * Math.PI * 2;
+            const p = getHeartPoint(randT);
+            
+            fCtx.save();
+            fCtx.fillStyle = i % 2 === 0 ? "#ffb703" : "#ffffff";
+            fCtx.shadowColor = "#ff4d6d";
+            fCtx.shadowBlur = 10;
+            fCtx.beginPath();
+            const sparkX = cX + (p.x - cX) * pulseScale + (Math.random() - 0.5) * 8;
+            const sparkY = cY + (p.y - cY) * pulseScale + (Math.random() - 0.5) * 8;
+            fCtx.arc(sparkX, sparkY, Math.random() * 2 + 1, 0, Math.PI * 2);
+            fCtx.fill();
+            fCtx.restore();
+          }
+        }
+
+        flameAnimId = requestAnimationFrame(renderFlameHeart);
       }
 
-      if (tkAnimId) cancelAnimationFrame(tkAnimId);
-      renderTikTokHeart();
+      if (flameAnimId) cancelAnimationFrame(flameAnimId);
+      renderFlameHeart();
     }
   </script>
 </body>
