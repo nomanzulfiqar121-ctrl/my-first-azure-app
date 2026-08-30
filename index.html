@@ -878,7 +878,6 @@
       transform: none !important;
     }
 
-    /* Section 11 - Heart Canvas Overlay */
     #sec-11 {
       position: fixed;
       top: 0;
@@ -903,7 +902,7 @@
       display: block;
     }
 
-    .heart-footer-text {
+    .the-end-footer {
       position: absolute;
       bottom: 30px;
       width: 100%;
@@ -911,50 +910,22 @@
       z-index: 105;
     }
 
-    /* Section 12 - Grand Finale GIF/Video Overlay */
-    #sec-12 {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      max-width: 100%;
-      padding: 0;
-      background: #000;
-      z-index: 101;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #sec-12.active { display: flex; }
-
-    .finale-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
+    /* Style for Section 12 GIF/Video Container */
+    .finale-media-card {
+      margin-top: 15px;
       width: 100%;
+      max-width: 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.5);
+      border: 2px solid rgba(255, 183, 3, 0.6);
     }
 
-    .finale-media {
-      max-width: 85vw;
-      max-height: 55vh;
+    .finale-media-card video {
+      width: 100%;
+      height: auto;
+      display: block;
       border-radius: 18px;
-      box-shadow: 0 0 30px rgba(255, 117, 143, 0.5);
-      object-fit: cover;
-    }
-
-    .the-end-title {
-      font-family: 'Great Vibes', 'Dancing Script', cursive;
-      font-size: 3.2rem;
-      color: #ffb6c1;
-      margin-top: 25px;
-      letter-spacing: 2px;
-      text-shadow: 0 0 15px #ff0055, 0 0 25px #ff0055;
     }
   </style>
 </head>
@@ -984,8 +955,7 @@
   <div class="bg-particles" id="bg-particles"></div>
   <canvas id="fireworks-canvas"></canvas>
 
-    <!-- Stage 1: Intro ->
-    <div id="sec-1" class="section active">
+  <div id="sec-1" class="section active">
     <div class="sub-title">A LITTLE SOMETHING FOR</div>
     
     <div class="heart-container-main">
@@ -1020,8 +990,7 @@
     <button class="btn-primary" onclick="startApp()">Open 🎁</button>
   </div>
 
-   <!-- Stage 2: Question -->
-   <div id="sec-2" class="section">
+  <div id="sec-2" class="section">
     <div class="sub-title">BEFORE WE BEGIN</div>
     <h1 style="font-size: 1.8rem; margin: 10px 0;">Are you ready for this? 😏</h1>
     <p>Because there's no going back once you say yes.</p>
@@ -1039,7 +1008,8 @@
   </div>
 
   <div id="sec-4" class="section">
-    <div class="sub-title">GET READY FOR THE CAKE</div>
+    <div class="sub-title">GET READY FOR THE CAKe
+</div>
     <h1 style="font-size: 1.8rem;">Cake Cutting Countdown!</h1>
     <h1 id="countdown-num" style="font-size: 5rem; color: #ff4d6d; margin: 20px 0;">10</h1>
     <p>Get ready to blow candles and make a wish!🎂</p>
@@ -1261,7 +1231,7 @@
   <div id="sec-11" class="section">
     <canvas id="tiktok-heart-canvas"></canvas>
 
-    <div class="heart-footer-text">
+    <div class="the-end-footer">
       <h2 style="font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: #ff758f; text-shadow: 0 0 15px #ff0055;">
         Forever & Always Love You, Jana ❤️
       </h2>
@@ -1269,16 +1239,19 @@
   </div>
 
   <div id="sec-12" class="section">
-    <div class="finale-container">
-      <video class="finale-media" autoplay loop muted playsinline>
-        <source src="VID-20260830-WA0001.mp4" type="video/mp4" />
+    <div class="sub-title">THE FINAL MEMORY ❤️</div>
+    <h1 style="font-size: 2.2rem;">Forever & Always ✨</h1>
+    
+    <div class="finale-media-card" style="margin: 20px auto;">
+      <video autoplay loop muted playsinline>
+        <source src="VID-20260830-WA0001.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-
-      <h1 class="the-end-title">The End ✨</h1>
-
-      <button class="btn-secondary" style="margin-top: 20px; border-color: #ff758f;" onclick="resetAndRestart()">Replay Website 🔄</button>
     </div>
+
+    <p>Aapke liye yeh khas din hamesha yaadgaar rahe!</p>
+
+    <button class="btn-secondary" style="margin-top: 25px;" onclick="resetAndRestart()">Replay Website 🔄</button>
   </div>
 
   <script>
@@ -1314,20 +1287,10 @@
 
     let bubbleInterval = null;
     let timerCountdown = null;
-    let finaleTimer = null;
 
     function nextSection(secNumber) {
-      document.querySelectorAll('.section').forEach(s => {
-        s.classList.remove('active');
-        s.style.display = 'none';
-      });
-
-      const currentSec = document.getElementById('sec-' + secNumber);
-      if (currentSec) {
-        currentSec.classList.add('active');
-        currentSec.style.display = (secNumber === 11 || secNumber === 12) ? 'flex' : 'block';
-      }
-
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById('sec-' + secNumber).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       if (secNumber === 4) {
@@ -1345,7 +1308,6 @@
       bg.style.display = 'block';
       if (bubbleInterval) clearInterval(bubbleInterval);
       if (timerCountdown) clearInterval(timerCountdown);
-      if (finaleTimer) clearTimeout(finaleTimer);
       
       const heartMusic = document.getElementById('heart-music');
       heartMusic.pause();
@@ -1374,7 +1336,7 @@
       "My Heart Chose You. 💘",
       "Forever My Person. 🫂❤️",
       "You Are My Peace. 🌙",
-      "My Greatest Blessing. 🌹✨",
+       "My Greatest Blessing. 🌹✨",
       "Happy Birthday, My Forever Favorite. ❤️🎂",
       "You Make Every Day Beautiful. 🌸💖",
       "Forever Grateful You Are Mine. 🫶✨",
@@ -1438,16 +1400,16 @@
 
       const heartMusic = document.getElementById('heart-music');
       heartMusic.volume = 0.8;
+      heartMusic.loop = true; // Music non-stop continuously chalega
       heartMusic.play().catch(e => console.log("Heart audio error"));
 
       nextSection(11);
       initTikTokHeart3D();
 
-      // 13 Seconds Baad Grand Finale GIF/Video Transition (Music Continuously Bajta Rahega)
-      if (finaleTimer) clearTimeout(finaleTimer);
-      finaleTimer = setTimeout(() => {
+      // Exactly 12 Seconds tak section 11 chalega, phir auto Section 12 par shift ho jayega
+      setTimeout(() => {
         nextSection(12);
-      }, 13000);
+      }, 12000);
     }
 
     let poppedCount = 0;
@@ -1803,4 +1765,4 @@
   </script>
 </body>
 </html>
-  
+    
